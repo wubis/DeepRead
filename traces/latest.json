@@ -1,0 +1,682 @@
+{
+  "question": "Why do wetlands reduce floods and mitigate climate change?",
+  "text": "Wetlands reduce floods because they temporarily store rainfall and river overflow; vegetation and shallow basins slow runoff, lower downstream flood peaks, and reduce erosion. [1]\n\nWetlands help mitigate climate change because plants capture atmospheric carbon and waterlogged soils can preserve organic matter for long periods; peatlands hold especially large carbon stores. Protecting wetlands can also avoid carbon-dioxide emissions that may occur when drainage exposes stored material to oxygen. [2]\n\nClimate benefits involve tradeoffs: some wetlands emit methane, and the net mitigation value of protection or restoration depends on the full greenhouse-gas balance, wetland type, condition, and watershed context. [3]",
+  "citations": [
+    {
+      "id": "evidence_1",
+      "requirement_id": "req_1_1",
+      "passage_id": "passage_aad555d5d4",
+      "document_id": "doc_f531da192d",
+      "title": "Wetlands as Natural Infrastructure",
+      "section": "Flood regulation",
+      "text": "Wetlands temporarily store rainfall and river overflow. Their vegetation and shallow basins slow runoff, lower downstream flood peaks, and reduce erosion.",
+      "score": 0.6732377049180328,
+      "read_level": "passage",
+      "token_cost": 41,
+      "supports": true,
+      "relation": "supports",
+      "char_start": 0,
+      "char_end": 154,
+      "citation_tokens": 28
+    },
+    {
+      "id": "evidence_2",
+      "requirement_id": "req_2_1",
+      "passage_id": "passage_cdbe119fe6",
+      "document_id": "doc_f531da192d",
+      "title": "Wetlands as Natural Infrastructure",
+      "section": "Climate role",
+      "text": "Wetland plants capture atmospheric carbon, while waterlogged soils can preserve organic matter for long periods. Peatlands hold especially large carbon stores. Draining wetlands exposes this material to oxygen and can release carbon dioxide, so protection avoids emissions as well as maintaining future sequestration.",
+      "score": 0.6731451612903226,
+      "read_level": "passage",
+      "token_cost": 56,
+      "supports": true,
+      "relation": "supports",
+      "char_start": 0,
+      "char_end": 317,
+      "citation_tokens": 56
+    },
+    {
+      "id": "evidence_3",
+      "requirement_id": "req_2_2",
+      "passage_id": "passage_a6ad9eab69",
+      "document_id": "doc_f531da192d",
+      "title": "Wetlands as Natural Infrastructure",
+      "section": "Limits",
+      "text": "Benefits depend on wetland type and condition. Some wetlands emit methane, and poorly located restoration cannot eliminate all flood risk. Decisions should consider the full greenhouse-gas balance and watershed context.",
+      "score": 0.5080078125,
+      "read_level": "passage",
+      "token_cost": 39,
+      "supports": true,
+      "relation": "supports",
+      "char_start": 0,
+      "char_end": 219,
+      "citation_tokens": 39
+    }
+  ],
+  "coverage": 1.0,
+  "stop_reason": "target_coverage_reached",
+  "trace": {
+    "question": "Why do wetlands reduce floods and mitigate climate change?",
+    "tasks": [
+      {
+        "id": "task_1",
+        "question": "How do wetlands reduce flood risk?",
+        "requirements": [
+          {
+            "id": "req_1_1",
+            "task_id": "task_1",
+            "description": "Evidence that wetland soils, vegetation, and basin storage retain and slowly release rainfall and floodwater, lowering peak flows and downstream inundation.",
+            "keywords": [
+              "wetland flood attenuation",
+              "water storage",
+              "peak flow reduction",
+              "vegetation roughness"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "task_2",
+        "question": "How do wetlands mitigate climate change?",
+        "requirements": [
+          {
+            "id": "req_2_1",
+            "task_id": "task_2",
+            "description": "Evidence that wetlands sequester and store carbon in plants and especially waterlogged soils through slow decomposition and peat/organic matter accumulation.",
+            "keywords": [
+              "wetland carbon sequestration",
+              "soil carbon storage",
+              "waterlogged soils",
+              "peat accumulation"
+            ]
+          },
+          {
+            "id": "req_2_2",
+            "task_id": "task_2",
+            "description": "Evidence addressing greenhouse-gas tradeoffs, including methane emissions, and the conditions under which wetland protection or restoration provides net climate-mitigation benefits.",
+            "keywords": [
+              "wetland methane emissions",
+              "greenhouse gas balance",
+              "wetland restoration climate benefits"
+            ]
+          }
+        ]
+      }
+    ],
+    "searches": [
+      {
+        "round": 1,
+        "query": "Why do wetlands reduce floods and mitigate climate change?",
+        "hit_count": 9
+      }
+    ],
+    "ranking": [
+      {
+        "passage_id": "passage_aad555d5d4",
+        "document_id": "doc_f531da192d",
+        "bm25_rank": 1,
+        "dense_rank": 1,
+        "lexical_score": 3.9619817042624237,
+        "dense_score": 0.6704910770162116,
+        "rrf_score": 0.01639344262295082,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.0,
+        "final_score": 0.6732377049180328,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_cdbe119fe6",
+        "document_id": "doc_f531da192d",
+        "bm25_rank": 2,
+        "dense_rank": 2,
+        "lexical_score": 3.300176720387297,
+        "dense_score": 0.6682542780498468,
+        "rrf_score": 0.016129032258064516,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.0,
+        "final_score": 0.6731451612903226,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_a6ad9eab69",
+        "document_id": "doc_f531da192d",
+        "bm25_rank": 4,
+        "dense_rank": 3,
+        "lexical_score": 1.7771041743677096,
+        "dense_score": 0.6170139540096722,
+        "rrf_score": 0.015736607142857142,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.1,
+        "final_score": 0.5080078125,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_387bd3471a",
+        "document_id": "doc_b420388a22",
+        "bm25_rank": 3,
+        "dense_rank": 7,
+        "lexical_score": 2.1831539082241935,
+        "dense_score": 0.09261529549052887,
+        "rrf_score": 0.015446576640606492,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.0,
+        "final_score": 0.005406301824212272,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_c71ca5b105",
+        "document_id": "doc_b420388a22",
+        "bm25_rank": 6,
+        "dense_rank": 5,
+        "lexical_score": 0.2187190408859667,
+        "dense_score": 0.12585492894482664,
+        "rrf_score": 0.015256410256410256,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.0,
+        "final_score": 0.005339743589743589,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_a89379b4dc",
+        "document_id": "doc_78105768fb",
+        "bm25_rank": 7,
+        "dense_rank": 4,
+        "lexical_score": 0.15905780700492128,
+        "dense_score": 0.13880643506898696,
+        "rrf_score": 0.015240205223880598,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.0,
+        "final_score": 0.0053340718283582085,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_392ab0dfac",
+        "document_id": "doc_78105768fb",
+        "bm25_rank": 9,
+        "dense_rank": 6,
+        "lexical_score": 0.0,
+        "dense_score": 0.0934071455409185,
+        "rrf_score": 0.014789196310935443,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.0,
+        "final_score": 0.0051762187088274045,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_8f00e34c95",
+        "document_id": "doc_b420388a22",
+        "bm25_rank": 5,
+        "dense_rank": 9,
+        "lexical_score": 0.22016976495342197,
+        "dense_score": 0.05119339670686134,
+        "rrf_score": 0.014983277591973246,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.1,
+        "final_score": -0.029755852842809363,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_bac0d383ce",
+        "document_id": "doc_78105768fb",
+        "bm25_rank": 8,
+        "dense_rank": 8,
+        "lexical_score": 0.1490582752861287,
+        "dense_score": 0.07940727800601181,
+        "rrf_score": 0.014705882352941176,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.1,
+        "final_score": -0.029852941176470586,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      }
+    ],
+    "reads": [
+      {
+        "passage_id": "passage_387bd3471a",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.0,
+        "token_cost": 92,
+        "utility": 0.0,
+        "selected": false,
+        "reason": "no_requirement_overlap"
+      },
+      {
+        "passage_id": "passage_c71ca5b105",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.0,
+        "token_cost": 105,
+        "utility": 0.0,
+        "selected": false,
+        "reason": "no_requirement_overlap"
+      },
+      {
+        "passage_id": "passage_8f00e34c95",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.0,
+        "token_cost": 102,
+        "utility": 0.0,
+        "selected": false,
+        "reason": "no_requirement_overlap"
+      },
+      {
+        "passage_id": "passage_aad555d5d4",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.12240685543964233,
+        "token_cost": 41,
+        "utility": 0.0029855330595034714,
+        "selected": true,
+        "reason": "highest_expected_coverage_gain_per_token"
+      },
+      {
+        "passage_id": "passage_cdbe119fe6",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.0917925219941349,
+        "token_cost": 56,
+        "utility": 0.0016391521784666946,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_a6ad9eab69",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.046182528409090914,
+        "token_cost": 39,
+        "utility": 0.0011841673951048953,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_392ab0dfac",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00023528266858306385,
+        "token_cost": 39,
+        "utility": 6.0328889380272785e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_a89379b4dc",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00024245781037991857,
+        "token_cost": 51,
+        "utility": 4.754074713331736e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_bac0d383ce",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 4.545454545454546e-05,
+        "token_cost": 60,
+        "utility": 7.575757575757576e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_387bd3471a",
+        "level": "summary",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.0,
+        "token_cost": 92,
+        "utility": 0.0,
+        "selected": false,
+        "reason": "no_requirement_overlap"
+      },
+      {
+        "passage_id": "passage_c71ca5b105",
+        "level": "summary",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.0,
+        "token_cost": 105,
+        "utility": 0.0,
+        "selected": false,
+        "reason": "no_requirement_overlap"
+      },
+      {
+        "passage_id": "passage_8f00e34c95",
+        "level": "summary",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.0,
+        "token_cost": 102,
+        "utility": 0.0,
+        "selected": false,
+        "reason": "no_requirement_overlap"
+      },
+      {
+        "passage_id": "passage_cdbe119fe6",
+        "level": "passage",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.3365725806451613,
+        "token_cost": 56,
+        "utility": 0.006010224654377881,
+        "selected": true,
+        "reason": "highest_expected_coverage_gain_per_token"
+      },
+      {
+        "passage_id": "passage_aad555d5d4",
+        "level": "passage",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.10098565573770492,
+        "token_cost": 41,
+        "utility": 0.002463064774090364,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_a6ad9eab69",
+        "level": "document",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.21336328124999998,
+        "token_cost": 136,
+        "utility": 0.0015688476562499998,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_392ab0dfac",
+        "level": "passage",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.00025881093544137025,
+        "token_cost": 39,
+        "utility": 6.6361778318300066e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_a89379b4dc",
+        "level": "passage",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.00026670359141791044,
+        "token_cost": 51,
+        "utility": 5.229482184664911e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_bac0d383ce",
+        "level": "passage",
+        "requirement_id": "req_2_1",
+        "expected_gain": 5e-05,
+        "token_cost": 60,
+        "utility": 8.333333333333333e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_387bd3471a",
+        "level": "summary",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.0,
+        "token_cost": 92,
+        "utility": 0.0,
+        "selected": false,
+        "reason": "no_requirement_overlap"
+      },
+      {
+        "passage_id": "passage_c71ca5b105",
+        "level": "summary",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.0,
+        "token_cost": 105,
+        "utility": 0.0,
+        "selected": false,
+        "reason": "no_requirement_overlap"
+      },
+      {
+        "passage_id": "passage_8f00e34c95",
+        "level": "summary",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.0,
+        "token_cost": 102,
+        "utility": 0.0,
+        "selected": false,
+        "reason": "no_requirement_overlap"
+      },
+      {
+        "passage_id": "passage_a6ad9eab69",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.15240234375,
+        "token_cost": 39,
+        "utility": 0.003907752403846154,
+        "selected": true,
+        "reason": "highest_expected_coverage_gain_per_token"
+      },
+      {
+        "passage_id": "passage_cdbe119fe6",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.13462903225806452,
+        "token_cost": 56,
+        "utility": 0.002404089861751152,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_aad555d5d4",
+        "level": "document",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.1885065573770492,
+        "token_cost": 136,
+        "utility": 0.0013860776277724205,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_392ab0dfac",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.00025881093544137025,
+        "token_cost": 39,
+        "utility": 6.6361778318300066e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_a89379b4dc",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.00026670359141791044,
+        "token_cost": 51,
+        "utility": 5.229482184664911e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_bac0d383ce",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 5e-05,
+        "token_cost": 60,
+        "utility": 8.333333333333333e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "evidence_1",
+        "requirement_id": "req_1_1",
+        "passage_id": "passage_aad555d5d4",
+        "document_id": "doc_f531da192d",
+        "title": "Wetlands as Natural Infrastructure",
+        "section": "Flood regulation",
+        "text": "Wetlands temporarily store rainfall and river overflow. Their vegetation and shallow basins slow runoff, lower downstream flood peaks, and reduce erosion.",
+        "score": 0.6732377049180328,
+        "read_level": "passage",
+        "token_cost": 41,
+        "supports": true,
+        "relation": "supports",
+        "char_start": 0,
+        "char_end": 154,
+        "citation_tokens": 28
+      },
+      {
+        "id": "evidence_2",
+        "requirement_id": "req_2_1",
+        "passage_id": "passage_cdbe119fe6",
+        "document_id": "doc_f531da192d",
+        "title": "Wetlands as Natural Infrastructure",
+        "section": "Climate role",
+        "text": "Wetland plants capture atmospheric carbon, while waterlogged soils can preserve organic matter for long periods. Peatlands hold especially large carbon stores. Draining wetlands exposes this material to oxygen and can release carbon dioxide, so protection avoids emissions as well as maintaining future sequestration.",
+        "score": 0.6731451612903226,
+        "read_level": "passage",
+        "token_cost": 56,
+        "supports": true,
+        "relation": "supports",
+        "char_start": 0,
+        "char_end": 317,
+        "citation_tokens": 56
+      },
+      {
+        "id": "evidence_3",
+        "requirement_id": "req_2_2",
+        "passage_id": "passage_a6ad9eab69",
+        "document_id": "doc_f531da192d",
+        "title": "Wetlands as Natural Infrastructure",
+        "section": "Limits",
+        "text": "Benefits depend on wetland type and condition. Some wetlands emit methane, and poorly located restoration cannot eliminate all flood risk. Decisions should consider the full greenhouse-gas balance and watershed context.",
+        "score": 0.5080078125,
+        "read_level": "passage",
+        "token_cost": 39,
+        "supports": true,
+        "relation": "supports",
+        "char_start": 0,
+        "char_end": 219,
+        "citation_tokens": 39
+      }
+    ],
+    "claims": [
+      {
+        "id": "claim_1",
+        "text": "Wetlands reduce floods because they temporarily store rainfall and river overflow; vegetation and shallow basins slow runoff, lower downstream flood peaks, and reduce erosion.",
+        "evidence_ids": [
+          "evidence_1"
+        ],
+        "requirement_id": "req_1_1",
+        "confidence": 0.99
+      },
+      {
+        "id": "claim_2",
+        "text": "Wetlands help mitigate climate change because plants capture atmospheric carbon and waterlogged soils can preserve organic matter for long periods; peatlands hold especially large carbon stores. Protecting wetlands can also avoid carbon-dioxide emissions that may occur when drainage exposes stored material to oxygen.",
+        "evidence_ids": [
+          "evidence_2"
+        ],
+        "requirement_id": "req_2_1",
+        "confidence": 0.99
+      },
+      {
+        "id": "claim_3",
+        "text": "Climate benefits involve tradeoffs: some wetlands emit methane, and the net mitigation value of protection or restoration depends on the full greenhouse-gas balance, wetland type, condition, and watershed context.",
+        "evidence_ids": [
+          "evidence_3"
+        ],
+        "requirement_id": "req_2_2",
+        "confidence": 0.97
+      }
+    ],
+    "rounds": 1,
+    "tokens_used": 136,
+    "coverage": 1.0,
+    "stop_reason": "target_coverage_reached",
+    "provider": "openai",
+    "api_calls": [
+      {
+        "operation": "embed_corpus_cache_hit",
+        "embedding_model": "text-embedding-3-small",
+        "items": 9
+      },
+      {
+        "operation": "plan",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 230,
+        "output_tokens": 191,
+        "total_tokens": 421,
+        "cached_tokens": 0
+      },
+      {
+        "operation": "embed_query",
+        "model": "text-embedding-3-small",
+        "items": 1,
+        "embedding_model": "text-embedding-3-small",
+        "input_tokens": 11,
+        "total_tokens": 11
+      },
+      {
+        "operation": "rerank",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 1192,
+        "output_tokens": 307,
+        "total_tokens": 1499,
+        "cached_tokens": 0
+      },
+      {
+        "operation": "assess_evidence",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 509,
+        "output_tokens": 105,
+        "total_tokens": 614,
+        "cached_tokens": 0
+      },
+      {
+        "operation": "synthesize",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 576,
+        "output_tokens": 229,
+        "total_tokens": 805,
+        "cached_tokens": 0
+      }
+    ],
+    "read_tokens": 136,
+    "citation_tokens": 123,
+    "api_input_tokens": 2518,
+    "api_output_tokens": 832,
+    "api_total_tokens": 3350,
+    "estimated_api_cost_usd": null
+  }
+}

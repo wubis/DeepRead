@@ -1,0 +1,2 @@
+[console_scripts]
+deepread = deepread.cli:main

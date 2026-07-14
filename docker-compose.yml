@@ -1,0 +1,16 @@
+services:
+  api:
+    build: .
+    ports: ["8000:8000"]
+    volumes: ["./data:/app/data:ro", "./.deepread:/app/.deepread"]
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      DEEPREAD_PROVIDER: ${DEEPREAD_PROVIDER:-auto}
+  demo:
+    build: .
+    command: ["streamlit", "run", "app.py", "--server.address=0.0.0.0"]
+    ports: ["8501:8501"]
+    volumes: ["./data:/app/data:ro", "./app.py:/app/app.py:ro"]
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      DEEPREAD_PROVIDER: ${DEEPREAD_PROVIDER:-auto}
