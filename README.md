@@ -298,6 +298,7 @@ src/deepread/
 ├── corpus.py            # Hierarchical parsing and passage identity
 ├── qasper.py            # Provenance-preserving QASPER ingestion
 ├── evaluation.py        # Answer, evidence, ranking, citation, and efficiency metrics
+├── evaluation_runner.py # Resumable QASPER execution and checkpoint orchestration
 ├── retrieval.py         # Lexical, semantic, and fused retrieval
 ├── planner.py           # Deterministic evidence planner
 ├── openai_provider.py   # Structured planning, reranking, assessment, synthesis

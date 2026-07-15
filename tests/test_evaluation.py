@@ -4,13 +4,13 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from benchmark.run import main as run_benchmark
 from deepread.evaluation import (
     aggregate_results,
     evaluate_qasper_answer,
     normalize_answer,
     token_f1_score,
 )
+from deepread.evaluation_runner import main as run_benchmark
 from deepread.models import Answer, Evidence, QueryTrace, ReadLevel, SearchHit
 from deepread.qasper import adapt_qasper
 
