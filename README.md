@@ -136,18 +136,27 @@ answer annotations, and gold supporting evidence. It supports both paper-known e
 isolates passage selection and synthesis, and corpus-wide evaluation, which also tests document
 discovery.
 
-Every question produces a standalone trace and a checkpointed result row. Runs are fingerprinted
-from the corpus, question set, model configuration, and metric settings, so interrupted experiments
-can resume without mixing incompatible results.
+Every question produces a standalone trace and a checkpointed result row. Each row records the
+resolved configuration, answer and embedding model names, dataset split, corpus hash, and random
+seed. Runs are fingerprinted from the corpus, question set, model configuration, and metric settings,
+so interrupted experiments can resume without mixing incompatible results.
 
-The initial evaluation will compare:
+The ablation controls are independent: `--retrieval-mode` selects BM25, embeddings, or hybrid
+retrieval; `--model-rerank`/`--no-model-rerank` controls the bounded reranker; `--reader-mode`
+selects flat top-k or hierarchical reading; and `--supervisor-mode` selects one pass or a bounded
+multi-round loop. In offline runs, the embeddings channel uses the deterministic character-ngram
+fallback.
 
-1. BM25 only
-2. Embeddings only
-3. Flat hybrid top-k RAG
-4. Hybrid retrieval plus model reranking
-5. Hierarchical reading
-6. The complete bounded EvidenceGraph loop
+The six reference configurations map to executable policies:
+
+| Configuration | Retrieval | Reranker | Reader | Supervisor |
+|---|---|---|---|---|
+| BM25 only | BM25 | Off | Flat | Single pass |
+| Embeddings only | Embeddings | Off | Flat | Single pass |
+| Flat hybrid top-k RAG | Hybrid | Off | Flat | Single pass |
+| Hybrid + model reranking | Hybrid | On | Flat | Single pass |
+| Hierarchical reading | Hybrid | On | Hierarchical | Single pass |
+| Complete EvidenceGraph | Hybrid | On | Hierarchical | Bounded |
 
 Primary measurements:
 
@@ -163,8 +172,6 @@ Primary measurements:
 
 Efficiency denominators treat answer F1 ≥ 0.5 as correct by default; the threshold is recorded in
 the run fingerprint and can be changed with `--correct-threshold`.
-
-The first milestone is a paper-known pilot over approximately 10 QASPER validation papers and 30–50 questions, followed by a 50-paper corpus-wide retrieval study.
 
 ## Run it locally
 
@@ -249,6 +256,27 @@ python benchmark/run.py \
 python benchmark/run.py \
   --provider openai \
   --output benchmark/results/qasper-openai.json
+
+# Reference ablation: flat hybrid top-k without reranking
+python benchmark/run.py \
+  --retrieval-mode hybrid \
+  --no-model-rerank \
+  --reader-mode flat \
+  --flat-top-k 5 \
+  --supervisor-mode single-pass \
+  --seed 17 \
+  --output benchmark/results/qasper-flat-hybrid.json
+
+# Complete bounded EvidenceGraph policy
+python benchmark/run.py \
+  --provider openai \
+  --retrieval-mode hybrid \
+  --model-rerank \
+  --reader-mode hierarchical \
+  --supervisor-mode bounded \
+  --max-search-rounds 2 \
+  --seed 17 \
+  --output benchmark/results/qasper-evidencegraph.json
 ```
 
 Evaluation defaults to offline mode even when a key exists. Results are checkpointed after every
@@ -329,10 +357,8 @@ The current implementation intentionally defers learned reading policies, persis
 
 Near-term work:
 
-- Configurable retrieval and reader ablations
 - Paper-known and corpus-wide QASPER result studies
 - PDF/HTML parsing with layout-aware provenance
-- Retrieval and reader ablations
 - Per-query cost reporting with current configured rates
 - Citation-error analysis and evidence-window calibration
 - Benchmark visualizations and an end-to-end system walkthrough

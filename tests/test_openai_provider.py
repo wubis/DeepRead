@@ -116,6 +116,25 @@ class OpenAIEngineTests(unittest.TestCase):
             self.assertEqual(answer.coverage, 0.0)
             self.assertTrue(all(not item.supports and item.relation == "insufficient" for item in answer.citations))
 
+    def test_bm25_only_with_reranking_disabled_avoids_embedding_and_rerank_calls(self):
+        client = FakeOpenAIClient()
+        settings = Settings(
+            provider="openai",
+            retrieval_mode="bm25",
+            enable_model_rerank=False,
+            max_search_rounds=1,
+        )
+        answer = EvidenceGraphEngine(CORPUS, settings, openai_client=client).ask(
+            "How do wetlands reduce floods?"
+        )
+        operations = [event[1] if event[0] == "response" else event[0] for event in client.calls]
+
+        self.assertNotIn("embeddings", operations)
+        self.assertNotIn("RerankResult", operations)
+        self.assertNotIn("embed_corpus", [event["operation"] for event in answer.trace.api_calls])
+        self.assertNotIn("embed_query", [event["operation"] for event in answer.trace.api_calls])
+        self.assertNotIn("rerank", [event["operation"] for event in answer.trace.api_calls])
+
 
 if __name__ == "__main__":
     unittest.main()

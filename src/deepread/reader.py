@@ -50,6 +50,42 @@ class HierarchicalReader:
         reason = "highest_expected_coverage_gain_per_token" if selected else "no_requirement_overlap"
         return ReadDecision(hit.passage_id, level, requirement.id, gain, cost, utility, selected, reason), text
 
+    def choose_passage(
+        self,
+        hit: SearchHit,
+        requirement: Requirement,
+        remaining_tokens: int,
+    ) -> ReadDecision:
+        """Score a conventional flat read while charging the full passage cost."""
+        passage = self.passages[hit.passage_id]
+        cost = token_count(passage.text)
+        if cost > remaining_tokens:
+            return ReadDecision(
+                hit.passage_id,
+                ReadLevel.PASSAGE,
+                requirement.id,
+                0,
+                cost,
+                0,
+                False,
+                "budget_exhausted",
+            )
+        needed = requirement_terms(requirement.description, requirement.keywords)
+        passage_terms = set(tokens(f"{passage.section} {passage.text}"))
+        overlap = len(needed & passage_terms) / max(1, len(needed))
+        gain = overlap * max(hit.final_score, 0.001)
+        utility = gain / max(1, cost)
+        return ReadDecision(
+            hit.passage_id,
+            ReadLevel.PASSAGE,
+            requirement.id,
+            gain,
+            cost,
+            utility,
+            gain > 0,
+            "flat_top_k_read" if gain > 0 else "flat_top_k_read_no_requirement_overlap",
+        )
+
     def evidence_span(self, passage_id: str, level: ReadLevel, requirement: Requirement) -> tuple[Passage, str, int, int]:
         """Refine a broad read into one requirement-specific passage and sentence window."""
         source = self.passages[passage_id]

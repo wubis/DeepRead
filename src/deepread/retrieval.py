@@ -27,7 +27,12 @@ class HybridRetriever:
         self.avg_len = sum(map(len, self.terms.values())) / max(1, len(self.terms))
         self.dense_vectors = dense_vectors
         self.query_embedder = query_embedder
-        self.vectors = None if dense_vectors else {p.id: char_ngrams(f"{p.title} {p.section} {p.text}") for p in passages}
+        needs_dense = settings.retrieval_mode in {"embeddings", "hybrid"}
+        self.vectors = (
+            None
+            if dense_vectors or not needs_dense
+            else {p.id: char_ngrams(f"{p.title} {p.section} {p.text}") for p in passages}
+        )
 
     @staticmethod
     def _vector_cosine(left: list[float], right: list[float]) -> float:
@@ -49,14 +54,37 @@ class HybridRetriever:
 
     def search(self, query: str, top_k: int | None = None) -> list[SearchHit]:
         k = top_k or self.settings.rerank_top_k
-        lexical = sorted(((p.id, self._bm25(query, p.id)) for p in self.passages), key=lambda x: x[1], reverse=True)
-        if self.dense_vectors is not None and self.query_embedder is not None:
+        use_lexical = self.settings.retrieval_mode in {"bm25", "hybrid"}
+        use_dense = self.settings.retrieval_mode in {"embeddings", "hybrid"}
+        lexical = (
+            sorted(
+                ((p.id, self._bm25(query, p.id)) for p in self.passages),
+                key=lambda x: x[1],
+                reverse=True,
+            )
+            if use_lexical
+            else []
+        )
+        if not use_dense:
+            dense: list[tuple[str, float]] = []
+        elif self.dense_vectors is not None and self.query_embedder is not None:
             query_vector = self.query_embedder(query)
-            dense = sorted(((p.id, self._vector_cosine(query_vector, self.dense_vectors[p.id])) for p in self.passages), key=lambda x: x[1], reverse=True)
+            dense = sorted(
+                (
+                    (p.id, self._vector_cosine(query_vector, self.dense_vectors[p.id]))
+                    for p in self.passages
+                ),
+                key=lambda x: x[1],
+                reverse=True,
+            )
         else:
             query_vector = char_ngrams(query)
             assert self.vectors is not None
-            dense = sorted(((p.id, cosine(query_vector, self.vectors[p.id])) for p in self.passages), key=lambda x: x[1], reverse=True)
+            dense = sorted(
+                ((p.id, cosine(query_vector, self.vectors[p.id])) for p in self.passages),
+                key=lambda x: x[1],
+                reverse=True,
+            )
         lexical_rank = {pid: (rank, score) for rank, (pid, score) in enumerate(lexical[: self.settings.search_top_k], 1)}
         dense_rank = {pid: (rank, score) for rank, (pid, score) in enumerate(dense[: self.settings.search_top_k], 1)}
         hits: dict[str, SearchHit] = {}

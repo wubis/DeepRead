@@ -17,6 +17,13 @@ def main() -> None:
     ask.add_argument("--trace", default="traces/latest.json")
     ask.add_argument("--provider", choices=["auto", "offline", "openai"], default=None)
     ask.add_argument("--model", default=None)
+    ask.add_argument("--retrieval-mode", choices=["bm25", "embeddings", "hybrid"])
+    ask.add_argument("--model-rerank", action=argparse.BooleanOptionalAction, default=None)
+    ask.add_argument("--reader-mode", choices=["flat", "hierarchical"])
+    ask.add_argument("--flat-top-k", type=int)
+    ask.add_argument("--supervisor-mode", choices=["single-pass", "bounded"])
+    ask.add_argument("--max-search-rounds", type=int)
+    ask.add_argument("--seed", type=int)
     inspect = subparsers.add_parser("inspect", help="Show corpus statistics")
     inspect.add_argument("--corpus", default="data/sample_corpus")
     args = parser.parse_args()
@@ -25,6 +32,20 @@ def main() -> None:
         settings = replace(settings, provider=args.provider)
     if getattr(args, "model", None):
         settings = replace(settings, openai_model=args.model)
+    overrides = {
+        "retrieval_mode": getattr(args, "retrieval_mode", None),
+        "enable_model_rerank": getattr(args, "model_rerank", None),
+        "reader_mode": getattr(args, "reader_mode", None),
+        "flat_top_k": getattr(args, "flat_top_k", None),
+        "supervisor_mode": (
+            args.supervisor_mode.replace("-", "_")
+            if getattr(args, "supervisor_mode", None)
+            else None
+        ),
+        "max_search_rounds": getattr(args, "max_search_rounds", None),
+        "random_seed": getattr(args, "seed", None),
+    }
+    settings = replace(settings, **{key: value for key, value in overrides.items() if value is not None})
     if args.command == "inspect":
         settings = replace(settings, provider="offline")
     engine = EvidenceGraphEngine(args.corpus, settings)

@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import random
 import re
 import time
 from dataclasses import asdict, replace
@@ -16,7 +17,7 @@ from .models import CorpusBundle
 from .qasper import QasperDataset, QasperQuestion, load_qasper, load_qasper_hf
 
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -29,6 +30,18 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--cache-dir", type=Path, help="Optional Hugging Face cache directory")
     parser.add_argument("--mode", choices=["paper-known", "corpus-wide"], default="paper-known")
     parser.add_argument("--provider", choices=["offline", "openai"], default="offline")
+    parser.add_argument("--retrieval-mode", choices=["bm25", "embeddings", "hybrid"])
+    parser.add_argument(
+        "--model-rerank",
+        action=argparse.BooleanOptionalAction,
+        default=None,
+        help="Enable or disable model-based reranking independently of retrieval",
+    )
+    parser.add_argument("--reader-mode", choices=["flat", "hierarchical"])
+    parser.add_argument("--flat-top-k", type=int)
+    parser.add_argument("--supervisor-mode", choices=["single-pass", "bounded"])
+    parser.add_argument("--max-search-rounds", type=int)
+    parser.add_argument("--seed", type=int)
     parser.add_argument("--paper-id", action="append", dest="paper_ids")
     parser.add_argument("--question-id", action="append", dest="question_ids")
     parser.add_argument("--max-papers", type=int, default=10, help="Use 0 for every paper")
@@ -103,6 +116,16 @@ def _dataset_signature(
     return digest.hexdigest()
 
 
+def _corpus_hash(corpus: CorpusBundle) -> str:
+    """Hash only corpus content and provenance, independent of selected questions."""
+    digest = hashlib.sha256()
+    for collection in (corpus.documents, corpus.passages):
+        for item in collection:
+            digest.update(json.dumps(asdict(item), sort_keys=True).encode())
+            digest.update(b"\0")
+    return digest.hexdigest()
+
+
 def _trace_name(question_id: str) -> str:
     slug = re.sub(r"[^A-Za-z0-9._-]+", "-", question_id).strip("-") or "question"
     digest = hashlib.sha1(question_id.encode()).hexdigest()[:8]
@@ -147,6 +170,10 @@ def _validate_args(args: argparse.Namespace) -> None:
         raise ValueError("retrieval-k and ranking-k must be positive")
     if not 0 <= args.correct_threshold <= 1:
         raise ValueError("correct-threshold must be between 0 and 1")
+    if args.flat_top_k is not None and args.flat_top_k < 1:
+        raise ValueError("flat-top-k must be positive")
+    if args.max_search_rounds is not None and args.max_search_rounds < 1:
+        raise ValueError("max-search-rounds must be positive")
 
 
 def main(argv: list[str] | None = None) -> dict[str, Any]:
@@ -154,10 +181,46 @@ def main(argv: list[str] | None = None) -> dict[str, Any]:
     _validate_args(args)
     dataset, source = _load_dataset(args)
     paper_ids, questions = _select_questions(dataset, args)
-    settings = replace(Settings.from_env(), provider=args.provider)
+    base_settings = Settings.from_env()
+    setting_overrides: dict[str, Any] = {"provider": args.provider}
+    if args.retrieval_mode is not None:
+        setting_overrides["retrieval_mode"] = args.retrieval_mode
+    if args.model_rerank is not None:
+        setting_overrides["enable_model_rerank"] = args.model_rerank
+    if args.reader_mode is not None:
+        setting_overrides["reader_mode"] = args.reader_mode
+    if args.flat_top_k is not None:
+        setting_overrides["flat_top_k"] = args.flat_top_k
+    if args.supervisor_mode is not None:
+        setting_overrides["supervisor_mode"] = args.supervisor_mode.replace("-", "_")
+    if args.max_search_rounds is not None:
+        setting_overrides["max_search_rounds"] = args.max_search_rounds
+    if args.seed is not None:
+        setting_overrides["random_seed"] = args.seed
+    settings = replace(base_settings, **setting_overrides)
+    random.seed(settings.random_seed)
     selected_corpus = dataset.corpus(paper_ids)
     dataset_signature = _dataset_signature(selected_corpus, questions)
+    corpus_hash = _corpus_hash(selected_corpus)
+    model_name = settings.openai_model if args.provider == "openai" else "offline-extractive"
+    embedding_model_name = (
+        settings.openai_embedding_model
+        if args.provider == "openai"
+        else "character-ngram-fallback"
+    )
+    result_configuration = {
+        "dataset": "qasper",
+        "dataset_split": args.split,
+        "corpus_hash": corpus_hash,
+        "random_seed": settings.random_seed,
+        "provider": args.provider,
+        "model_name": model_name,
+        "embedding_model_name": embedding_model_name,
+        "evaluation_mode": args.mode,
+        "settings": asdict(settings),
+    }
     run_config = {
+        "schema_version": SCHEMA_VERSION,
         "dataset": "qasper",
         "source": source,
         "split": args.split,
@@ -167,11 +230,16 @@ def main(argv: list[str] | None = None) -> dict[str, Any]:
         "paper_ids": paper_ids,
         "question_ids": [question.id for question in questions],
         "dataset_signature": dataset_signature,
+        "corpus_hash": corpus_hash,
+        "random_seed": settings.random_seed,
+        "model_name": model_name,
+        "embedding_model_name": embedding_model_name,
         "retrieval_k": args.retrieval_k,
         "ranking_k": args.ranking_k,
         "correct_threshold": args.correct_threshold,
         "text_evidence_only": args.text_evidence_only,
         "settings": asdict(settings),
+        "result_configuration": result_configuration,
     }
     run = {**run_config, "fingerprint": _fingerprint(run_config)}
     rows_by_id: dict[str, dict[str, Any]] = {}
@@ -222,6 +290,7 @@ def main(argv: list[str] | None = None) -> dict[str, Any]:
                     "status": "ok",
                     "latency_ms": round((time.perf_counter() - started) * 1000, 2),
                     "trace_path": _display_path(trace_path),
+                    "configuration": result_configuration,
                 }
             )
         except Exception as exc:
@@ -233,6 +302,7 @@ def main(argv: list[str] | None = None) -> dict[str, Any]:
                 "error_type": type(exc).__name__,
                 "error": str(exc),
                 "latency_ms": round((time.perf_counter() - started) * 1000, 2),
+                "configuration": result_configuration,
             }
             rows_by_id[question.id] = row
             payload = _result_payload(

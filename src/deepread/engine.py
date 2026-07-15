@@ -8,7 +8,7 @@ from typing import Any
 from .config import Settings
 from .corpus import load_corpus
 from .memory import EvidenceMemory
-from .models import Answer, CorpusBundle, Evidence, QueryTrace
+from .models import Answer, CorpusBundle, Evidence, QueryTrace, ReadDecision, Requirement, SearchHit
 from .planner import RuleBasedPlanner
 from .reader import HierarchicalReader
 from .retrieval import HybridRetriever
@@ -43,8 +43,13 @@ class EvidenceGraphEngine:
             from .openai_provider import OpenAIProvider
 
             self.openai = OpenAIProvider(self.settings, openai_client)
-            dense_vectors = self.openai.embedding_index(self.passages)
-            self.retriever = HybridRetriever(self.passages, self.settings, dense_vectors, self.openai.embed_query)
+            if self.settings.retrieval_mode == "bm25":
+                dense_vectors = None
+                query_embedder = None
+            else:
+                dense_vectors = self.openai.embedding_index(self.passages)
+                query_embedder = self.openai.embed_query
+            self.retriever = HybridRetriever(self.passages, self.settings, dense_vectors, query_embedder)
             self.planner = None
         else:
             self.planner = RuleBasedPlanner(self.settings.max_tasks)
@@ -52,6 +57,82 @@ class EvidenceGraphEngine:
         self.reader = HierarchicalReader(self.documents, self.passages)
         self.memory = EvidenceMemory(db_path)
         self.synthesizer = ExtractiveSynthesizer()
+
+    def _add_evidence(
+        self,
+        trace: QueryTrace,
+        hit: SearchHit,
+        decision: ReadDecision,
+        requirement: Requirement,
+    ) -> None:
+        passage, span, char_start, char_end = self.reader.evidence_span(
+            hit.passage_id,
+            decision.level,
+            requirement,
+        )
+        citation_tokens = token_count(span)
+        evidence = Evidence(
+            id=f"evidence_{len(trace.evidence)+1}",
+            requirement_id=requirement.id,
+            passage_id=passage.id,
+            document_id=passage.document_id,
+            title=passage.title,
+            section=passage.section,
+            text=span,
+            score=hit.final_score,
+            read_level=decision.level,
+            token_cost=decision.token_cost,
+            char_start=char_start,
+            char_end=char_end,
+            citation_tokens=citation_tokens,
+            source_metadata=dict(passage.metadata),
+        )
+        trace.evidence.append(evidence)
+        trace.citation_tokens += citation_tokens
+        self.memory.add_evidence(evidence)
+
+    def _read_flat(
+        self,
+        trace: QueryTrace,
+        hits: list[SearchHit],
+        requirements: list[Requirement],
+        covered: set[str],
+        seen_reads: set[tuple[str, str]],
+    ) -> None:
+        """Open the first k ranked passages and charge each full passage once."""
+        for hit in hits[: self.settings.flat_top_k]:
+            read_key = (hit.passage_id, "__flat__")
+            if read_key in seen_reads:
+                continue
+            remaining = self.settings.max_evidence_tokens - trace.read_tokens
+            candidates = [
+                self.reader.choose_passage(hit, requirement, remaining)
+                for requirement in requirements
+                if requirement.id not in covered
+            ]
+            if not candidates:
+                continue
+            decision = max(candidates, key=lambda item: item.expected_gain)
+            seen_reads.add(read_key)
+            if decision.token_cost > remaining:
+                decision.selected = False
+                decision.reason = "budget_exhausted"
+                trace.reads.append(decision)
+                continue
+            # A flat reader opens the passage even when it yields no usable evidence.
+            decision.selected = True
+            trace.reads.append(decision)
+            trace.tokens_used += decision.token_cost
+            trace.read_tokens += decision.token_cost
+            if decision.expected_gain <= 0:
+                continue
+            requirement = next(item for item in requirements if item.id == decision.requirement_id)
+            if any(
+                item.passage_id == hit.passage_id and item.requirement_id == requirement.id
+                for item in trace.evidence
+            ):
+                continue
+            self._add_evidence(trace, hit, decision, requirement)
 
     def _capture_api_events(self, trace: QueryTrace) -> None:
         if self.openai is not None:
@@ -78,76 +159,63 @@ class EvidenceGraphEngine:
         seen_reads: set[tuple[str, str]] = set()
         query = question
 
-        for round_number in range(1, self.settings.max_search_rounds + 1):
+        max_rounds = 1 if self.settings.supervisor_mode == "single_pass" else self.settings.max_search_rounds
+        for round_number in range(1, max_rounds + 1):
             trace.rounds = round_number
-            hits = self.retriever.search(query, self.settings.rerank_top_k)
+            retrieval_k = (
+                max(self.settings.rerank_top_k, self.settings.flat_top_k)
+                if self.settings.reader_mode == "flat"
+                else self.settings.rerank_top_k
+            )
+            hits = self.retriever.search(query, retrieval_k)
             self._capture_api_events(trace)
             if self.openai is not None and self.settings.enable_model_rerank:
                 hits = self.openai.rerank(query, requirements, hits, self.retriever.by_id)
                 self._capture_api_events(trace)
             trace.searches.append({"round": round_number, "query": query, "hit_count": len(hits)})
             trace.ranking.extend(hits)
-            for requirement in requirements:
-                if requirement.id in covered:
-                    continue
-                options: list[tuple[Any, Any, Any, str, int, int]] = []
-                for hit in hits:
-                    if (hit.passage_id, requirement.id) in seen_reads:
+            if self.settings.reader_mode == "flat":
+                self._read_flat(trace, hits, requirements, covered, seen_reads)
+            else:
+                for requirement in requirements:
+                    if requirement.id in covered:
                         continue
-                    remaining = self.settings.max_evidence_tokens - trace.read_tokens
-                    decision, _ = self.reader.choose(hit, requirement, remaining)
-                    if not decision.selected:
-                        trace.reads.append(decision)
+                    options: list[tuple[Any, ReadDecision, str]] = []
+                    for hit in hits:
+                        if (hit.passage_id, requirement.id) in seen_reads:
+                            continue
+                        remaining = self.settings.max_evidence_tokens - trace.read_tokens
+                        decision, _ = self.reader.choose(hit, requirement, remaining)
+                        if not decision.selected:
+                            trace.reads.append(decision)
+                            continue
+                        passage, _, _, _ = self.reader.evidence_span(
+                            hit.passage_id,
+                            decision.level,
+                            requirement,
+                        )
+                        if any(
+                            item.passage_id == passage.id and item.requirement_id == requirement.id
+                            for item in trace.evidence
+                        ):
+                            decision.selected = False
+                            decision.reason = "duplicate_requirement_span"
+                            trace.reads.append(decision)
+                            continue
+                        options.append((hit, decision, passage.id))
+                    if not options:
                         continue
-                    passage, span, char_start, char_end = self.reader.evidence_span(hit.passage_id, decision.level, requirement)
-                    if any(item.passage_id == passage.id and item.requirement_id == requirement.id for item in trace.evidence):
-                        decision.selected = False
-                        decision.reason = "duplicate_requirement_span"
-                        trace.reads.append(decision)
-                        continue
-                    actual_read_cost = decision.token_cost
-                    if actual_read_cost > remaining:
-                        decision.selected = False
-                        decision.reason = "refined_passage_exceeds_budget"
-                        trace.reads.append(decision)
-                        continue
-                    decision.token_cost = actual_read_cost
-                    decision.utility = decision.expected_gain / max(1, actual_read_cost)
-                    citation_tokens = token_count(span)
-                    options.append((hit, decision, passage, span, char_start, char_end))
-                if not options:
-                    continue
-                options.sort(key=lambda option: option[1].utility, reverse=True)
-                hit, decision, passage, span, char_start, char_end = options[0]
-                for _, rejected, _, _, _, _ in options[1:]:
-                    rejected.selected = False
-                    rejected.reason = "lower_utility_than_selected"
-                trace.reads.extend(option[1] for option in options)
-                seen_reads.add((hit.passage_id, requirement.id))
-                seen_reads.add((passage.id, requirement.id))
-                citation_tokens = token_count(span)
-                actual_read_cost = decision.token_cost
-                trace.tokens_used += actual_read_cost
-                trace.read_tokens += actual_read_cost
-                trace.citation_tokens += citation_tokens
-                evidence = Evidence(
-                    id=f"evidence_{len(trace.evidence)+1}",
-                    requirement_id=requirement.id,
-                    passage_id=passage.id,
-                    document_id=passage.document_id,
-                    title=passage.title,
-                    section=passage.section,
-                    text=span,
-                    score=hit.final_score,
-                    read_level=decision.level,
-                    token_cost=actual_read_cost,
-                    char_start=char_start,
-                    char_end=char_end,
-                    citation_tokens=citation_tokens,
-                    source_metadata=dict(passage.metadata),
-                )
-                trace.evidence.append(evidence)
-                self.memory.add_evidence(evidence)
+                    options.sort(key=lambda option: option[1].utility, reverse=True)
+                    hit, decision, evidence_passage_id = options[0]
+                    for _, rejected, _ in options[1:]:
+                        rejected.selected = False
+                        rejected.reason = "lower_utility_than_selected"
+                    trace.reads.extend(option[1] for option in options)
+                    seen_reads.add((hit.passage_id, requirement.id))
+                    seen_reads.add((evidence_passage_id, requirement.id))
+                    trace.tokens_used += decision.token_cost
+                    trace.read_tokens += decision.token_cost
+                    self._add_evidence(trace, hit, decision, requirement)
             if self.openai is not None and self.settings.enable_evidence_assessment and trace.evidence:
                 verdicts = self.openai.assess(requirements, trace.evidence)
                 self._capture_api_events(trace)
@@ -171,7 +239,11 @@ class EvidenceGraphEngine:
             missing = [r for r in requirements if r.id not in covered]
             query = " ".join(word for requirement in missing for word in requirement.keywords) or question
         else:
-            trace.stop_reason = "max_search_rounds_reached"
+            trace.stop_reason = (
+                "single_pass_complete"
+                if self.settings.supervisor_mode == "single_pass"
+                else "max_search_rounds_reached"
+            )
 
         if self.openai is not None:
             answer_text, claims = self.openai.synthesize(question, requirements, trace.evidence)

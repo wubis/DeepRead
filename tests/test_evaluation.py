@@ -161,17 +161,37 @@ class EvaluationRunnerTests(unittest.TestCase):
                 str(output_path),
                 "--trace-dir",
                 str(trace_dir),
+                "--retrieval-mode",
+                "bm25",
+                "--no-model-rerank",
+                "--reader-mode",
+                "flat",
+                "--flat-top-k",
+                "2",
+                "--supervisor-mode",
+                "single-pass",
+                "--seed",
+                "17",
             ]
 
             first = run_benchmark(arguments)
             resumed = run_benchmark(arguments)
 
-            self.assertEqual(first["schema_version"], 1)
+            self.assertEqual(first["schema_version"], 2)
             self.assertEqual(first["summary"]["counts"]["completed"], 1)
             self.assertEqual(len(first["rows"]), 1)
             self.assertEqual(len(resumed["rows"]), 1)
             self.assertTrue(output_path.exists())
             self.assertEqual(len(list(trace_dir.glob("*.json"))), 1)
+            configuration = first["rows"][0]["configuration"]
+            self.assertEqual(configuration["dataset_split"], "validation")
+            self.assertEqual(configuration["random_seed"], 17)
+            self.assertEqual(configuration["model_name"], "offline-extractive")
+            self.assertEqual(len(configuration["corpus_hash"]), 64)
+            self.assertEqual(configuration["settings"]["retrieval_mode"], "bm25")
+            self.assertFalse(configuration["settings"]["enable_model_rerank"])
+            self.assertEqual(configuration["settings"]["reader_mode"], "flat")
+            self.assertEqual(configuration["settings"]["supervisor_mode"], "single_pass")
 
             corpus_wide = run_benchmark(
                 [
