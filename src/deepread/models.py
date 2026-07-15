@@ -21,7 +21,7 @@ class Passage:
     section: str
     text: str
     ordinal: int
-    metadata: dict[str, str] = field(default_factory=dict)
+    metadata: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass(slots=True)
@@ -30,7 +30,15 @@ class Document:
     title: str
     summary: str
     sections: dict[str, list[str]]
-    metadata: dict[str, str] = field(default_factory=dict)
+    metadata: dict[str, Any] = field(default_factory=dict)
+
+
+@dataclass(slots=True)
+class CorpusBundle:
+    """An in-memory corpus with source documents and retrievable passages."""
+
+    documents: list[Document]
+    passages: list[Passage]
 
 
 @dataclass(slots=True)
@@ -80,6 +88,7 @@ class Evidence:
     char_start: int = 0
     char_end: int = 0
     citation_tokens: int = 0
+    source_metadata: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass(slots=True)

@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "deepread-evidencegraph"
 version = "0.1.0"
-description = "Inspectible hierarchical retrieval with dynamic evidence budgets"
+description = "Inspectable hierarchical retrieval with dynamic evidence budgets"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = ["pydantic>=2.7"]
@@ -13,6 +13,7 @@ dependencies = ["pydantic>=2.7"]
 [project.optional-dependencies]
 app = ["fastapi>=0.111", "uvicorn>=0.30", "streamlit>=1.35"]
 openai = ["openai>=1.99"]
+eval = ["datasets>=2.20"]
 ml = ["sentence-transformers>=3.0", "faiss-cpu>=1.8", "rank-bm25>=0.2.2", "networkx>=3.3"]
 dev = ["pytest>=8.2", "httpx>=0.27", "ruff>=0.5"]
 

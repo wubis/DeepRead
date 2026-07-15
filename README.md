@@ -159,7 +159,7 @@ The first milestone is a paper-known pilot over approximately 10 QASPER validati
 Python 3.11+ is required.
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/wubis/DeepRead.git
 cd DeepRead
 python -m venv .venv
 source .venv/bin/activate
@@ -241,13 +241,36 @@ deepread ask \
   --trace traces/question.json
 ```
 
-PDF, DOCX, HTML, and dataset-specific ingestion are designed as parser adapters so retrieval and evaluation logic remain unchanged.
+QASPER ingestion is included below. PDF, DOCX, HTML, and additional dataset adapters can be
+added without changing the retrieval and evaluation contracts.
+
+### QASPER
+
+The QASPER adapter preserves original abstracts, section headings, paragraphs, and
+figure/table captions as individually addressable source units. Gold evidence and highlighted
+spans remain separate from the runtime corpus and retain all matching source IDs and character
+offsets; unresolved annotations remain visible for evaluation audits.
+
+```bash
+pip install -e '.[eval]'
+```
+
+```python
+from deepread.engine import EvidenceGraphEngine
+from deepread.qasper import load_qasper_hf
+
+dataset = load_qasper_hf("validation")
+paper_ids = [dataset.documents[0].metadata["paper_id"]]
+engine = EvidenceGraphEngine(dataset.corpus(paper_ids))
+answer = engine.ask(dataset.questions_for(paper_ids)[0].question)
+```
 
 ## Repository map
 
 ```text
 src/deepread/
 ├── corpus.py            # Hierarchical parsing and passage identity
+├── qasper.py            # Provenance-preserving QASPER ingestion
 ├── retrieval.py         # Lexical, semantic, and fused retrieval
 ├── planner.py           # Deterministic evidence planner
 ├── openai_provider.py   # Structured planning, reranking, assessment, synthesis
@@ -270,15 +293,15 @@ traces/                  # Inspectable query traces
 - **Offline parity.** Core behavior remains runnable without paid services, enabling deterministic tests and meaningful provider comparisons.
 - **Evidence before prose.** Synthesis receives only stored evidence and cannot invent citation identifiers.
 - **Cost is part of quality.** The benchmark tracks total provider traffic separately from retrieved source text.
-- **Local-first MVP.** SQLite and in-process indexes keep the system reproducible; distributed storage, queues, ACLs, and multitenancy are intentionally deferred.
+- **Local-first architecture.** SQLite and in-process indexes keep the system reproducible; distributed storage, queues, ACLs, and multitenancy are intentionally deferred.
 
 ## Current boundaries and roadmap
 
-The MVP intentionally defers learned reading policies, persistent global entity resolution, comprehensive contradiction modeling, distributed indexes, and production multitenancy.
+The current implementation intentionally defers learned reading policies, persistent global entity resolution, comprehensive contradiction modeling, distributed indexes, and production multitenancy.
 
 Near-term work:
 
-- QASPER ingestion and gold-evidence evaluation
+- QASPER gold-evidence metrics and ablation runner
 - PDF/HTML parsing with layout-aware provenance
 - Retrieval and reader ablations
 - Per-query cost reporting with current configured rates

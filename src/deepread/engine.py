@@ -8,7 +8,7 @@ from typing import Any
 from .config import Settings
 from .corpus import load_corpus
 from .memory import EvidenceMemory
-from .models import Answer, Evidence, QueryTrace
+from .models import Answer, CorpusBundle, Evidence, QueryTrace
 from .planner import RuleBasedPlanner
 from .reader import HierarchicalReader
 from .retrieval import HybridRetriever
@@ -19,15 +19,19 @@ from .text import token_count
 class EvidenceGraphEngine:
     def __init__(
         self,
-        corpus_path: str | Path,
+        corpus_path: str | Path | CorpusBundle,
         settings: Settings | None = None,
         db_path: str | Path | None = None,
         openai_client: Any | None = None,
     ):
         self.settings = settings or Settings.from_env()
-        self.documents, self.passages = load_corpus(corpus_path)
+        if isinstance(corpus_path, CorpusBundle):
+            self.documents = list(corpus_path.documents)
+            self.passages = list(corpus_path.passages)
+        else:
+            self.documents, self.passages = load_corpus(corpus_path)
         if not self.passages:
-            raise ValueError(f"No .md or .txt documents found in {corpus_path}")
+            raise ValueError(f"No passages found in corpus {corpus_path}")
         requested = self.settings.provider.lower()
         if requested not in {"auto", "offline", "openai"}:
             raise ValueError("provider must be one of: auto, offline, openai")
@@ -140,6 +144,7 @@ class EvidenceGraphEngine:
                     char_start=char_start,
                     char_end=char_end,
                     citation_tokens=citation_tokens,
+                    source_metadata=dict(passage.metadata),
                 )
                 trace.evidence.append(evidence)
                 self.memory.add_evidence(evidence)
