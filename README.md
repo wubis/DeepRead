@@ -131,7 +131,14 @@ This is an illustrative integration test, not a research result. It also exposes
 
 ## Evaluation strategy
 
-The included benchmark is a deterministic smoke test. The planned research evaluation uses QASPER because it provides full scientific papers, section hierarchy, information-seeking questions, answer annotations, and gold supporting evidence.
+The evaluation runner uses QASPER scientific papers, information-seeking questions, multiple
+answer annotations, and gold supporting evidence. It supports both paper-known evaluation, which
+isolates passage selection and synthesis, and corpus-wide evaluation, which also tests document
+discovery.
+
+Every question produces a standalone trace and a checkpointed result row. Runs are fingerprinted
+from the corpus, question set, model configuration, and metric settings, so interrupted experiments
+can resume without mixing incompatible results.
 
 The initial evaluation will compare:
 
@@ -145,12 +152,17 @@ The initial evaluation will compare:
 Primary measurements:
 
 - Recall@20, MRR@10, and nDCG@10
+- Official-style answer F1 with maximum-over-annotator scoring
 - Gold evidence precision, recall, and F1
-- Requirement coverage and unanswerable accuracy
-- Claim support and citation precision/recall
+- Yes/no and unanswerable accuracy
+- Passage-level citation precision/recall and highlighted-span overlap
+- Requirement coverage and stopping behavior
 - Full-document open rate
 - Read and citation tokens per correct answer
 - Total API tokens, latency, and estimated cost per correct answer
+
+Efficiency denominators treat answer F1 ≥ 0.5 as correct by default; the threshold is recorded in
+the run fingerprint and can be changed with `--correct-threshold`.
 
 The first milestone is a paper-known pilot over approximately 10 QASPER validation papers and 30–50 questions, followed by a 50-paper corpus-wide retrieval study.
 
@@ -163,7 +175,7 @@ git clone https://github.com/wubis/DeepRead.git
 cd DeepRead
 python -m venv .venv
 source .venv/bin/activate
-pip install -e '.[app,openai,dev]'
+pip install -e '.[app,openai,eval,dev]'
 ```
 
 The default `auto` provider uses OpenAI when `OPENAI_API_KEY` is present and otherwise runs offline.
@@ -220,14 +232,28 @@ The API is exposed on port `8000`; the Streamlit inspector is exposed on port `8
 pytest -q
 ruff check src tests benchmark app.py
 
-# Cost-safe deterministic benchmark
+# Cost-safe paper-known pilot: 10 validation papers, at most 50 questions
 python benchmark/run.py
 
-# Explicit paid-provider benchmark
-python benchmark/run.py --provider openai
+# Evaluate a downloaded official QASPER JSON/JSONL file
+python benchmark/run.py --qasper-path /path/to/qasper-dev-v0.3.json
+
+# Corpus-wide retrieval over 50 papers
+python benchmark/run.py \
+  --mode corpus-wide \
+  --max-papers 50 \
+  --max-questions 0 \
+  --output benchmark/results/qasper-corpus-wide.json
+
+# Explicit paid-provider evaluation
+python benchmark/run.py \
+  --provider openai \
+  --output benchmark/results/qasper-openai.json
 ```
 
-Benchmarks default to offline mode even when a key exists. Health checks and corpus inspection never issue API requests.
+Evaluation defaults to offline mode even when a key exists. Results are checkpointed after every
+question and resume automatically when the run fingerprint matches. Use `--no-resume` to replace
+an existing run. Health checks and corpus inspection never issue API requests.
 
 ## Use another corpus
 
@@ -271,6 +297,7 @@ answer = engine.ask(dataset.questions_for(paper_ids)[0].question)
 src/deepread/
 ├── corpus.py            # Hierarchical parsing and passage identity
 ├── qasper.py            # Provenance-preserving QASPER ingestion
+├── evaluation.py        # Answer, evidence, ranking, citation, and efficiency metrics
 ├── retrieval.py         # Lexical, semantic, and fused retrieval
 ├── planner.py           # Deterministic evidence planner
 ├── openai_provider.py   # Structured planning, reranking, assessment, synthesis
@@ -281,7 +308,7 @@ src/deepread/
 ├── api.py               # FastAPI application
 └── models.py            # Typed domain and trace records
 
-benchmark/               # Reproducible benchmark CLI and query fixtures
+benchmark/               # Resumable QASPER evaluation CLI
 data/sample_corpus/      # Small local demonstration corpus
 tests/                   # Unit, integration, mocked-provider, and negative tests
 traces/                  # Inspectable query traces
@@ -301,7 +328,8 @@ The current implementation intentionally defers learned reading policies, persis
 
 Near-term work:
 
-- QASPER gold-evidence metrics and ablation runner
+- Configurable retrieval and reader ablations
+- Paper-known and corpus-wide QASPER result studies
 - PDF/HTML parsing with layout-aware provenance
 - Retrieval and reader ablations
 - Per-query cost reporting with current configured rates
