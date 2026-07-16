@@ -94,6 +94,7 @@ class EvaluationMetricTests(unittest.TestCase):
             source_metadata=gold.metadata,
         )
         trace = QueryTrace(question.question)
+        trace.evidence = [citation]
         trace.ranking = [
             SearchHit(distractor.id, distractor.document_id),
             SearchHit(gold.id, gold.document_id),
@@ -117,8 +118,12 @@ class EvaluationMetricTests(unittest.TestCase):
         self.assertEqual(row["answer_f1"], 1.0)
         self.assertEqual(row["answer_exact_match"], 1.0)
         self.assertEqual(row["matched_answer_type"], "extractive")
-        self.assertEqual(row["unanswerable_accuracy"], 0.0)
+        self.assertIsNone(row["unanswerable_accuracy"])
+        self.assertEqual(row["unanswerable_annotation_match"], 0.0)
+        self.assertEqual(row["answerability_disagreement"], 1.0)
         self.assertEqual(row["evidence_f1"], 1.0)
+        self.assertEqual(row["read_evidence_f1"], 1.0)
+        self.assertEqual(row["selection_recall_given_retrieval"], 1.0)
         self.assertEqual(row["highlighted_citation_f1"], 1.0)
         self.assertEqual(row["retrieval_recall_at_20"], 1.0)
         self.assertEqual(row["mrr_at_10"], 0.5)
@@ -130,10 +135,28 @@ class EvaluationMetricTests(unittest.TestCase):
         self.assertEqual(summary["counts"]["correct"], 1)
         self.assertEqual(summary["metrics"]["answer_f1_by_type"]["extractive"], 1.0)
         self.assertEqual(summary["metrics"]["full_document_open_rate"], 0.0)
+        self.assertEqual(summary["metrics"]["read_evidence_f1"], 1.0)
         self.assertEqual(summary["efficiency"]["read_tokens_per_correct_answer"], 3)
         self.assertEqual(summary["efficiency"]["citation_tokens_per_correct_answer"], 3)
         self.assertEqual(summary["efficiency"]["api_tokens_per_correct_answer"], 100)
         self.assertEqual(summary["efficiency"]["estimated_cost_per_correct_answer_usd"], 0.01)
+
+    def test_unanswerable_accuracy_requires_consensus(self):
+        paper = json.loads(json.dumps(PAPER))
+        paper["qas"][0]["answers"] = [paper["qas"][0]["answers"][1]]
+        dataset = adapt_qasper([paper])
+        question = dataset.questions[0]
+        trace = QueryTrace(question.question)
+        answer = Answer(question.question, "Unanswerable", [], 0.0, "no_evidence_progress", trace)
+
+        row = evaluate_qasper_answer(
+            question,
+            answer,
+            {passage.id: passage for passage in dataset.passages},
+        )
+
+        self.assertEqual(row["unanswerable_accuracy"], 1.0)
+        self.assertEqual(row["answerability_disagreement"], 0.0)
 
 
 class EvaluationRunnerTests(unittest.TestCase):
@@ -168,8 +191,12 @@ class EvaluationRunnerTests(unittest.TestCase):
                 "flat",
                 "--flat-top-k",
                 "2",
+                "--evidence-window-sentences",
+                "1",
                 "--supervisor-mode",
                 "single-pass",
+                "--target-coverage",
+                "0.6",
                 "--seed",
                 "17",
             ]
@@ -177,7 +204,7 @@ class EvaluationRunnerTests(unittest.TestCase):
             first = run_benchmark(arguments)
             resumed = run_benchmark(arguments)
 
-            self.assertEqual(first["schema_version"], 2)
+            self.assertEqual(first["schema_version"], 4)
             self.assertEqual(first["summary"]["counts"]["completed"], 1)
             self.assertEqual(len(first["rows"]), 1)
             self.assertEqual(len(resumed["rows"]), 1)
@@ -191,7 +218,15 @@ class EvaluationRunnerTests(unittest.TestCase):
             self.assertEqual(configuration["settings"]["retrieval_mode"], "bm25")
             self.assertFalse(configuration["settings"]["enable_model_rerank"])
             self.assertEqual(configuration["settings"]["reader_mode"], "flat")
+            self.assertEqual(configuration["settings"]["evidence_window_sentences"], 1)
+            self.assertEqual(configuration["settings"]["answer_policy"], "benchmark")
+            self.assertEqual(
+                configuration["settings"]["evidence_candidates_per_requirement"],
+                2,
+            )
+            self.assertEqual(configuration["settings"]["model_rerank_top_k"], 8)
             self.assertEqual(configuration["settings"]["supervisor_mode"], "single_pass")
+            self.assertEqual(configuration["settings"]["target_coverage"], 0.6)
 
             corpus_wide = run_benchmark(
                 [

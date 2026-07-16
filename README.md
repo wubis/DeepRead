@@ -144,8 +144,18 @@ so interrupted experiments can resume without mixing incompatible results.
 The ablation controls are independent: `--retrieval-mode` selects BM25, embeddings, or hybrid
 retrieval; `--model-rerank`/`--no-model-rerank` controls the bounded reranker; `--reader-mode`
 selects flat top-k or hierarchical reading; and `--supervisor-mode` selects one pass or a bounded
-multi-round loop. In offline runs, the embeddings channel uses the deterministic character-ngram
-fallback.
+multi-round loop. Passage-similarity diversification is controlled by `--diversity-weight`.
+Hierarchical runs also expose `--evidence-candidates-per-requirement` and
+`--evidence-support-threshold`. In offline runs, the embeddings channel uses the deterministic
+character-ngram fallback.
+
+Diversification defaults to `0.0` for the paper-known benchmark: calibration showed no duplicate
+problem on this slice, and any positive weight slightly reduced MRR. Corpus-wide experiments can
+enable it without reintroducing the previous document-level penalty.
+
+Interactive queries default to the `grounded` answer policy, which can abstain. QASPER evaluation
+defaults to the `benchmark` policy so boolean questions follow its forced `Yes`/`No` contract. Use
+`--answer-policy` to make this choice explicit in either workflow.
 
 The six reference configurations map to executable policies:
 
@@ -163,29 +173,79 @@ Primary measurements:
 - Recall@20, MRR@10, and nDCG@10
 - Official-style answer F1 with maximum-over-annotator scoring
 - Gold evidence precision, recall, and F1
-- Yes/no and unanswerable accuracy
+- Read-evidence F1 and selection recall conditional on successful retrieval
+- Yes/no accuracy, consensus-unanswerable accuracy, and annotator answerability disagreement
 - Passage-level citation precision/recall and highlighted-span overlap
 - Requirement coverage and stopping behavior
 - Full-document open rate
-- Read and citation tokens per correct answer
+- Read, examined-evidence, and cited-evidence tokens per correct answer
 - Total API tokens, latency, and estimated cost per correct answer
+- API tokens grouped by planning, reranking, assessment, embedding, and synthesis operation
 
 Efficiency denominators treat answer F1 ≥ 0.5 as correct by default; the threshold is recorded in
 the run fingerprint and can be changed with `--correct-threshold`.
+
+### Paper-known pilot results
+
+The checked-in [QASPER paper-known pilot](reports/paper_known_pilot/README.md) evaluates 30
+questions across 10 validation papers. It includes all six offline ablations, two OpenAI-backed
+policies, answer-type and evidence-location failure analysis, a provenance audit, calibration runs,
+and representative traces.
+
+The pilot shows that OpenAI reranking substantially improves ranking quality, while hierarchical
+reading reduces source-token consumption. Bounded supervision provides a modest answer-quality
+gain at materially higher token and latency cost. Boolean synthesis and evidence assessment—not
+document discovery—are the clearest failure modes on this slice.
 
 ## Run it locally
 
 Python 3.11+ is required.
 
+### One-time project setup
+
 ```bash
 git clone https://github.com/wubis/DeepRead.git
 cd DeepRead
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
-pip install -e '.[app,openai,eval,dev]'
+python -m pip install --upgrade pip
+python -m pip install -e '.[app,openai,eval,dev]'
+cp -n .env.example .env
 ```
 
-The default `auto` provider uses OpenAI when `OPENAI_API_KEY` is present and otherwise runs offline.
+Edit the ignored `.env` file and add your key after the equals sign. Do not paste a key into a
+README, terminal command, screenshot, issue, or commit.
+
+```dotenv
+OPENAI_API_KEY=your-key-here
+DEEPREAD_OPENAI_MODEL=gpt-5.6-terra
+```
+
+The virtual environment and installed dependencies persist in `.venv`, while project configuration
+persists in `.env`. Neither file needs to be recreated unless it is deleted.
+
+### Start a new terminal session
+
+Activation and environment variables apply only to the current shell. Run this whenever you open a
+new terminal:
+
+```bash
+cd /path/to/DeepRead
+source .venv/bin/activate
+set -a
+source .env
+set +a
+```
+
+Confirm that the environment is ready without displaying the secret:
+
+```bash
+which python
+python -c "import os; print('key loaded' if os.getenv('OPENAI_API_KEY') else 'key missing')"
+```
+
+DeepRead does not load `.env` automatically. The default `auto` provider uses OpenAI when
+`OPENAI_API_KEY` has been loaded into the shell and otherwise runs offline.
 
 ```bash
 # Offline, with no paid API dependency
@@ -194,14 +254,14 @@ deepread ask \
   --provider offline
 
 # OpenAI-backed pipeline
-export OPENAI_API_KEY='your-key'
 deepread ask \
   "Why do wetlands reduce floods and mitigate climate change?" \
   --provider openai \
   --trace traces/latest.json
 ```
 
-Never commit a real API key. `.env` files are ignored, and [.env.example](.env.example) documents the supported configuration.
+Never commit a real API key. `.env` files are ignored, and [.env.example](.env.example) documents
+the supported configuration.
 
 ## Explore the system
 
@@ -272,11 +332,26 @@ python benchmark/run.py \
   --provider openai \
   --retrieval-mode hybrid \
   --model-rerank \
+  --model-rerank-top-k 8 \
+  --model-rerank-max-chars 700 \
+  --model-rerank-rescue-per-requirement 1 \
   --reader-mode hierarchical \
+  --evidence-candidates-per-requirement 2 \
+  --evidence-support-threshold 0.60 \
   --supervisor-mode bounded \
   --max-search-rounds 2 \
+  --answer-policy benchmark \
   --seed 17 \
   --output benchmark/results/qasper-evidencegraph.json
+
+# Paired deltas with bootstrap confidence intervals
+python benchmark/compare.py \
+  benchmark/results/baseline.json \
+  benchmark/results/candidate.json \
+  --metric answer_f1 \
+  --metric evidence_f1 \
+  --metric api_total_tokens \
+  --seed 17
 ```
 
 Evaluation defaults to offline mode even when a key exists. Results are checkpointed after every
@@ -338,6 +413,7 @@ src/deepread/
 └── models.py            # Typed domain and trace records
 
 benchmark/               # Resumable QASPER evaluation CLI
+reports/paper_known_pilot/# Aggregate pilot results, calibration, audits, and traces
 data/sample_corpus/      # Small local demonstration corpus
 tests/                   # Unit, integration, mocked-provider, and negative tests
 traces/                  # Inspectable query traces
@@ -357,10 +433,10 @@ The current implementation intentionally defers learned reading policies, persis
 
 Near-term work:
 
-- Paper-known and corpus-wide QASPER result studies
+- Larger paper-known replication and corpus-wide QASPER retrieval study
 - PDF/HTML parsing with layout-aware provenance
 - Per-query cost reporting with current configured rates
-- Citation-error analysis and evidence-window calibration
+- Citation-error remediation and larger calibration replication
 - Benchmark visualizations and an end-to-end system walkthrough
 
 The project is structured so these additions can replace or extend individual components without weakening the trace, budget, and provenance contracts.

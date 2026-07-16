@@ -247,8 +247,21 @@ def evaluate_qasper_answer(
     evidence_precision, evidence_recall, evidence_f1, evidence_annotation_id = _best_set_score(
         cited_ids, evidence_references
     )
+    read_evidence_ids = {evidence.passage_id for evidence in answer.trace.evidence}
+    read_precision, read_recall, read_f1, _ = _best_set_score(
+        read_evidence_ids, evidence_references
+    )
     gold_union = set().union(*(ids for _, ids in evidence_references))
     ranking = _unique_ranking(answer)
+    retrieved_ids = set(ranking[:retrieval_k])
+    conditional_selection_scores = [
+        len(read_evidence_ids & gold_ids & retrieved_ids) / len(gold_ids & retrieved_ids)
+        for _, gold_ids in evidence_references
+        if gold_ids & retrieved_ids
+    ]
+    selection_recall_given_retrieval = (
+        max(conditional_selection_scores) if conditional_selection_scores else None
+    )
     retrieval = _best_retrieval_metrics(
         ranking,
         [ids for _, ids in evidence_references],
@@ -265,9 +278,16 @@ def evaluate_qasper_answer(
         if answer_type == "boolean"
     }
     has_unanswerable = any(answer_type == "none" for _, _, answer_type in references)
+    consensus_unanswerable = all(answer_type == "none" for _, _, answer_type in references)
+    answerability_disagreement = has_unanswerable and not consensus_unanswerable
     predicted_normalized = normalize_answer(prediction)
     yes_no_accuracy = float(predicted_normalized in boolean_answers) if boolean_answers else None
     unanswerable_accuracy = (
+        float(predicted_normalized == normalize_answer("Unanswerable"))
+        if consensus_unanswerable
+        else None
+    )
+    unanswerable_annotation_match = (
         float(predicted_normalized == normalize_answer("Unanswerable"))
         if has_unanswerable
         else None
@@ -309,9 +329,15 @@ def evaluate_qasper_answer(
         "matched_answer_annotation_id": answer_annotation_id,
         "yes_no_accuracy": yes_no_accuracy,
         "unanswerable_accuracy": unanswerable_accuracy,
+        "unanswerable_annotation_match": unanswerable_annotation_match,
+        "answerability_disagreement": float(answerability_disagreement),
         "evidence_precision": evidence_precision,
         "evidence_recall": evidence_recall,
         "evidence_f1": evidence_f1,
+        "read_evidence_precision": read_precision,
+        "read_evidence_recall": read_recall,
+        "read_evidence_f1": read_f1,
+        "selection_recall_given_retrieval": selection_recall_given_retrieval,
         "matched_evidence_annotation_id": evidence_annotation_id,
         "citation_precision": evidence_precision,
         "citation_recall": evidence_recall,
@@ -323,6 +349,7 @@ def evaluate_qasper_answer(
         f"paper_recall_at_{retrieval_k}": paper_recall,
         "gold_evidence_passage_ids": sorted(gold_union),
         "citation_passage_ids": sorted(cited_ids),
+        "read_evidence_passage_ids": sorted(read_evidence_ids),
         "ranked_passage_ids": ranking[:retrieval_k],
         "coverage": answer.coverage,
         "rounds": answer.trace.rounds,
@@ -330,11 +357,26 @@ def evaluate_qasper_answer(
         "full_document_open": float(full_document_reads > 0),
         "stop_reason": answer.stop_reason,
         "read_tokens": answer.trace.read_tokens,
+        "evidence_tokens": answer.trace.evidence_tokens,
         "citation_tokens": answer.trace.citation_tokens,
         "api_input_tokens": answer.trace.api_input_tokens,
         "api_output_tokens": answer.trace.api_output_tokens,
         "api_total_tokens": answer.trace.api_total_tokens,
         "estimated_api_cost_usd": answer.trace.estimated_api_cost_usd,
+        "api_tokens_by_operation": {
+            operation: sum(
+                event.get("total_tokens", 0) or 0
+                for event in answer.trace.api_calls
+                if event.get("operation") == operation
+            )
+            for operation in sorted(
+                {
+                    event.get("operation")
+                    for event in answer.trace.api_calls
+                    if event.get("operation") is not None
+                }
+            )
+        },
         "correct": answer_f1 >= correct_threshold,
     }
 
@@ -360,6 +402,10 @@ def aggregate_results(
         "evidence_precision",
         "evidence_recall",
         "evidence_f1",
+        "read_evidence_precision",
+        "read_evidence_recall",
+        "read_evidence_f1",
+        "selection_recall_given_retrieval",
         "citation_precision",
         "citation_recall",
         "citation_f1",
@@ -381,8 +427,21 @@ def aggregate_results(
     ]
     total_api_tokens = sum(row["api_total_tokens"] for row in completed)
     total_read_tokens = sum(row["read_tokens"] for row in completed)
+    total_evidence_tokens = sum(row.get("evidence_tokens", 0) for row in completed)
     total_citation_tokens = sum(row["citation_tokens"] for row in completed)
     total_cost = sum(costs) if costs else None
+    api_tokens_by_operation = {
+        operation: sum(
+            row.get("api_tokens_by_operation", {}).get(operation, 0) for row in completed
+        )
+        for operation in sorted(
+            {
+                operation
+                for row in completed
+                for operation in row.get("api_tokens_by_operation", {})
+            }
+        )
+    }
     return {
         "counts": {
             "rows": len(rows),
@@ -393,6 +452,9 @@ def aggregate_results(
             "yes_no_questions": sum(row.get("yes_no_accuracy") is not None for row in completed),
             "unanswerable_questions": sum(
                 row.get("unanswerable_accuracy") is not None for row in completed
+            ),
+            "answerability_disagreements": int(
+                sum(row.get("answerability_disagreement", 0) for row in completed)
             ),
         },
         "metrics": {
@@ -410,11 +472,14 @@ def aggregate_results(
             "mean_latency_ms": _mean(completed, "latency_ms"),
             "mean_rounds": _mean(completed, "rounds"),
             "mean_read_tokens": _mean(completed, "read_tokens"),
+            "mean_evidence_tokens": _mean(completed, "evidence_tokens"),
             "mean_citation_tokens": _mean(completed, "citation_tokens"),
             "mean_api_tokens": _mean(completed, "api_total_tokens"),
             "total_read_tokens": total_read_tokens,
+            "total_evidence_tokens": total_evidence_tokens,
             "total_citation_tokens": total_citation_tokens,
             "total_api_tokens": total_api_tokens,
+            "api_tokens_by_operation": api_tokens_by_operation,
             "total_estimated_api_cost_usd": total_cost,
             "read_tokens_per_correct_answer": (
                 total_read_tokens / len(correct) if correct else None

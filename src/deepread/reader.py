@@ -1,13 +1,21 @@
 from __future__ import annotations
 
+import math
+
 from .models import Document, Passage, ReadDecision, ReadLevel, Requirement, SearchHit
 from .text import best_sentence_window, requirement_terms, token_count, tokens
 
 
 class HierarchicalReader:
-    def __init__(self, documents: list[Document], passages: list[Passage]):
+    def __init__(
+        self,
+        documents: list[Document],
+        passages: list[Passage],
+        evidence_window_sentences: int = 3,
+    ):
         self.documents = {d.id: d for d in documents}
         self.passages = {p.id: p for p in passages}
+        self.evidence_window_sentences = evidence_window_sentences
         self.by_document: dict[str, list[Passage]] = {}
         for passage in passages:
             self.by_document.setdefault(passage.document_id, []).append(passage)
@@ -23,6 +31,11 @@ class HierarchicalReader:
         p = self.passages[hit.passage_id]
         views = self.views(hit.passage_id)
         needed = requirement_terms(requirement.description, requirement.keywords)
+        routing_needed = {
+            term
+            for phrase in requirement.routing_keywords
+            for term in tokens(phrase)
+        }
         best: tuple[float, ReadLevel, str, float, int] | None = None
         # Titles are useful routing signals but are never sufficient factual evidence.
         # Compare substantive views, preferring coverage before cost efficiency.
@@ -36,16 +49,28 @@ class HierarchicalReader:
             routing_terms = set(tokens(text))
             if level in (ReadLevel.SECTION, ReadLevel.PASSAGE, ReadLevel.DOCUMENT):
                 routing_terms |= set(tokens(p.section))
-            overlap = len(needed & routing_terms) / max(1, len(needed))
+            requirement_coverage = len(needed & routing_terms) / max(1, len(needed))
+            routing_coverage = (
+                len(routing_needed & routing_terms) / len(routing_needed)
+                if routing_needed
+                else requirement_coverage
+            )
+            overlap = (
+                0.70 * routing_coverage + 0.30 * requirement_coverage
+                if routing_needed
+                else requirement_coverage
+            )
             depth_bonus = {ReadLevel.TITLE: .70, ReadLevel.SUMMARY: .85, ReadLevel.SECTION: .95, ReadLevel.PASSAGE: 1.0, ReadLevel.DOCUMENT: .70}[level]
             gain = overlap * max(hit.final_score, 0.001) * depth_bonus
-            utility = gain / max(1, cost)
+            # Sublinear cost discount prevents tiny headings from beating a much more
+            # informative passage solely because they contain very few tokens.
+            utility = gain / math.sqrt(max(1, cost))
             if cost <= remaining_tokens and (best is None or utility > best[0]):
                 best = (utility, level, text, gain, cost)
         if best is None:
             return ReadDecision(hit.passage_id, ReadLevel.TITLE, requirement.id, 0, 0, 0, False, "budget_exhausted"), ""
         _, level, text, gain, cost = best
-        utility = gain / max(1, cost)
+        utility = gain / math.sqrt(max(1, cost))
         selected = gain > 0
         reason = "highest_expected_coverage_gain_per_token" if selected else "no_requirement_overlap"
         return ReadDecision(hit.passage_id, level, requirement.id, gain, cost, utility, selected, reason), text
@@ -96,13 +121,31 @@ class HierarchicalReader:
         else:
             candidates = [source]
         needed = requirement_terms(requirement.description, requirement.keywords)
+        routing_needed = {
+            term
+            for phrase in requirement.routing_keywords
+            for term in tokens(phrase)
+        }
 
-        def passage_score(passage: Passage) -> tuple[int, float, int]:
+        def passage_score(passage: Passage) -> tuple[float, float, int]:
             text_terms = set(tokens(f"{passage.section} {passage.text}"))
-            overlap = len(needed & text_terms)
-            coverage = overlap / max(1, len(needed))
-            return overlap, coverage, -passage.ordinal
+            coverage = len(needed & text_terms) / max(1, len(needed))
+            routing_coverage = (
+                len(routing_needed & text_terms) / len(routing_needed)
+                if routing_needed
+                else coverage
+            )
+            weighted_coverage = (
+                0.70 * routing_coverage + 0.30 * coverage
+                if routing_needed
+                else coverage
+            )
+            return weighted_coverage, coverage, -passage.ordinal
 
         selected = max(candidates, key=passage_score)
-        span, start, end = best_sentence_window(selected.text, needed)
+        span, start, end = best_sentence_window(
+            selected.text,
+            needed,
+            max_sentences=self.evidence_window_sentences,
+        )
         return selected, span, start, end

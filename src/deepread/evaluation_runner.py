@@ -17,7 +17,7 @@ from .models import CorpusBundle
 from .qasper import QasperDataset, QasperQuestion, load_qasper, load_qasper_hf
 
 
-SCHEMA_VERSION = 2
+SCHEMA_VERSION = 4
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -39,8 +39,22 @@ def _parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--reader-mode", choices=["flat", "hierarchical"])
     parser.add_argument("--flat-top-k", type=int)
+    parser.add_argument("--evidence-window-sentences", type=int)
+    parser.add_argument("--evidence-candidates-per-requirement", type=int)
+    parser.add_argument("--evidence-support-threshold", type=float)
     parser.add_argument("--supervisor-mode", choices=["single-pass", "bounded"])
+    parser.add_argument(
+        "--answer-policy",
+        choices=["grounded", "benchmark"],
+        default="benchmark",
+        help="Use benchmark forced-choice outputs or grounded abstention",
+    )
     parser.add_argument("--max-search-rounds", type=int)
+    parser.add_argument("--model-rerank-top-k", type=int)
+    parser.add_argument("--model-rerank-rescue-per-requirement", type=int)
+    parser.add_argument("--model-rerank-max-chars", type=int)
+    parser.add_argument("--target-coverage", type=float)
+    parser.add_argument("--diversity-weight", type=float)
     parser.add_argument("--seed", type=int)
     parser.add_argument("--paper-id", action="append", dest="paper_ids")
     parser.add_argument("--question-id", action="append", dest="question_ids")
@@ -174,6 +188,31 @@ def _validate_args(args: argparse.Namespace) -> None:
         raise ValueError("flat-top-k must be positive")
     if args.max_search_rounds is not None and args.max_search_rounds < 1:
         raise ValueError("max-search-rounds must be positive")
+    if args.evidence_window_sentences is not None and args.evidence_window_sentences < 1:
+        raise ValueError("evidence-window-sentences must be positive")
+    if (
+        args.evidence_candidates_per_requirement is not None
+        and args.evidence_candidates_per_requirement < 1
+    ):
+        raise ValueError("evidence-candidates-per-requirement must be positive")
+    if (
+        args.evidence_support_threshold is not None
+        and not 0 <= args.evidence_support_threshold <= 1
+    ):
+        raise ValueError("evidence-support-threshold must be between 0 and 1")
+    if args.model_rerank_top_k is not None and args.model_rerank_top_k < 1:
+        raise ValueError("model-rerank-top-k must be positive")
+    if (
+        args.model_rerank_rescue_per_requirement is not None
+        and args.model_rerank_rescue_per_requirement < 0
+    ):
+        raise ValueError("model-rerank-rescue-per-requirement must be non-negative")
+    if args.model_rerank_max_chars is not None and args.model_rerank_max_chars < 100:
+        raise ValueError("model-rerank-max-chars must be at least 100")
+    if args.target_coverage is not None and not 0 < args.target_coverage <= 1:
+        raise ValueError("target-coverage must be greater than 0 and at most 1")
+    if args.diversity_weight is not None and not 0 <= args.diversity_weight <= 1:
+        raise ValueError("diversity-weight must be between 0 and 1")
 
 
 def main(argv: list[str] | None = None) -> dict[str, Any]:
@@ -182,7 +221,10 @@ def main(argv: list[str] | None = None) -> dict[str, Any]:
     dataset, source = _load_dataset(args)
     paper_ids, questions = _select_questions(dataset, args)
     base_settings = Settings.from_env()
-    setting_overrides: dict[str, Any] = {"provider": args.provider}
+    setting_overrides: dict[str, Any] = {
+        "provider": args.provider,
+        "answer_policy": args.answer_policy,
+    }
     if args.retrieval_mode is not None:
         setting_overrides["retrieval_mode"] = args.retrieval_mode
     if args.model_rerank is not None:
@@ -191,10 +233,30 @@ def main(argv: list[str] | None = None) -> dict[str, Any]:
         setting_overrides["reader_mode"] = args.reader_mode
     if args.flat_top_k is not None:
         setting_overrides["flat_top_k"] = args.flat_top_k
+    if args.evidence_window_sentences is not None:
+        setting_overrides["evidence_window_sentences"] = args.evidence_window_sentences
+    if args.evidence_candidates_per_requirement is not None:
+        setting_overrides["evidence_candidates_per_requirement"] = (
+            args.evidence_candidates_per_requirement
+        )
+    if args.evidence_support_threshold is not None:
+        setting_overrides["evidence_support_threshold"] = args.evidence_support_threshold
     if args.supervisor_mode is not None:
         setting_overrides["supervisor_mode"] = args.supervisor_mode.replace("-", "_")
     if args.max_search_rounds is not None:
         setting_overrides["max_search_rounds"] = args.max_search_rounds
+    if args.model_rerank_top_k is not None:
+        setting_overrides["model_rerank_top_k"] = args.model_rerank_top_k
+    if args.model_rerank_rescue_per_requirement is not None:
+        setting_overrides["model_rerank_rescue_per_requirement"] = (
+            args.model_rerank_rescue_per_requirement
+        )
+    if args.model_rerank_max_chars is not None:
+        setting_overrides["model_rerank_max_chars"] = args.model_rerank_max_chars
+    if args.target_coverage is not None:
+        setting_overrides["target_coverage"] = args.target_coverage
+    if args.diversity_weight is not None:
+        setting_overrides["redundancy_weight"] = args.diversity_weight
     if args.seed is not None:
         setting_overrides["random_seed"] = args.seed
     settings = replace(base_settings, **setting_overrides)

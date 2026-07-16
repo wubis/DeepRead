@@ -1,0 +1,412 @@
+{
+  "dataset": {
+    "name": "QASPER v0.3 development/validation",
+    "papers": 10,
+    "questions": 30,
+    "paper_ids": [
+      "1912.01214",
+      "1810.08699",
+      "1609.00425",
+      "1801.05147",
+      "1811.00383",
+      "1909.09067",
+      "1704.06194",
+      "1909.00512",
+      "2003.03106",
+      "1708.01464"
+    ],
+    "corpus_hash": "0d43d5b9b4149bae00f77deba7577652aabff11bcf7cb9969aa9cf0002421e13",
+    "random_seed": 17
+  },
+  "aggregate": [
+    {
+      "configuration": "BM25 only (offline)",
+      "provider": "offline",
+      "completed": 30,
+      "correct": 0,
+      "answer_f1": 0.08413252342792463,
+      "evidence_f1": 0.1532804232804233,
+      "retrieval_recall_at_20": 0.7138888888888889,
+      "mrr_at_10": 0.28957671957671954,
+      "coverage": 1.0,
+      "mean_read_tokens": 566.3,
+      "mean_api_tokens": 0.0,
+      "mean_latency_ms": 4.421
+    },
+    {
+      "configuration": "Embeddings only (offline fallback)",
+      "provider": "offline",
+      "completed": 30,
+      "correct": 0,
+      "answer_f1": 0.09060338243355393,
+      "evidence_f1": 0.19634920634920636,
+      "retrieval_recall_at_20": 0.7488888888888888,
+      "mrr_at_10": 0.2961904761904762,
+      "coverage": 0.9333333333333333,
+      "mean_read_tokens": 532.4,
+      "mean_api_tokens": 0.0,
+      "mean_latency_ms": 7.354333333333333
+    },
+    {
+      "configuration": "Flat hybrid top-k (offline)",
+      "provider": "offline",
+      "completed": 30,
+      "correct": 0,
+      "answer_f1": 0.0911750019422721,
+      "evidence_f1": 0.17465608465608465,
+      "retrieval_recall_at_20": 0.7861111111111111,
+      "mrr_at_10": 0.36157407407407405,
+      "coverage": 0.9666666666666667,
+      "mean_read_tokens": 565.2666666666667,
+      "mean_api_tokens": 0.0,
+      "mean_latency_ms": 8.218666666666667
+    },
+    {
+      "configuration": "Hybrid + rerank flag (offline)",
+      "provider": "offline",
+      "completed": 30,
+      "correct": 0,
+      "answer_f1": 0.0911750019422721,
+      "evidence_f1": 0.17465608465608465,
+      "retrieval_recall_at_20": 0.7861111111111111,
+      "mrr_at_10": 0.36157407407407405,
+      "coverage": 0.9666666666666667,
+      "mean_read_tokens": 565.2666666666667,
+      "mean_api_tokens": 0.0,
+      "mean_latency_ms": 8.090666666666667
+    },
+    {
+      "configuration": "Hierarchical single-pass (offline)",
+      "provider": "offline",
+      "completed": 30,
+      "correct": 0,
+      "answer_f1": 0.08225446283347851,
+      "evidence_f1": 0.15,
+      "retrieval_recall_at_20": 0.7861111111111111,
+      "mrr_at_10": 0.36157407407407405,
+      "coverage": 1.0,
+      "mean_read_tokens": 105.4,
+      "mean_api_tokens": 0.0,
+      "mean_latency_ms": 32.047
+    },
+    {
+      "configuration": "Bounded EvidenceGraph (offline)",
+      "provider": "offline",
+      "completed": 30,
+      "correct": 0,
+      "answer_f1": 0.08225446283347851,
+      "evidence_f1": 0.15,
+      "retrieval_recall_at_20": 0.7861111111111111,
+      "mrr_at_10": 0.36157407407407405,
+      "coverage": 1.0,
+      "mean_read_tokens": 105.4,
+      "mean_api_tokens": 0.0,
+      "mean_latency_ms": 33.50966666666667
+    },
+    {
+      "configuration": "Hierarchical single-pass (OpenAI)",
+      "provider": "openai",
+      "completed": 30,
+      "correct": 1,
+      "answer_f1": 0.13090629370888576,
+      "evidence_f1": 0.39015873015873015,
+      "retrieval_recall_at_20": 0.8194444444444444,
+      "mrr_at_10": 0.7355555555555555,
+      "coverage": 0.29444444444444445,
+      "mean_read_tokens": 243.66666666666666,
+      "mean_api_tokens": 8467.5,
+      "mean_latency_ms": 12772.188333333334
+    },
+    {
+      "configuration": "Bounded EvidenceGraph (OpenAI)",
+      "provider": "openai",
+      "completed": 30,
+      "correct": 0,
+      "answer_f1": 0.15057916490987863,
+      "evidence_f1": 0.3783333333333333,
+      "retrieval_recall_at_20": 0.8194444444444444,
+      "mrr_at_10": 0.6992592592592592,
+      "coverage": 0.4083333333333333,
+      "mean_read_tokens": 539.0333333333333,
+      "mean_api_tokens": 10512.033333333333,
+      "mean_latency_ms": 19759.364666666665
+    }
+  ],
+  "openai_failure_breakdown": {
+    "answer_type": {
+      "abstractive": {
+        "questions": 5,
+        "answer_f1": 0.15250821846121834,
+        "evidence_f1": 0.23333333333333334,
+        "retrieval_recall_at_20": 0.55,
+        "coverage": 0.39999999999999997
+      },
+      "boolean": {
+        "questions": 2,
+        "answer_f1": 0.0,
+        "evidence_f1": 0.2,
+        "retrieval_recall_at_20": 0.75,
+        "coverage": 0.5
+      },
+      "extractive": {
+        "questions": 23,
+        "answer_f1": 0.16325364586914207,
+        "evidence_f1": 0.4253623188405797,
+        "retrieval_recall_at_20": 0.8840579710144928,
+        "coverage": 0.40217391304347827
+      }
+    },
+    "evidence_location": {
+      "figure_table": {
+        "questions": 1,
+        "answer_f1": 0.058823529411764705,
+        "evidence_f1": 0.0,
+        "retrieval_recall_at_20": 0.0,
+        "coverage": 0.0
+      },
+      "figure_table+paragraph": {
+        "questions": 4,
+        "answer_f1": 0.17755807237508323,
+        "evidence_f1": 0.41666666666666663,
+        "retrieval_recall_at_20": 0.8333333333333334,
+        "coverage": 0.41666666666666663
+      },
+      "paragraph": {
+        "questions": 23,
+        "answer_f1": 0.14901397293100394,
+        "evidence_f1": 0.37753623188405794,
+        "retrieval_recall_at_20": 0.8369565217391305,
+        "coverage": 0.4166666666666667
+      },
+      "paragraph+section_heading": {
+        "questions": 2,
+        "answer_f1": 0.16049887548558578,
+        "evidence_f1": 0.5,
+        "retrieval_recall_at_20": 1.0,
+        "coverage": 0.5
+      }
+    }
+  },
+  "calibration": [
+    {
+      "run": "calibration-openai-w1-c05",
+      "provider": "openai",
+      "window_sentences": 1,
+      "target_coverage": 0.5,
+      "answer_f1": 0.07173525301559282,
+      "evidence_f1": 0.7,
+      "mean_citation_tokens": 123.0,
+      "mean_api_tokens": 10679.0,
+      "mean_rounds": 1.75
+    },
+    {
+      "run": "calibration-openai-w1-c08",
+      "provider": "openai",
+      "window_sentences": 1,
+      "target_coverage": 0.8,
+      "answer_f1": 0.12022485791944651,
+      "evidence_f1": 0.7095238095238096,
+      "mean_citation_tokens": 135.25,
+      "mean_api_tokens": 12155.0,
+      "mean_rounds": 2.0
+    },
+    {
+      "run": "calibration-openai-w1-c1",
+      "provider": "openai",
+      "window_sentences": 1,
+      "target_coverage": 1.0,
+      "answer_f1": 0.026785714285714284,
+      "evidence_f1": 0.41666666666666663,
+      "mean_citation_tokens": 125.5,
+      "mean_api_tokens": 10122.25,
+      "mean_rounds": 1.75
+    },
+    {
+      "run": "calibration-openai-w3-c05",
+      "provider": "openai",
+      "window_sentences": 3,
+      "target_coverage": 0.5,
+      "answer_f1": 0.17576804915514593,
+      "evidence_f1": 0.825,
+      "mean_citation_tokens": 145.5,
+      "mean_api_tokens": 9142.25,
+      "mean_rounds": 1.5
+    },
+    {
+      "run": "calibration-openai-w3-c08",
+      "provider": "openai",
+      "window_sentences": 3,
+      "target_coverage": 0.8,
+      "answer_f1": 0.09153774027191748,
+      "evidence_f1": 0.5916666666666667,
+      "mean_citation_tokens": 206.5,
+      "mean_api_tokens": 12240.0,
+      "mean_rounds": 2.0
+    },
+    {
+      "run": "calibration-openai-w3-c1",
+      "provider": "openai",
+      "window_sentences": 3,
+      "target_coverage": 1.0,
+      "answer_f1": 0.12625152625152625,
+      "evidence_f1": 0.5,
+      "mean_citation_tokens": 193.75,
+      "mean_api_tokens": 12349.0,
+      "mean_rounds": 2.0
+    },
+    {
+      "run": "calibration-window-1",
+      "provider": "offline",
+      "window_sentences": 1,
+      "target_coverage": 0.8,
+      "answer_f1": 0.08225446283347851,
+      "evidence_f1": 0.15,
+      "mean_citation_tokens": 24.1,
+      "mean_api_tokens": 0.0,
+      "mean_rounds": 1.0
+    },
+    {
+      "run": "calibration-window-2",
+      "provider": "offline",
+      "window_sentences": 2,
+      "target_coverage": 0.8,
+      "answer_f1": 0.08225446283347851,
+      "evidence_f1": 0.15,
+      "mean_citation_tokens": 33.53333333333333,
+      "mean_api_tokens": 0.0,
+      "mean_rounds": 1.0
+    },
+    {
+      "run": "calibration-window-3",
+      "provider": "offline",
+      "window_sentences": 3,
+      "target_coverage": 0.8,
+      "answer_f1": 0.08225446283347851,
+      "evidence_f1": 0.15,
+      "mean_citation_tokens": 35.03333333333333,
+      "mean_api_tokens": 0.0,
+      "mean_rounds": 1.0
+    },
+    {
+      "run": "calibration-window-5",
+      "provider": "offline",
+      "window_sentences": 5,
+      "target_coverage": 0.8,
+      "answer_f1": 0.08225446283347851,
+      "evidence_f1": 0.15,
+      "mean_citation_tokens": 39.166666666666664,
+      "mean_api_tokens": 0.0,
+      "mean_rounds": 1.0
+    }
+  ],
+  "provenance_audit": {
+    "papers": 10,
+    "questions": 30,
+    "answer_annotations_by_type": {
+      "extractive": 42,
+      "abstractive": 12,
+      "boolean": 4,
+      "none": 2
+    },
+    "resolved_matches_by_location": {
+      "paragraph": 95,
+      "figure_table": 10,
+      "section_heading": 2
+    },
+    "unresolved_references": 0,
+    "samples": [
+      {
+        "question_id": "b6f15fb6279b82e34a5bf4828b7b5ddabfdf1d54",
+        "answer_type": "extractive",
+        "source_type": "paragraph",
+        "source_path": "full_text.paragraphs[9][0]",
+        "match_type": "exact",
+        "offsets_valid": true,
+        "text_valid": true
+      },
+      {
+        "question_id": "5eda469a8a77f028d0c5f1acd296111085614537",
+        "answer_type": "abstractive",
+        "source_type": "paragraph",
+        "source_path": "full_text.paragraphs[7][1]",
+        "match_type": "exact",
+        "offsets_valid": true,
+        "text_valid": true
+      },
+      {
+        "question_id": "5eda469a8a77f028d0c5f1acd296111085614537",
+        "answer_type": "abstractive",
+        "source_type": "figure_table",
+        "source_path": "figures_and_tables[2]",
+        "match_type": "float_exact",
+        "offsets_valid": true,
+        "text_valid": true
+      },
+      {
+        "question_id": "1f085b9bb7bfd0d6c8cba1a9d73f08fcf2da7590",
+        "answer_type": "boolean",
+        "source_type": "paragraph",
+        "source_path": "full_text.paragraphs[5][0]",
+        "match_type": "exact",
+        "offsets_valid": true,
+        "text_valid": true
+      },
+      {
+        "question_id": "37861be6aecd9242c4fdccdfcd06e48f3f1f8f81",
+        "answer_type": "extractive",
+        "source_type": "section_heading",
+        "source_path": "full_text.section_name[6]",
+        "match_type": "exact",
+        "offsets_valid": true,
+        "text_valid": true
+      },
+      {
+        "question_id": "9ee07edc371e014df686ced4fb0c3a7b9ce3d5dc",
+        "answer_type": "extractive",
+        "source_type": "figure_table",
+        "source_path": "figures_and_tables[4]",
+        "match_type": "float_exact",
+        "offsets_valid": true,
+        "text_valid": true
+      }
+    ]
+  },
+  "representative_traces": [
+    {
+      "label": "best-answer",
+      "question_id": "18c5d366b1da8447b5404eab71f4cc658ba12e6f",
+      "question": "what ner models were evaluated?",
+      "answer_f1": 0.4117647058823529,
+      "evidence_f1": 0.3333333333333333,
+      "retrieval_recall_at_20": 0.75,
+      "trace": "traces/best-answer-18c5d366b1.json"
+    },
+    {
+      "label": "boolean-failure",
+      "question_id": "1f085b9bb7bfd0d6c8cba1a9d73f08fcf2da7590",
+      "question": "did they use a crowdsourcing platform for manual annotations?",
+      "answer_f1": 0.0,
+      "evidence_f1": 0.4,
+      "retrieval_recall_at_20": 1.0,
+      "trace": "traces/boolean-failure-1f085b9bb7.json"
+    },
+    {
+      "label": "figure-table-case",
+      "question_id": "5eda469a8a77f028d0c5f1acd296111085614537",
+      "question": "what language pairs are explored?",
+      "answer_f1": 0.2686567164179105,
+      "evidence_f1": 0.6666666666666666,
+      "retrieval_recall_at_20": 1.0,
+      "trace": "traces/figure-table-case-5eda469a8a.json"
+    },
+    {
+      "label": "retrieval-miss",
+      "question_id": "a87a009c242d57c51fc94fe312af5e02070f898b",
+      "question": "What predictive model do they build?",
+      "answer_f1": 0.043478260869565216,
+      "evidence_f1": 0.0,
+      "retrieval_recall_at_20": 0.0,
+      "trace": "traces/retrieval-miss-a87a009c24.json"
+    }
+  ]
+}

@@ -1,0 +1,1595 @@
+{
+  "question": "what ner models were evaluated?",
+  "text": "In the pioNER experiments, the evaluated NER models were Stanford NER, spaCy 2.0, and a recurrent model using bidirectional LSTM cells for character-based feature extraction and CRF. [1]",
+  "citations": [
+    {
+      "id": "evidence_1",
+      "requirement_id": "req_1_1",
+      "passage_id": "passage_0d5fde46a3",
+      "document_id": "doc_77da8b8038",
+      "title": "pioNER: Datasets and Baselines for Armenian Named Entity Recognition",
+      "section": "Experiments",
+      "text": "In this section we describe a number of experiments targeted to compare the performance of popular named entity recognition algorithms on our data. We trained and evaluated Stanford NER, spaCy 2.0, and a recurrent model similar to BIBREF13 , BIBREF14 that uses bidirectional LSTM cells for character-based feature extraction and CRF, described in Guillaume Genthial's Sequence Tagging with Tensorflow blog post BIBREF15 .",
+      "score": 0.515150293255132,
+      "read_level": "passage",
+      "token_cost": 82,
+      "supports": true,
+      "relation": "supports",
+      "char_start": 0,
+      "char_end": 421,
+      "citation_tokens": 82,
+      "source_metadata": {
+        "dataset": "qasper",
+        "paper_id": "1810.08699",
+        "source_path": "full_text.paragraphs[7][0]",
+        "source_type": "paragraph",
+        "source_char_start": 0,
+        "source_char_end": 421,
+        "section_index": 7,
+        "paragraph_index": 0
+      }
+    },
+    {
+      "id": "evidence_2",
+      "requirement_id": "req_1_2",
+      "passage_id": "passage_0d5fde46a3",
+      "document_id": "doc_77da8b8038",
+      "title": "pioNER: Datasets and Baselines for Armenian Named Entity Recognition",
+      "section": "Experiments",
+      "text": "In this section we describe a number of experiments targeted to compare the performance of popular named entity recognition algorithms on our data. We trained and evaluated Stanford NER, spaCy 2.0, and a recurrent model similar to BIBREF13 , BIBREF14 that uses bidirectional LSTM cells for character-based feature extraction and CRF, described in Guillaume Genthial's Sequence Tagging with Tensorflow blog post BIBREF15 .",
+      "score": 0.515150293255132,
+      "read_level": "passage",
+      "token_cost": 82,
+      "supports": false,
+      "relation": "insufficient",
+      "char_start": 0,
+      "char_end": 421,
+      "citation_tokens": 82,
+      "source_metadata": {
+        "dataset": "qasper",
+        "paper_id": "1810.08699",
+        "source_path": "full_text.paragraphs[7][0]",
+        "source_type": "paragraph",
+        "source_char_start": 0,
+        "source_char_end": 421,
+        "section_index": 7,
+        "paragraph_index": 0
+      }
+    },
+    {
+      "id": "evidence_3",
+      "requirement_id": "req_1_2",
+      "passage_id": "passage_40fbf5bac8",
+      "document_id": "doc_77da8b8038",
+      "title": "pioNER: Datasets and Baselines for Armenian Named Entity Recognition",
+      "section": "Figures and Tables",
+      "text": "TABLE III: Evaluation results for named entity recognition algorithms",
+      "score": 0.15304813508064516,
+      "read_level": "passage",
+      "token_cost": 12,
+      "supports": false,
+      "relation": "insufficient",
+      "char_start": 0,
+      "char_end": 69,
+      "citation_tokens": 12,
+      "source_metadata": {
+        "dataset": "qasper",
+        "paper_id": "1810.08699",
+        "source_path": "figures_and_tables[6]",
+        "source_type": "figure_table",
+        "source_char_start": 0,
+        "source_char_end": 69,
+        "float_index": 6,
+        "file": "5-TableIII-1.png"
+      }
+    }
+  ],
+  "coverage": 0.5,
+  "stop_reason": "max_search_rounds_reached",
+  "trace": {
+    "question": "what ner models were evaluated?",
+    "tasks": [
+      {
+        "id": "task_1",
+        "question": "Identify the NER models evaluated in the referenced study, benchmark, or document.",
+        "requirements": [
+          {
+            "id": "req_1_1",
+            "task_id": "task_1",
+            "description": "A source section (e.g., methods, experiments, or results) that explicitly lists every named NER model evaluated.",
+            "keywords": [
+              "NER models",
+              "evaluated models",
+              "experiments",
+              "baseline",
+              "model comparison"
+            ]
+          },
+          {
+            "id": "req_1_2",
+            "task_id": "task_1",
+            "description": "Supporting context identifying the study, document, or dataset to ensure the extracted model list corresponds to the intended evaluation.",
+            "keywords": [
+              "title",
+              "abstract",
+              "evaluation",
+              "named entity recognition"
+            ]
+          }
+        ]
+      }
+    ],
+    "searches": [
+      {
+        "round": 1,
+        "query": "what ner models were evaluated?",
+        "hit_count": 20
+      },
+      {
+        "round": 2,
+        "query": "title abstract evaluation named entity recognition",
+        "hit_count": 20
+      }
+    ],
+    "ranking": [
+      {
+        "passage_id": "passage_0d5fde46a3",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 2,
+        "dense_rank": 17,
+        "lexical_score": 5.303167194906943,
+        "dense_score": 0.4104963216044103,
+        "rrf_score": 0.014715123586091328,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.4,
+        "final_score": 0.515150293255132,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_68b337261b",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 1,
+        "dense_rank": 6,
+        "lexical_score": 5.618918270251319,
+        "dense_score": 0.4385666925409726,
+        "rrf_score": 0.01583457526080477,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.0,
+        "final_score": 0.13554210134128167,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_afb65604f9",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 3,
+        "dense_rank": 5,
+        "lexical_score": 4.061651493964213,
+        "dense_score": 0.44015458109424904,
+        "rrf_score": 0.015653235653235655,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.0,
+        "final_score": 0.10297863247863248,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_74a9810788",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 8,
+        "dense_rank": 3,
+        "lexical_score": 2.9911438351955555,
+        "dense_score": 0.44468334750018124,
+        "rrf_score": 0.015231092436974791,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.1,
+        "final_score": 0.10033088235294119,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_14a8ca6c60",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 5,
+        "dense_rank": 7,
+        "lexical_score": 3.5436803658727656,
+        "dense_score": 0.43438068161736687,
+        "rrf_score": 0.015177956371986224,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.2,
+        "final_score": 0.013312284730195176,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_0aa3a5cdd8",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 7,
+        "dense_rank": 13,
+        "lexical_score": 3.2887576776013425,
+        "dense_score": 0.41507782484438777,
+        "rrf_score": 0.014373338785524433,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.5,
+        "final_score": -0.007469331425066422,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_ab4837de59",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 6,
+        "dense_rank": 18,
+        "lexical_score": 3.3278168833520416,
+        "dense_score": 0.40917493014998213,
+        "rrf_score": 0.014102564102564103,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.7000000000000001,
+        "final_score": -0.01256410256410262,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_a9ce3e06a3",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 11,
+        "dense_rank": 8,
+        "lexical_score": 2.4916934922448086,
+        "dense_score": 0.43298519680473135,
+        "rrf_score": 0.014364125932062967,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.6000000000000001,
+        "final_score": -0.074972555923778,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_7937f58a82",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 13,
+        "dense_rank": 2,
+        "lexical_score": 2.2272781202950065,
+        "dense_score": 0.47135624143879673,
+        "rrf_score": 0.0147923110914715,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.30000000000000004,
+        "final_score": -0.09982269111798499,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_e1a87a8185",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 16,
+        "dense_rank": 20,
+        "lexical_score": 1.925715816954292,
+        "dense_score": 0.3961640834722291,
+        "rrf_score": 0.012861842105263158,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.2000000000000002,
+        "final_score": -0.15549835526315797,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_a09add7259",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 4,
+        "dense_rank": 30,
+        "lexical_score": 3.8259258984411315,
+        "dense_score": 0.3842734897781566,
+        "rrf_score": 0.013593750000000002,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.8,
+        "final_score": -0.2102421875,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_62e3ebc643",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 18,
+        "dense_rank": 9,
+        "lexical_score": 1.3587964625681541,
+        "dense_score": 0.43004381323923413,
+        "rrf_score": 0.013573021181716835,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.9,
+        "final_score": -0.2582494425863991,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_43f998ef6e",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 10,
+        "dense_rank": 44,
+        "lexical_score": 2.5591097687310578,
+        "dense_score": 0.351144798042784,
+        "rrf_score": 0.012184065934065935,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.7000000000000002,
+        "final_score": -0.29823557692307695,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_e0a16b8efc",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 17,
+        "dense_rank": 14,
+        "lexical_score": 1.8587007357266334,
+        "dense_score": 0.4126582546634785,
+        "rrf_score": 0.013223938223938225,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.1,
+        "final_score": -0.30237162162162157,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_eb6740a551",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 15,
+        "dense_rank": 16,
+        "lexical_score": 1.9502218570659993,
+        "dense_score": 0.4123263439295501,
+        "rrf_score": 0.013254385964912282,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.0,
+        "final_score": -0.31286096491228066,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_d94e7075fb",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 23,
+        "dense_rank": 19,
+        "lexical_score": 0.7887012530340343,
+        "dense_score": 0.4086320732522749,
+        "rrf_score": 0.012322708555741956,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.6,
+        "final_score": -0.4256870520054903,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_d5cd8be18f",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 9,
+        "dense_rank": 37,
+        "lexical_score": 2.653838226185222,
+        "dense_score": 0.3610937314148917,
+        "rrf_score": 0.012610189750485584,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.3,
+        "final_score": -0.43108643358733,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_a97db97417",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 47,
+        "dense_rank": 1,
+        "lexical_score": 0.0,
+        "dense_score": 0.47607672278988417,
+        "rrf_score": 0.01251723609621572,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.4000000000000001,
+        "final_score": -0.4856189673663245,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_22e226458e",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 12,
+        "dense_rank": 35,
+        "lexical_score": 2.3073100947213887,
+        "dense_score": 0.3669185715273465,
+        "rrf_score": 0.012375730994152047,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.5,
+        "final_score": -0.5206684941520467,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_8a2c9ac1ab",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 14,
+        "dense_rank": 36,
+        "lexical_score": 2.1917798524175898,
+        "dense_score": 0.36601506053291927,
+        "rrf_score": 0.012119932432432434,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.8,
+        "final_score": -0.6257580236486486,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_43f998ef6e",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 2,
+        "dense_rank": 19,
+        "lexical_score": 2.8555026577410714,
+        "dense_score": 0.4269463861181712,
+        "rrf_score": 0.014567170273581054,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.4,
+        "final_score": 0.46759850959575344,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_f25e55f881",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 10,
+        "dense_rank": 6,
+        "lexical_score": 1.3444567238783032,
+        "dense_score": 0.4487454504672198,
+        "rrf_score": 0.014675324675324676,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.2,
+        "final_score": 0.4076363636363636,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_74a9810788",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 8,
+        "dense_rank": 26,
+        "lexical_score": 2.044405248651174,
+        "dense_score": 0.4150450776127396,
+        "rrf_score": 0.013320793433652531,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 1.0,
+        "final_score": 0.1921622777017784,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_6c9c7d1109",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 12,
+        "dense_rank": 18,
+        "lexical_score": 0.04020669203437073,
+        "dense_score": 0.4283118965246151,
+        "rrf_score": 0.013408119658119659,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.9,
+        "final_score": 0.16219284188034183,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_40fbf5bac8",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 4,
+        "dense_rank": 2,
+        "lexical_score": 2.5694093521401924,
+        "dense_score": 0.4677407531755366,
+        "rrf_score": 0.015851814516129034,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.0,
+        "final_score": 0.15304813508064516,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_540e88304c",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 3,
+        "dense_rank": 16,
+        "lexical_score": 2.5857040151486657,
+        "dense_score": 0.4325567960731852,
+        "rrf_score": 0.014651211361737679,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.30000000000000004,
+        "final_score": 0.11262792397660819,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_c3291ce025",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 9,
+        "dense_rank": 32,
+        "lexical_score": 1.753750661174177,
+        "dense_score": 0.4097118477557979,
+        "rrf_score": 0.012862318840579711,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 1.3,
+        "final_score": 0.0870018115942029,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_e0a16b8efc",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 6,
+        "dense_rank": 10,
+        "lexical_score": 2.322196922106748,
+        "dense_score": 0.4439842754043602,
+        "rrf_score": 0.01476190476190476,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.1,
+        "final_score": 0.08516666666666667,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_a97db97417",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 1,
+        "dense_rank": 1,
+        "lexical_score": 3.354001377228517,
+        "dense_score": 0.4794556076580872,
+        "rrf_score": 0.01639344262295082,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.0,
+        "final_score": 0.05573770491803279,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_a9ce3e06a3",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 11,
+        "dense_rank": 28,
+        "lexical_score": 1.3349670836340137,
+        "dense_score": 0.41109395255451625,
+        "rrf_score": 0.012860115236875802,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 1.4000000000000001,
+        "final_score": 0.01950104033290656,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_ab4837de59",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 36,
+        "dense_rank": 7,
+        "lexical_score": 0.031770904557820494,
+        "dense_score": 0.44823990399398417,
+        "rrf_score": 0.012445584577114428,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 1.7000000000000002,
+        "final_score": -0.11814404539801004,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_a005370454",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 7,
+        "dense_rank": 25,
+        "lexical_score": 2.2144730676644415,
+        "dense_score": 0.4152376941928655,
+        "rrf_score": 0.013503072870939423,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.7000000000000001,
+        "final_score": -0.1252739244951712,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_5183861a8f",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 14,
+        "dense_rank": 4,
+        "lexical_score": 0.03703488311070108,
+        "dense_score": 0.45236661730045163,
+        "rrf_score": 0.014463682432432432,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.5,
+        "final_score": -0.1394377111486486,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_14a8ca6c60",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 5,
+        "dense_rank": 41,
+        "lexical_score": 2.5614823836706737,
+        "dense_score": 0.3985468058057951,
+        "rrf_score": 0.012916984006092919,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 1.2000000000000002,
+        "final_score": -0.17047905559786752,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_c6e6064617",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 18,
+        "dense_rank": 5,
+        "lexical_score": 0.03703488311070108,
+        "dense_score": 0.450530082052928,
+        "rrf_score": 0.013974358974358975,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.6000000000000001,
+        "final_score": -0.17460897435897435,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_b8e4b3ecb9",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 17,
+        "dense_rank": 11,
+        "lexical_score": 0.03703488311070108,
+        "dense_score": 0.4412848752973945,
+        "rrf_score": 0.013480885311871228,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.8,
+        "final_score": -0.24478169014084505,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_bad0666ec9",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 13,
+        "dense_rank": 21,
+        "lexical_score": 0.037820052094524506,
+        "dense_score": 0.4209317765977642,
+        "rrf_score": 0.013089802130898023,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 1.1,
+        "final_score": -0.2979185692541857,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_22e226458e",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 24,
+        "dense_rank": 17,
+        "lexical_score": 0.03625755315808729,
+        "dense_score": 0.4319491336068071,
+        "rrf_score": 0.012391774891774891,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 1.8,
+        "final_score": -0.4781628787878788,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_9bbb2d5c05",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 15,
+        "dense_rank": 23,
+        "lexical_score": 0.03703488311070108,
+        "dense_score": 0.41647204020997863,
+        "rrf_score": 0.012755020080321287,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 1.5,
+        "final_score": -0.49003574297188746,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_7937f58a82",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 16,
+        "dense_rank": 22,
+        "lexical_score": 0.03703488311070108,
+        "dense_score": 0.41855705818031286,
+        "rrf_score": 0.01272464698331194,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 1.6,
+        "final_score": -0.5055463735558408,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      }
+    ],
+    "reads": [
+      {
+        "passage_id": "passage_0d5fde46a3",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.2060601173020528,
+        "token_cost": 82,
+        "utility": 0.0025129282597811317,
+        "selected": true,
+        "reason": "highest_expected_coverage_gain_per_token"
+      },
+      {
+        "passage_id": "passage_68b337261b",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.03614456035767511,
+        "token_cost": 94,
+        "utility": 0.0003845165995497352,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_afb65604f9",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.01373048433048433,
+        "token_cost": 55,
+        "utility": 0.00024964516964516966,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_74a9810788",
+        "level": "section",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.012708578431372549,
+        "token_cost": 80,
+        "utility": 0.00015885723039215686,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_14a8ca6c60",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.0017749712973593567,
+        "token_cost": 12,
+        "utility": 0.0001479142747799464,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_7937f58a82",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 6.666666666666667e-05,
+        "token_cost": 2,
+        "utility": 3.3333333333333335e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_ab4837de59",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.0002666666666666667,
+        "token_cost": 58,
+        "utility": 4.5977011494252875e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_e0a16b8efc",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 6.666666666666667e-05,
+        "token_cost": 29,
+        "utility": 2.2988505747126437e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_0aa3a5cdd8",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00013333333333333334,
+        "token_cost": 60,
+        "utility": 2.2222222222222225e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_a09add7259",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.0002,
+        "token_cost": 93,
+        "utility": 2.1505376344086023e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_43f998ef6e",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.0002666666666666667,
+        "token_cost": 124,
+        "utility": 2.1505376344086023e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_22e226458e",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 6.666666666666667e-05,
+        "token_cost": 36,
+        "utility": 1.8518518518518519e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_a97db97417",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00022666666666666668,
+        "token_cost": 126,
+        "utility": 1.798941798941799e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_d94e7075fb",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.0002666666666666667,
+        "token_cost": 175,
+        "utility": 1.5238095238095238e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_a9ce3e06a3",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.0002,
+        "token_cost": 143,
+        "utility": 1.3986013986013987e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_8a2c9ac1ab",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00022666666666666668,
+        "token_cost": 173,
+        "utility": 1.3102119460500964e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_d5cd8be18f",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00022666666666666668,
+        "token_cost": 195,
+        "utility": 1.1623931623931625e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_62e3ebc643",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00013333333333333334,
+        "token_cost": 137,
+        "utility": 9.7323600973236e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_e1a87a8185",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00013333333333333334,
+        "token_cost": 145,
+        "utility": 9.195402298850575e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_eb6740a551",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00022666666666666668,
+        "token_cost": 265,
+        "utility": 8.553459119496856e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_0d5fde46a3",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.11447784294558487,
+        "token_cost": 82,
+        "utility": 0.0013960712554339618,
+        "selected": true,
+        "reason": "highest_expected_coverage_gain_per_token"
+      },
+      {
+        "passage_id": "passage_74a9810788",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.011147875816993464,
+        "token_cost": 50,
+        "utility": 0.00022295751633986927,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_68b337261b",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.019201797690014902,
+        "token_cost": 218,
+        "utility": 8.808164077988487e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_afb65604f9",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0145886396011396,
+        "token_cost": 179,
+        "utility": 8.150077989463463e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_14a8ca6c60",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.000739571373899732,
+        "token_cost": 12,
+        "utility": 6.163094782497766e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_a97db97417",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 5.555555555555555e-05,
+        "token_cost": 2,
+        "utility": 2.7777777777777776e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_22e226458e",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.00016666666666666666,
+        "token_cost": 36,
+        "utility": 4.6296296296296296e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_8a2c9ac1ab",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0001111111111111111,
+        "token_cost": 49,
+        "utility": 2.2675736961451247e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_ab4837de59",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0001111111111111111,
+        "token_cost": 58,
+        "utility": 1.9157088122605362e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_e0a16b8efc",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 5.555555555555555e-05,
+        "token_cost": 29,
+        "utility": 1.9157088122605362e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_0aa3a5cdd8",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0001111111111111111,
+        "token_cost": 60,
+        "utility": 1.8518518518518517e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_a09add7259",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.00016666666666666666,
+        "token_cost": 93,
+        "utility": 1.7921146953405017e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_43f998ef6e",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0002222222222222222,
+        "token_cost": 124,
+        "utility": 1.7921146953405017e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_a9ce3e06a3",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.00016666666666666666,
+        "token_cost": 143,
+        "utility": 1.1655011655011655e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_e1a87a8185",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.00016666666666666666,
+        "token_cost": 145,
+        "utility": 1.1494252873563219e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_7937f58a82",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.00014166666666666665,
+        "token_cost": 126,
+        "utility": 1.1243386243386242e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_d5cd8be18f",
+        "level": "section",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.00021111111111111108,
+        "token_cost": 205,
+        "utility": 1.029810298102981e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_eb6740a551",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0001111111111111111,
+        "token_cost": 141,
+        "utility": 7.880220646178092e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_d94e7075fb",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0001111111111111111,
+        "token_cost": 175,
+        "utility": 6.349206349206349e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_62e3ebc643",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.00014166666666666665,
+        "token_cost": 261,
+        "utility": 5.427841634738185e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_9bbb2d5c05",
+        "level": "section",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.00021111111111111108,
+        "token_cost": 84,
+        "utility": 2.5132275132275127e-06,
+        "selected": false,
+        "reason": "duplicate_requirement_span"
+      },
+      {
+        "passage_id": "passage_40fbf5bac8",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.03401069668458781,
+        "token_cost": 12,
+        "utility": 0.002834224723715651,
+        "selected": true,
+        "reason": "highest_expected_coverage_gain_per_token"
+      },
+      {
+        "passage_id": "passage_a97db97417",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0030965391621129326,
+        "token_cost": 2,
+        "utility": 0.0015482695810564663,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_43f998ef6e",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.10391077991016742,
+        "token_cost": 124,
+        "utility": 0.0008379901605658663,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_f25e55f881",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.09058585858585856,
+        "token_cost": 142,
+        "utility": 0.0006379285815905532,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_540e88304c",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.006257106887589343,
+        "token_cost": 11,
+        "utility": 0.0005688278988717584,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_6c9c7d1109",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.03604285375118707,
+        "token_cost": 71,
+        "utility": 0.000507645827481508,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_74a9810788",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.021351364189086487,
+        "token_cost": 50,
+        "utility": 0.00042702728378172974,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_c3291ce025",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.019333735909822864,
+        "token_cost": 80,
+        "utility": 0.0002416716988727858,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_e0a16b8efc",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0047314814814814815,
+        "token_cost": 29,
+        "utility": 0.000163154533844189,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_a9ce3e06a3",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.00325017338881776,
+        "token_cost": 143,
+        "utility": 2.272848523648783e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_bad0666ec9",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0001111111111111111,
+        "token_cost": 17,
+        "utility": 6.5359477124183e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_14a8ca6c60",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 5.555555555555555e-05,
+        "token_cost": 12,
+        "utility": 4.6296296296296296e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_22e226458e",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.00016666666666666666,
+        "token_cost": 36,
+        "utility": 4.6296296296296296e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_ab4837de59",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0001111111111111111,
+        "token_cost": 58,
+        "utility": 1.9157088122605362e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_a005370454",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0002777777777777778,
+        "token_cost": 194,
+        "utility": 1.43184421534937e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_5183861a8f",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.00014166666666666665,
+        "token_cost": 126,
+        "utility": 1.1243386243386242e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_c6e6064617",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.00014166666666666665,
+        "token_cost": 126,
+        "utility": 1.1243386243386242e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_b8e4b3ecb9",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.00014166666666666665,
+        "token_cost": 126,
+        "utility": 1.1243386243386242e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_7937f58a82",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.00014166666666666665,
+        "token_cost": 126,
+        "utility": 1.1243386243386242e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "evidence_1",
+        "requirement_id": "req_1_1",
+        "passage_id": "passage_0d5fde46a3",
+        "document_id": "doc_77da8b8038",
+        "title": "pioNER: Datasets and Baselines for Armenian Named Entity Recognition",
+        "section": "Experiments",
+        "text": "In this section we describe a number of experiments targeted to compare the performance of popular named entity recognition algorithms on our data. We trained and evaluated Stanford NER, spaCy 2.0, and a recurrent model similar to BIBREF13 , BIBREF14 that uses bidirectional LSTM cells for character-based feature extraction and CRF, described in Guillaume Genthial's Sequence Tagging with Tensorflow blog post BIBREF15 .",
+        "score": 0.515150293255132,
+        "read_level": "passage",
+        "token_cost": 82,
+        "supports": true,
+        "relation": "supports",
+        "char_start": 0,
+        "char_end": 421,
+        "citation_tokens": 82,
+        "source_metadata": {
+          "dataset": "qasper",
+          "paper_id": "1810.08699",
+          "source_path": "full_text.paragraphs[7][0]",
+          "source_type": "paragraph",
+          "source_char_start": 0,
+          "source_char_end": 421,
+          "section_index": 7,
+          "paragraph_index": 0
+        }
+      },
+      {
+        "id": "evidence_2",
+        "requirement_id": "req_1_2",
+        "passage_id": "passage_0d5fde46a3",
+        "document_id": "doc_77da8b8038",
+        "title": "pioNER: Datasets and Baselines for Armenian Named Entity Recognition",
+        "section": "Experiments",
+        "text": "In this section we describe a number of experiments targeted to compare the performance of popular named entity recognition algorithms on our data. We trained and evaluated Stanford NER, spaCy 2.0, and a recurrent model similar to BIBREF13 , BIBREF14 that uses bidirectional LSTM cells for character-based feature extraction and CRF, described in Guillaume Genthial's Sequence Tagging with Tensorflow blog post BIBREF15 .",
+        "score": 0.515150293255132,
+        "read_level": "passage",
+        "token_cost": 82,
+        "supports": false,
+        "relation": "insufficient",
+        "char_start": 0,
+        "char_end": 421,
+        "citation_tokens": 82,
+        "source_metadata": {
+          "dataset": "qasper",
+          "paper_id": "1810.08699",
+          "source_path": "full_text.paragraphs[7][0]",
+          "source_type": "paragraph",
+          "source_char_start": 0,
+          "source_char_end": 421,
+          "section_index": 7,
+          "paragraph_index": 0
+        }
+      },
+      {
+        "id": "evidence_3",
+        "requirement_id": "req_1_2",
+        "passage_id": "passage_40fbf5bac8",
+        "document_id": "doc_77da8b8038",
+        "title": "pioNER: Datasets and Baselines for Armenian Named Entity Recognition",
+        "section": "Figures and Tables",
+        "text": "TABLE III: Evaluation results for named entity recognition algorithms",
+        "score": 0.15304813508064516,
+        "read_level": "passage",
+        "token_cost": 12,
+        "supports": false,
+        "relation": "insufficient",
+        "char_start": 0,
+        "char_end": 69,
+        "citation_tokens": 12,
+        "source_metadata": {
+          "dataset": "qasper",
+          "paper_id": "1810.08699",
+          "source_path": "figures_and_tables[6]",
+          "source_type": "figure_table",
+          "source_char_start": 0,
+          "source_char_end": 69,
+          "float_index": 6,
+          "file": "5-TableIII-1.png"
+        }
+      }
+    ],
+    "claims": [
+      {
+        "id": "claim_1",
+        "text": "In the pioNER experiments, the evaluated NER models were Stanford NER, spaCy 2.0, and a recurrent model using bidirectional LSTM cells for character-based feature extraction and CRF.",
+        "evidence_ids": [
+          "evidence_1"
+        ],
+        "requirement_id": "req_1_1",
+        "confidence": 0.99
+      }
+    ],
+    "rounds": 2,
+    "tokens_used": 176,
+    "coverage": 0.5,
+    "stop_reason": "max_search_rounds_reached",
+    "provider": "openai",
+    "api_calls": [
+      {
+        "operation": "embed_corpus_cache_hit",
+        "embedding_model": "text-embedding-3-small",
+        "items": 60
+      },
+      {
+        "operation": "plan",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 226,
+        "output_tokens": 117,
+        "total_tokens": 343,
+        "cached_tokens": 0
+      },
+      {
+        "operation": "embed_query",
+        "model": "text-embedding-3-small",
+        "items": 1,
+        "embedding_model": "text-embedding-3-small",
+        "input_tokens": 6,
+        "total_tokens": 6
+      },
+      {
+        "operation": "rerank",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3618,
+        "output_tokens": 845,
+        "total_tokens": 4463,
+        "cached_tokens": 0
+      },
+      {
+        "operation": "assess_evidence",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 492,
+        "output_tokens": 132,
+        "total_tokens": 624,
+        "cached_tokens": 0
+      },
+      {
+        "operation": "embed_query",
+        "model": "text-embedding-3-small",
+        "items": 1,
+        "embedding_model": "text-embedding-3-small",
+        "input_tokens": 6,
+        "total_tokens": 6
+      },
+      {
+        "operation": "rerank",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 2822,
+        "output_tokens": 747,
+        "total_tokens": 3569,
+        "cached_tokens": 0
+      },
+      {
+        "operation": "assess_evidence",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 528,
+        "output_tokens": 201,
+        "total_tokens": 729,
+        "cached_tokens": 0
+      },
+      {
+        "operation": "synthesize",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 619,
+        "output_tokens": 153,
+        "total_tokens": 772,
+        "cached_tokens": 0
+      }
+    ],
+    "read_tokens": 176,
+    "citation_tokens": 176,
+    "api_input_tokens": 8317,
+    "api_output_tokens": 2195,
+    "api_total_tokens": 10512,
+    "estimated_api_cost_usd": null
+  }
+}

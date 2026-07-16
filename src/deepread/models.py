@@ -47,6 +47,7 @@ class Requirement:
     task_id: str
     description: str
     keywords: list[str]
+    routing_keywords: list[str] = field(default_factory=list)
 
 
 @dataclass(slots=True)
@@ -62,10 +63,12 @@ class SearchHit:
     document_id: str
     bm25_rank: int | None = None
     dense_rank: int | None = None
+    structure_rank: int | None = None
     lexical_score: float = 0.0
     dense_score: float = 0.0
     rrf_score: float = 0.0
     metadata_score: float = 0.0
+    structure_score: float = 0.0
     redundancy_penalty: float = 0.0
     final_score: float = 0.0
     retrievers: list[str] = field(default_factory=list)
@@ -89,6 +92,8 @@ class Evidence:
     char_end: int = 0
     citation_tokens: int = 0
     source_metadata: dict[str, Any] = field(default_factory=dict)
+    answer_value: bool | None = None
+    assessment_confidence: float = 0.0
 
 
 @dataclass(slots=True)
@@ -128,6 +133,7 @@ class QueryTrace:
     provider: str = "offline"
     api_calls: list[dict[str, Any]] = field(default_factory=list)
     read_tokens: int = 0
+    evidence_tokens: int = 0
     citation_tokens: int = 0
     api_input_tokens: int = 0
     api_output_tokens: int = 0

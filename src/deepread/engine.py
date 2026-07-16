@@ -10,6 +10,7 @@ from .corpus import load_corpus
 from .memory import EvidenceMemory
 from .models import Answer, CorpusBundle, Evidence, QueryTrace, ReadDecision, Requirement, SearchHit
 from .planner import RuleBasedPlanner
+from .planner import infer_answer_type
 from .reader import HierarchicalReader
 from .retrieval import HybridRetriever
 from .synthesis import ExtractiveSynthesizer
@@ -54,7 +55,11 @@ class EvidenceGraphEngine:
         else:
             self.planner = RuleBasedPlanner(self.settings.max_tasks)
             self.retriever = HybridRetriever(self.passages, self.settings)
-        self.reader = HierarchicalReader(self.documents, self.passages)
+        self.reader = HierarchicalReader(
+            self.documents,
+            self.passages,
+            self.settings.evidence_window_sentences,
+        )
         self.memory = EvidenceMemory(db_path)
         self.synthesizer = ExtractiveSynthesizer()
 
@@ -88,7 +93,7 @@ class EvidenceGraphEngine:
             source_metadata=dict(passage.metadata),
         )
         trace.evidence.append(evidence)
-        trace.citation_tokens += citation_tokens
+        trace.evidence_tokens += citation_tokens
         self.memory.add_evidence(evidence)
 
     def _read_flat(
@@ -157,6 +162,7 @@ class EvidenceGraphEngine:
         requirements = [requirement for task in trace.tasks for requirement in task.requirements]
         covered: set[str] = set()
         seen_reads: set[tuple[str, str]] = set()
+        previous_hit_ids: set[str] = set()
         query = question
 
         max_rounds = 1 if self.settings.supervisor_mode == "single_pass" else self.settings.max_search_rounds
@@ -169,11 +175,33 @@ class EvidenceGraphEngine:
             )
             hits = self.retriever.search(query, retrieval_k)
             self._capture_api_events(trace)
+            current_hit_ids = {hit.passage_id for hit in hits}
+            new_hit_count = len(current_hit_ids - previous_hit_ids)
+            overlap = (
+                len(current_hit_ids & previous_hit_ids) / max(1, len(current_hit_ids | previous_hit_ids))
+                if previous_hit_ids
+                else 0.0
+            )
+            trace.searches.append(
+                {
+                    "round": round_number,
+                    "query": query,
+                    "hit_count": len(hits),
+                    "new_hit_count": new_hit_count,
+                    "candidate_overlap": overlap,
+                }
+            )
+            if round_number > 1 and not current_hit_ids - previous_hit_ids:
+                trace.stop_reason = "no_new_retrieval_candidates"
+                break
+            previous_hit_ids = current_hit_ids
             if self.openai is not None and self.settings.enable_model_rerank:
                 hits = self.openai.rerank(query, requirements, hits, self.retriever.by_id)
                 self._capture_api_events(trace)
-            trace.searches.append({"round": round_number, "query": query, "hit_count": len(hits)})
             trace.ranking.extend(hits)
+            evidence_count_before = len(trace.evidence)
+            covered_before = set(covered)
+            supported_count_before = sum(item.supports for item in trace.evidence)
             if self.settings.reader_mode == "flat":
                 self._read_flat(trace, hits, requirements, covered, seen_reads)
             else:
@@ -206,29 +234,90 @@ class EvidenceGraphEngine:
                     if not options:
                         continue
                     options.sort(key=lambda option: option[1].utility, reverse=True)
-                    hit, decision, evidence_passage_id = options[0]
-                    for _, rejected, _ in options[1:]:
-                        rejected.selected = False
-                        rejected.reason = "lower_utility_than_selected"
+                    selected_options: list[tuple[Any, ReadDecision, str]] = []
+                    selected_passage_ids: set[str] = set()
+                    remaining = self.settings.max_evidence_tokens - trace.read_tokens
+                    for option in options:
+                        _, decision, evidence_passage_id = option
+                        if evidence_passage_id in selected_passage_ids:
+                            decision.selected = False
+                            decision.reason = "duplicate_requirement_span"
+                        elif len(selected_options) >= self.settings.evidence_candidates_per_requirement:
+                            decision.selected = False
+                            decision.reason = "lower_utility_than_selected"
+                        elif decision.token_cost > remaining:
+                            decision.selected = False
+                            decision.reason = "budget_exhausted"
+                        else:
+                            selected_options.append(option)
+                            selected_passage_ids.add(evidence_passage_id)
+                            remaining -= decision.token_cost
                     trace.reads.extend(option[1] for option in options)
-                    seen_reads.add((hit.passage_id, requirement.id))
-                    seen_reads.add((evidence_passage_id, requirement.id))
-                    trace.tokens_used += decision.token_cost
-                    trace.read_tokens += decision.token_cost
-                    self._add_evidence(trace, hit, decision, requirement)
-            if self.openai is not None and self.settings.enable_evidence_assessment and trace.evidence:
-                verdicts = self.openai.assess(requirements, trace.evidence)
+                    for hit, decision, evidence_passage_id in selected_options:
+                        seen_reads.add((hit.passage_id, requirement.id))
+                        seen_reads.add((evidence_passage_id, requirement.id))
+                        trace.tokens_used += decision.token_cost
+                        trace.read_tokens += decision.token_cost
+                        self._add_evidence(trace, hit, decision, requirement)
+            new_evidence = trace.evidence[evidence_count_before:]
+            if (
+                self.openai is not None
+                and self.settings.enable_evidence_assessment
+                and new_evidence
+            ):
+                verdicts = self.openai.assess(question, requirements, new_evidence)
                 self._capture_api_events(trace)
-                covered = set()
-                for evidence in trace.evidence:
+                for evidence in new_evidence:
                     verdict = verdicts.get(evidence.id)
                     verdict_matches = bool(verdict and verdict.requirement_id == evidence.requirement_id)
-                    evidence.supports = bool(verdict_matches and verdict.verdict == "supports")
                     evidence.relation = verdict.verdict if verdict_matches else "insufficient"
-                    if evidence.supports:
-                        covered.add(evidence.requirement_id)
-            else:
-                covered.update(evidence.requirement_id for evidence in trace.evidence if evidence.supports)
+                    evidence.answer_value = verdict.answer_value if verdict_matches else None
+                    evidence.assessment_confidence = (
+                        verdict.confidence if verdict_matches else 0.0
+                    )
+                    if infer_answer_type(question) == "boolean":
+                        evidence.supports = bool(
+                            verdict_matches
+                            and verdict.verdict in {"supports", "challenges"}
+                            and verdict.answer_value is not None
+                            and verdict.confidence >= self.settings.evidence_support_threshold
+                        )
+                    else:
+                        evidence.supports = bool(
+                            verdict_matches
+                            and verdict.verdict == "supports"
+                            and verdict.confidence >= self.settings.evidence_support_threshold
+                        )
+                if infer_answer_type(question) == "boolean":
+                    for requirement in requirements:
+                        partials = [
+                            evidence
+                            for evidence in trace.evidence
+                            if evidence.requirement_id == requirement.id
+                            and evidence.relation == "partial"
+                            and evidence.answer_value is not None
+                            and evidence.assessment_confidence
+                            >= self.settings.evidence_support_threshold
+                        ]
+                        for answer_value in (False, True):
+                            consistent = [
+                                evidence
+                                for evidence in partials
+                                if evidence.answer_value is answer_value
+                            ]
+                            detailed = [
+                                evidence
+                                for evidence in consistent
+                                if evidence.section.strip().lower()
+                                not in {"abstract", "introduction"}
+                            ]
+                            if len(consistent) >= 2 and detailed:
+                                for evidence in detailed:
+                                    evidence.supports = True
+                                    evidence.relation = "supports_aggregate"
+            covered = {
+                evidence.requirement_id for evidence in trace.evidence if evidence.supports
+            }
             trace.coverage = len(covered) / max(1, len(requirements))
             if trace.coverage >= self.settings.target_coverage:
                 trace.stop_reason = "target_coverage_reached"
@@ -236,8 +325,27 @@ class EvidenceGraphEngine:
             if trace.read_tokens >= self.settings.max_evidence_tokens:
                 trace.stop_reason = "evidence_token_budget_exhausted"
                 break
+            supported_count = sum(item.supports for item in trace.evidence)
+            if (
+                round_number > 1
+                and supported_count == supported_count_before
+                and covered == covered_before
+            ):
+                trace.stop_reason = "no_supported_evidence_progress"
+                break
+            if (
+                round_number < max_rounds
+                and len(trace.evidence) == evidence_count_before
+                and covered == covered_before
+            ):
+                trace.stop_reason = "no_evidence_progress"
+                break
             missing = [r for r in requirements if r.id not in covered]
-            query = " ".join(word for requirement in missing for word in requirement.keywords) or question
+            query = " ".join(
+                word
+                for requirement in missing
+                for word in (requirement.routing_keywords + requirement.keywords)
+            ) or question
         else:
             trace.stop_reason = (
                 "single_pass_complete"
@@ -249,11 +357,23 @@ class EvidenceGraphEngine:
             answer_text, claims = self.openai.synthesize(question, requirements, trace.evidence)
             self._capture_api_events(trace)
         else:
-            answer_text, claims = self.synthesizer.synthesize(requirements, trace.evidence)
+            answer_text, claims = self.synthesizer.synthesize(
+                question,
+                requirements,
+                trace.evidence,
+                self.settings.answer_policy,
+            )
         trace.claims = claims
         for claim in claims:
             self.memory.add_claim(claim)
-        answer = Answer(question, answer_text, trace.evidence, trace.coverage, trace.stop_reason, trace)
+        cited_evidence_ids = {
+            evidence_id for claim in claims for evidence_id in claim.evidence_ids
+        }
+        citations = [
+            evidence for evidence in trace.evidence if evidence.id in cited_evidence_ids
+        ]
+        trace.citation_tokens = sum(evidence.citation_tokens for evidence in citations)
+        answer = Answer(question, answer_text, citations, trace.coverage, trace.stop_reason, trace)
         if trace_path:
             target = Path(trace_path)
             target.parent.mkdir(parents=True, exist_ok=True)

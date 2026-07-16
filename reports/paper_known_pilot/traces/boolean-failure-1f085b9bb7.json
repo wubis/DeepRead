@@ -1,0 +1,1822 @@
+{
+  "question": "did they use a crowdsourcing platform for manual annotations?",
+  "text": "The supplied evidence does not name a crowdsourcing platform or service for the manual annotations. [2] [4]",
+  "citations": [
+    {
+      "id": "evidence_1",
+      "requirement_id": "req_1_1",
+      "passage_id": "passage_e1a87a8185",
+      "document_id": "doc_77da8b8038",
+      "title": "pioNER: Datasets and Baselines for Armenian Named Entity Recognition",
+      "section": "Test dataset",
+      "text": "The dataset provides annotations for 3 popular named entity classes: people (PER), organizations (ORG), and locations (LOC), and is released in CoNLL03 format with IOB tagging scheme. Tokens and sentences were segmented according to the UD standards for the Armenian language BIBREF11 .",
+      "score": 0.39747735507246384,
+      "read_level": "passage",
+      "token_cost": 145,
+      "supports": false,
+      "relation": "insufficient",
+      "char_start": 441,
+      "char_end": 728,
+      "citation_tokens": 55,
+      "source_metadata": {
+        "dataset": "qasper",
+        "paper_id": "1810.08699",
+        "source_path": "full_text.paragraphs[5][0]",
+        "source_type": "paragraph",
+        "source_char_start": 0,
+        "source_char_end": 728,
+        "section_index": 5,
+        "paragraph_index": 0
+      }
+    },
+    {
+      "id": "evidence_2",
+      "requirement_id": "req_1_2",
+      "passage_id": "passage_6c9c7d1109",
+      "document_id": "doc_77da8b8038",
+      "title": "pioNER: Datasets and Baselines for Armenian Named Entity Recognition",
+      "section": "Introduction",
+      "text": "We propose a gold-standard corpus with manual annotation of CoNLL named entity categories: person, location, and organization BIBREF8 BIBREF9 , hoping it will be used to evaluate future named entity recognition models.",
+      "score": 0.2700801809210527,
+      "read_level": "passage",
+      "token_cost": 71,
+      "supports": false,
+      "relation": "insufficient",
+      "char_start": 136,
+      "char_end": 355,
+      "citation_tokens": 41,
+      "source_metadata": {
+        "dataset": "qasper",
+        "paper_id": "1810.08699",
+        "source_path": "full_text.paragraphs[0][4]",
+        "source_type": "paragraph",
+        "source_char_start": 0,
+        "source_char_end": 355,
+        "section_index": 0,
+        "paragraph_index": 4
+      }
+    },
+    {
+      "id": "evidence_3",
+      "requirement_id": "req_1_1",
+      "passage_id": "passage_6c9c7d1109",
+      "document_id": "doc_77da8b8038",
+      "title": "pioNER: Datasets and Baselines for Armenian Named Entity Recognition",
+      "section": "Introduction",
+      "text": "We propose a gold-standard corpus with manual annotation of CoNLL named entity categories: person, location, and organization BIBREF8 BIBREF9 , hoping it will be used to evaluate future named entity recognition models.",
+      "score": 0.2927011922503726,
+      "read_level": "passage",
+      "token_cost": 71,
+      "supports": false,
+      "relation": "insufficient",
+      "char_start": 136,
+      "char_end": 355,
+      "citation_tokens": 41,
+      "source_metadata": {
+        "dataset": "qasper",
+        "paper_id": "1810.08699",
+        "source_path": "full_text.paragraphs[0][4]",
+        "source_type": "paragraph",
+        "source_char_start": 0,
+        "source_char_end": 355,
+        "section_index": 0,
+        "paragraph_index": 4
+      }
+    },
+    {
+      "id": "evidence_4",
+      "requirement_id": "req_1_2",
+      "passage_id": "passage_43f998ef6e",
+      "document_id": "doc_77da8b8038",
+      "title": "pioNER: Datasets and Baselines for Armenian Named Entity Recognition",
+      "section": "Abstract",
+      "text": "We present a 163000-token named entity corpus automatically generated and annotated from Wikipedia, and another 53400-token corpus of news sentences with manual annotation of people, organization and location named entities. The corpora were used to train and evaluate several popular named entity recognition models.",
+      "score": 0.11222855004988369,
+      "read_level": "passage",
+      "token_cost": 124,
+      "supports": false,
+      "relation": "insufficient",
+      "char_start": 178,
+      "char_end": 496,
+      "citation_tokens": 58,
+      "source_metadata": {
+        "dataset": "qasper",
+        "paper_id": "1810.08699",
+        "source_path": "abstract",
+        "source_type": "abstract",
+        "source_char_start": 0,
+        "source_char_end": 675
+      }
+    }
+  ],
+  "coverage": 0.0,
+  "stop_reason": "max_search_rounds_reached",
+  "trace": {
+    "question": "did they use a crowdsourcing platform for manual annotations?",
+    "tasks": [
+      {
+        "id": "task_1",
+        "question": "Determine whether the study used a crowdsourcing platform to obtain manual annotations.",
+        "requirements": [
+          {
+            "id": "req_1_1",
+            "task_id": "task_1",
+            "description": "Methods or data-annotation evidence stating whether annotations were performed manually and identifying who performed them.",
+            "keywords": [
+              "manual annotation",
+              "annotators",
+              "human annotation",
+              "labeling procedure"
+            ]
+          },
+          {
+            "id": "req_1_2",
+            "task_id": "task_1",
+            "description": "Evidence naming any crowdsourcing platform or service used for annotation (or indicating that annotators were recruited/managed without such a platform).",
+            "keywords": [
+              "crowdsourcing platform",
+              "Amazon Mechanical Turk",
+              "MTurk",
+              "CrowdFlower",
+              "Prolific",
+              "annotator recruitment"
+            ]
+          }
+        ]
+      }
+    ],
+    "searches": [
+      {
+        "round": 1,
+        "query": "did they use a crowdsourcing platform for manual annotations?",
+        "hit_count": 20
+      },
+      {
+        "round": 2,
+        "query": "manual annotation annotators human annotation labeling procedure crowdsourcing platform Amazon Mechanical Turk MTurk CrowdFlower Prolific annotator recruitment",
+        "hit_count": 20
+      }
+    ],
+    "ranking": [
+      {
+        "passage_id": "passage_e1a87a8185",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 9,
+        "dense_rank": 12,
+        "lexical_score": 2.44068910119569,
+        "dense_score": 0.36285813492091445,
+        "rrf_score": 0.014221014492753625,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.6000000000000001,
+        "final_score": 0.39747735507246384,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_6c9c7d1109",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 4,
+        "dense_rank": 16,
+        "lexical_score": 3.95426422207838,
+        "dense_score": 0.3483381290184322,
+        "rrf_score": 0.014514802631578949,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.5,
+        "final_score": 0.2700801809210527,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_43f998ef6e",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 6,
+        "dense_rank": 27,
+        "lexical_score": 3.166718085582338,
+        "dense_score": 0.33383352967901136,
+        "rrf_score": 0.013505747126436781,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.9,
+        "final_score": 0.12972701149425292,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_74a9810788",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 20,
+        "dense_rank": 2,
+        "lexical_score": 0.958278444128272,
+        "dense_score": 0.40449097412549767,
+        "rrf_score": 0.014133064516129033,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.7000000000000001,
+        "final_score": 0.10244657258064516,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_e3e8a5a281",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 1,
+        "dense_rank": 15,
+        "lexical_score": 5.493462735282638,
+        "dense_score": 0.3501204062859775,
+        "rrf_score": 0.015016393442622952,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.1,
+        "final_score": 0.08525573770491804,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_eb6740a551",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 10,
+        "dense_rank": 4,
+        "lexical_score": 2.034519110253814,
+        "dense_score": 0.391298693268982,
+        "rrf_score": 0.014888392857142857,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.30000000000000004,
+        "final_score": 0.0802109375,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_f97260751a",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 2,
+        "dense_rank": 3,
+        "lexical_score": 4.546678446397264,
+        "dense_score": 0.39400599119382884,
+        "rrf_score": 0.016013824884792627,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.0,
+        "final_score": 0.05560483870967742,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_0b906a46b2",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 5,
+        "dense_rank": 5,
+        "lexical_score": 3.500965080037189,
+        "dense_score": 0.3883230087807662,
+        "rrf_score": 0.015384615384615385,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.0,
+        "final_score": 0.055384615384615386,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_ffa626a9b0",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 13,
+        "dense_rank": 1,
+        "lexical_score": 1.3387988493885907,
+        "dense_score": 0.40605799491166444,
+        "rrf_score": 0.014911295755670335,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.2,
+        "final_score": -0.014781046485515384,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_a9ce3e06a3",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 8,
+        "dense_rank": 10,
+        "lexical_score": 2.7932878045531853,
+        "dense_score": 0.3656797389858808,
+        "rrf_score": 0.014516806722689075,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.4,
+        "final_score": -0.08491911764705881,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_7fd0674288",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 21,
+        "dense_rank": 7,
+        "lexical_score": 0.9442179795165145,
+        "dense_score": 0.37663502162062074,
+        "rrf_score": 0.013506541367237886,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 0.8,
+        "final_score": -0.19277271052146672,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_a09add7259",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 11,
+        "dense_rank": 28,
+        "lexical_score": 1.4028856786649369,
+        "dense_score": 0.3320770131219188,
+        "rrf_score": 0.012860115236875802,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 1.2000000000000002,
+        "final_score": -0.20299895966709353,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_348c89a1f0",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 24,
+        "dense_rank": 6,
+        "lexical_score": 0.8261594978115386,
+        "dense_score": 0.38572428032227024,
+        "rrf_score": 0.013365800865800866,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 1.0,
+        "final_score": -0.32782196969696964,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_18464d1569",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 22,
+        "dense_rank": 14,
+        "lexical_score": 0.9275091563063177,
+        "dense_score": 0.35439348929230075,
+        "rrf_score": 0.012788398154251814,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 1.3,
+        "final_score": -0.3355240606460118,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_2c227e30ac",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 7,
+        "dense_rank": 33,
+        "lexical_score": 2.820922009880547,
+        "dense_score": 0.32103205699121834,
+        "rrf_score": 0.013047664901299954,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 1.1,
+        "final_score": -0.36293331728454503,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_22e226458e",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 12,
+        "dense_rank": 40,
+        "lexical_score": 1.3439881085389271,
+        "dense_score": 0.3188145593260029,
+        "rrf_score": 0.01213888888888889,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 1.7000000000000002,
+        "final_score": -0.41075138888888896,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_a005370454",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 3,
+        "dense_rank": 56,
+        "lexical_score": 4.272967087322482,
+        "dense_score": 0.2972667242932978,
+        "rrf_score": 0.012609469074986317,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 1.4000000000000001,
+        "final_score": -0.4355866858237548,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_3f5487ae6d",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 19,
+        "dense_rank": 23,
+        "lexical_score": 1.015165547444959,
+        "dense_score": 0.33743947900830984,
+        "rrf_score": 0.012383712063443648,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 1.5,
+        "final_score": -0.5031657007777947,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_e0a16b8efc",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 18,
+        "dense_rank": 26,
+        "lexical_score": 1.0850453889378442,
+        "dense_score": 0.3358023497523989,
+        "rrf_score": 0.012283840190816936,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 1.6,
+        "final_score": -0.5382006559332141,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_62e3ebc643",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 26,
+        "dense_rank": 19,
+        "lexical_score": 0.6412591241107796,
+        "dense_score": 0.33965349277341367,
+        "rrf_score": 0.012091551368854873,
+        "metadata_score": 1.0,
+        "redundancy_penalty": 1.8,
+        "final_score": -0.6082679570209008,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_6c9c7d1109",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 1,
+        "dense_rank": 17,
+        "lexical_score": 7.109270022402847,
+        "dense_score": 0.3351051714425662,
+        "rrf_score": 0.014860549286778796,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.2,
+        "final_score": 0.2927011922503726,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_eb6740a551",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 6,
+        "dense_rank": 4,
+        "lexical_score": 3.173898191150283,
+        "dense_score": 0.3716379487496837,
+        "rrf_score": 0.015364583333333334,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.0,
+        "final_score": 0.16787760416666667,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_43f998ef6e",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 2,
+        "dense_rank": 37,
+        "lexical_score": 5.581211090923135,
+        "dense_score": 0.3171978192690365,
+        "rrf_score": 0.013510142999667442,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.9,
+        "final_score": 0.11222855004988369,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_0b906a46b2",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 5,
+        "dense_rank": 11,
+        "lexical_score": 3.8283030502336985,
+        "dense_score": 0.34971821208762693,
+        "rrf_score": 0.014799566630552548,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.4,
+        "final_score": 0.09267984832069337,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_7fd0674288",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 15,
+        "dense_rank": 10,
+        "lexical_score": 0.0,
+        "dense_score": 0.35205141434402215,
+        "rrf_score": 0.013761904761904763,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.8,
+        "final_score": 0.0823166666666667,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_ffa626a9b0",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 3,
+        "dense_rank": 6,
+        "lexical_score": 5.231287489978269,
+        "dense_score": 0.3669749510023808,
+        "rrf_score": 0.015548340548340549,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.0,
+        "final_score": 0.0704419191919192,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_f97260751a",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 10,
+        "dense_rank": 2,
+        "lexical_score": 0.0,
+        "dense_score": 0.37730266937001655,
+        "rrf_score": 0.015115207373271891,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.1,
+        "final_score": 0.06779032258064516,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_e3e8a5a281",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 7,
+        "dense_rank": 25,
+        "lexical_score": 2.1080605597284263,
+        "dense_score": 0.3267107279561383,
+        "rrf_score": 0.013503072870939423,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.0,
+        "final_score": -0.02027392449517118,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_e1a87a8185",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 27,
+        "dense_rank": 9,
+        "lexical_score": 0.0,
+        "dense_score": 0.3528423916338047,
+        "rrf_score": 0.012843578210894553,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.6,
+        "final_score": -0.03550474762618683,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_c54d0bff60",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 14,
+        "dense_rank": 1,
+        "lexical_score": 0.0,
+        "dense_score": 0.3791342013508764,
+        "rrf_score": 0.014809481612760302,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.30000000000000004,
+        "final_score": -0.0998166814355339,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_193fed1b21",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 4,
+        "dense_rank": 15,
+        "lexical_score": 3.850989041576742,
+        "dense_score": 0.34237181352183815,
+        "rrf_score": 0.01459375,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.5,
+        "final_score": -0.13739218749999998,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_e0cdb29950",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 24,
+        "dense_rank": 5,
+        "lexical_score": 0.0,
+        "dense_score": 0.3692423601890824,
+        "rrf_score": 0.013470695970695971,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.1,
+        "final_score": -0.15278525641025642,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_348c89a1f0",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 11,
+        "dense_rank": 7,
+        "lexical_score": 0.0,
+        "dense_score": 0.3668325142930557,
+        "rrf_score": 0.014462896783687198,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.6000000000000001,
+        "final_score": -0.1724379861257095,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_f25e55f881",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 9,
+        "dense_rank": 13,
+        "lexical_score": 0.0,
+        "dense_score": 0.3459768942220906,
+        "rrf_score": 0.01413539805439746,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.7000000000000001,
+        "final_score": -0.2075526106809609,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_18464d1569",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 21,
+        "dense_rank": 16,
+        "lexical_score": 0.0,
+        "dense_score": 0.3399425954048924,
+        "rrf_score": 0.012711176088369072,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.7000000000000002,
+        "final_score": -0.29805108836907074,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_89d3d46db9",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 25,
+        "dense_rank": 8,
+        "lexical_score": 0.0,
+        "dense_score": 0.355271207125102,
+        "rrf_score": 0.013088235294117647,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.2000000000000002,
+        "final_score": -0.3179191176470588,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_5183861a8f",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 8,
+        "dense_rank": 31,
+        "lexical_score": 0.0,
+        "dense_score": 0.32393945636775184,
+        "rrf_score": 0.013033290239172593,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.3,
+        "final_score": -0.4504383484162896,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_1913ed885d",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 20,
+        "dense_rank": 14,
+        "lexical_score": 0.0,
+        "dense_score": 0.34406515983628155,
+        "rrf_score": 0.012956081081081082,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.4000000000000001,
+        "final_score": -0.4854653716216216,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_8f58b426c1",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 23,
+        "dense_rank": 12,
+        "lexical_score": 0.0,
+        "dense_score": 0.3468631370808143,
+        "rrf_score": 0.012876506024096387,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.5,
+        "final_score": -0.5204932228915663,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_c3b76f9ffe",
+        "document_id": "doc_77da8b8038",
+        "bm25_rank": 16,
+        "dense_rank": 24,
+        "lexical_score": 0.0,
+        "dense_score": 0.32699986258241126,
+        "rrf_score": 0.012593984962406015,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.8,
+        "final_score": -0.6255921052631579,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      }
+    ],
+    "reads": [
+      {
+        "passage_id": "passage_e1a87a8185",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.07014306265984657,
+        "token_cost": 145,
+        "utility": 0.0004837452597230798,
+        "selected": true,
+        "reason": "highest_expected_coverage_gain_per_token"
+      },
+      {
+        "passage_id": "passage_6c9c7d1109",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.03177413893188855,
+        "token_cost": 71,
+        "utility": 0.0004475230835477261,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_74a9810788",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.012052537950664136,
+        "token_cost": 50,
+        "utility": 0.00024105075901328273,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_43f998ef6e",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.022893002028397575,
+        "token_cost": 124,
+        "utility": 0.00018462098409998044,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_0b906a46b2",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.006515837104072398,
+        "token_cost": 97,
+        "utility": 6.717357839249895e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_eb6740a551",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00943658088235294,
+        "token_cost": 141,
+        "utility": 6.692610554860241e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_e3e8a5a281",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.012788360655737706,
+        "token_cost": 254,
+        "utility": 5.0347876597392545e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_f97260751a",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.006541745730550284,
+        "token_cost": 159,
+        "utility": 4.1143054909121286e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_e0a16b8efc",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 5.882352941176471e-05,
+        "token_cost": 29,
+        "utility": 2.028397565922921e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_22e226458e",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 5.882352941176471e-05,
+        "token_cost": 36,
+        "utility": 1.6339869281045753e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_18464d1569",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 5.882352941176471e-05,
+        "token_cost": 50,
+        "utility": 1.1764705882352942e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_7fd0674288",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00015000000000000001,
+        "token_cost": 173,
+        "utility": 8.670520231213874e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_a9ce3e06a3",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00011764705882352942,
+        "token_cost": 143,
+        "utility": 8.227067050596463e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_348c89a1f0",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00015000000000000001,
+        "token_cost": 202,
+        "utility": 7.425742574257427e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_a09add7259",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00015000000000000001,
+        "token_cost": 217,
+        "utility": 6.912442396313364e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_3f5487ae6d",
+        "level": "section",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00011176470588235294,
+        "token_cost": 168,
+        "utility": 6.65266106442577e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_62e3ebc643",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00015000000000000001,
+        "token_cost": 261,
+        "utility": 5.747126436781609e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_ffa626a9b0",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00015000000000000001,
+        "token_cost": 312,
+        "utility": 4.807692307692308e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_a005370454",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00015000000000000001,
+        "token_cost": 318,
+        "utility": 4.716981132075472e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_2c227e30ac",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00015000000000000001,
+        "token_cost": 322,
+        "utility": 4.6583850931677024e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_6c9c7d1109",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.023485233123569798,
+        "token_cost": 71,
+        "utility": 0.0003307779313178845,
+        "selected": true,
+        "reason": "highest_expected_coverage_gain_per_token"
+      },
+      {
+        "passage_id": "passage_74a9810788",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.008908397615708274,
+        "token_cost": 50,
+        "utility": 0.00017816795231416548,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_e1a87a8185",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.04406814154064273,
+        "token_cost": 269,
+        "utility": 0.000163822087511683,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_43f998ef6e",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.016920914542728642,
+        "token_cost": 124,
+        "utility": 0.00013645898824781163,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_e3e8a5a281",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.007413542409123308,
+        "token_cost": 130,
+        "utility": 5.702724930094852e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_0b906a46b2",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0048160535117056855,
+        "token_cost": 97,
+        "utility": 4.96500362031514e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_eb6740a551",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.006974864130434782,
+        "token_cost": 141,
+        "utility": 4.946712149244526e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_f97260751a",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.006164884291725105,
+        "token_cost": 283,
+        "utility": 2.1784043433657614e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_e0a16b8efc",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 4.347826086956522e-05,
+        "token_cost": 29,
+        "utility": 1.4992503748125938e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_22e226458e",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 4.347826086956522e-05,
+        "token_cost": 36,
+        "utility": 1.2077294685990338e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_7fd0674288",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 4.347826086956522e-05,
+        "token_cost": 49,
+        "utility": 8.873114463176576e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_18464d1569",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 4.347826086956522e-05,
+        "token_cost": 50,
+        "utility": 8.695652173913044e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_348c89a1f0",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 4.347826086956522e-05,
+        "token_cost": 78,
+        "utility": 5.574136008918618e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_a09add7259",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0001108695652173913,
+        "token_cost": 217,
+        "utility": 5.109196553796834e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_3f5487ae6d",
+        "level": "section",
+        "requirement_id": "req_1_2",
+        "expected_gain": 8.260869565217392e-05,
+        "token_cost": 168,
+        "utility": 4.917184265010353e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_62e3ebc643",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0001108695652173913,
+        "token_cost": 261,
+        "utility": 4.247876061969015e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_a9ce3e06a3",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0001108695652173913,
+        "token_cost": 267,
+        "utility": 4.1524181729360034e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_ffa626a9b0",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0001108695652173913,
+        "token_cost": 312,
+        "utility": 3.5535117056856184e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_a005370454",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0001108695652173913,
+        "token_cost": 318,
+        "utility": 3.486464315012305e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_2c227e30ac",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0001108695652173913,
+        "token_cost": 322,
+        "utility": 3.4431541992978664e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_6c9c7d1109",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.034435434382396775,
+        "token_cost": 71,
+        "utility": 0.0004850061180619264,
+        "selected": true,
+        "reason": "highest_expected_coverage_gain_per_token"
+      },
+      {
+        "passage_id": "passage_43f998ef6e",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.01980503824409712,
+        "token_cost": 124,
+        "utility": 0.00015971805035562195,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_eb6740a551",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.019750306372549018,
+        "token_cost": 141,
+        "utility": 0.00014007309484077317,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_0b906a46b2",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.010903511567140397,
+        "token_cost": 97,
+        "utility": 0.00011240733574371543,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_7fd0674288",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.012347500000000006,
+        "token_cost": 173,
+        "utility": 7.137283236994223e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_f97260751a",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.007975332068311195,
+        "token_cost": 159,
+        "utility": 5.0159321184347136e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_ffa626a9b0",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.01056628787878788,
+        "token_cost": 312,
+        "utility": 3.386630730380731e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_193fed1b21",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00011764705882352942,
+        "token_cost": 95,
+        "utility": 1.238390092879257e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_5183861a8f",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00015000000000000001,
+        "token_cost": 126,
+        "utility": 1.1904761904761906e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_8f58b426c1",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00015000000000000001,
+        "token_cost": 127,
+        "utility": 1.1811023622047246e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_c3b76f9ffe",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00015000000000000001,
+        "token_cost": 127,
+        "utility": 1.1811023622047246e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_18464d1569",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 5.882352941176471e-05,
+        "token_cost": 50,
+        "utility": 1.1764705882352942e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_c54d0bff60",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00015000000000000001,
+        "token_cost": 130,
+        "utility": 1.153846153846154e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_1913ed885d",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00015000000000000001,
+        "token_cost": 131,
+        "utility": 1.1450381679389315e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_e0cdb29950",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00015000000000000001,
+        "token_cost": 153,
+        "utility": 9.803921568627453e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_348c89a1f0",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00015000000000000001,
+        "token_cost": 202,
+        "utility": 7.425742574257427e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_89d3d46db9",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00015000000000000001,
+        "token_cost": 226,
+        "utility": 6.637168141592921e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_e3e8a5a281",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00015000000000000001,
+        "token_cost": 254,
+        "utility": 5.905511811023623e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_f25e55f881",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00015000000000000001,
+        "token_cost": 266,
+        "utility": 5.639097744360903e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_43f998ef6e",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.014638506528245698,
+        "token_cost": 124,
+        "utility": 0.00011805247200198143,
+        "selected": true,
+        "reason": "highest_expected_coverage_gain_per_token"
+      },
+      {
+        "passage_id": "passage_eb6740a551",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.014598052536231884,
+        "token_cost": 141,
+        "utility": 0.00010353228749100627,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_0b906a46b2",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.008059117245277685,
+        "token_cost": 97,
+        "utility": 8.308368294100705e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_7fd0674288",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0035789855072463784,
+        "token_cost": 49,
+        "utility": 7.304052055604854e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_f97260751a",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.007515883590462832,
+        "token_cost": 283,
+        "utility": 2.655789254580506e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_ffa626a9b0",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.007809864953886692,
+        "token_cost": 312,
+        "utility": 2.5031618441944528e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_193fed1b21",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 8.695652173913044e-05,
+        "token_cost": 95,
+        "utility": 9.153318077803204e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_5183861a8f",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0001108695652173913,
+        "token_cost": 126,
+        "utility": 8.799171842650103e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_8f58b426c1",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0001108695652173913,
+        "token_cost": 127,
+        "utility": 8.729887024991441e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_c3b76f9ffe",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0001108695652173913,
+        "token_cost": 127,
+        "utility": 8.729887024991441e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_18464d1569",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 4.347826086956522e-05,
+        "token_cost": 50,
+        "utility": 8.695652173913044e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_c54d0bff60",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0001108695652173913,
+        "token_cost": 130,
+        "utility": 8.528428093645485e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_1913ed885d",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0001108695652173913,
+        "token_cost": 131,
+        "utility": 8.463325589113839e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_e0cdb29950",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0001108695652173913,
+        "token_cost": 153,
+        "utility": 7.246376811594202e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_e3e8a5a281",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 8.695652173913044e-05,
+        "token_cost": 130,
+        "utility": 6.688963210702341e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_348c89a1f0",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 4.347826086956522e-05,
+        "token_cost": 78,
+        "utility": 5.574136008918618e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_89d3d46db9",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0001108695652173913,
+        "token_cost": 226,
+        "utility": 4.905732974220853e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_f25e55f881",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0001108695652173913,
+        "token_cost": 266,
+        "utility": 4.168028767571101e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_e1a87a8185",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.0001108695652173913,
+        "token_cost": 269,
+        "utility": 4.121545175367706e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "evidence_1",
+        "requirement_id": "req_1_1",
+        "passage_id": "passage_e1a87a8185",
+        "document_id": "doc_77da8b8038",
+        "title": "pioNER: Datasets and Baselines for Armenian Named Entity Recognition",
+        "section": "Test dataset",
+        "text": "The dataset provides annotations for 3 popular named entity classes: people (PER), organizations (ORG), and locations (LOC), and is released in CoNLL03 format with IOB tagging scheme. Tokens and sentences were segmented according to the UD standards for the Armenian language BIBREF11 .",
+        "score": 0.39747735507246384,
+        "read_level": "passage",
+        "token_cost": 145,
+        "supports": false,
+        "relation": "insufficient",
+        "char_start": 441,
+        "char_end": 728,
+        "citation_tokens": 55,
+        "source_metadata": {
+          "dataset": "qasper",
+          "paper_id": "1810.08699",
+          "source_path": "full_text.paragraphs[5][0]",
+          "source_type": "paragraph",
+          "source_char_start": 0,
+          "source_char_end": 728,
+          "section_index": 5,
+          "paragraph_index": 0
+        }
+      },
+      {
+        "id": "evidence_2",
+        "requirement_id": "req_1_2",
+        "passage_id": "passage_6c9c7d1109",
+        "document_id": "doc_77da8b8038",
+        "title": "pioNER: Datasets and Baselines for Armenian Named Entity Recognition",
+        "section": "Introduction",
+        "text": "We propose a gold-standard corpus with manual annotation of CoNLL named entity categories: person, location, and organization BIBREF8 BIBREF9 , hoping it will be used to evaluate future named entity recognition models.",
+        "score": 0.2700801809210527,
+        "read_level": "passage",
+        "token_cost": 71,
+        "supports": false,
+        "relation": "insufficient",
+        "char_start": 136,
+        "char_end": 355,
+        "citation_tokens": 41,
+        "source_metadata": {
+          "dataset": "qasper",
+          "paper_id": "1810.08699",
+          "source_path": "full_text.paragraphs[0][4]",
+          "source_type": "paragraph",
+          "source_char_start": 0,
+          "source_char_end": 355,
+          "section_index": 0,
+          "paragraph_index": 4
+        }
+      },
+      {
+        "id": "evidence_3",
+        "requirement_id": "req_1_1",
+        "passage_id": "passage_6c9c7d1109",
+        "document_id": "doc_77da8b8038",
+        "title": "pioNER: Datasets and Baselines for Armenian Named Entity Recognition",
+        "section": "Introduction",
+        "text": "We propose a gold-standard corpus with manual annotation of CoNLL named entity categories: person, location, and organization BIBREF8 BIBREF9 , hoping it will be used to evaluate future named entity recognition models.",
+        "score": 0.2927011922503726,
+        "read_level": "passage",
+        "token_cost": 71,
+        "supports": false,
+        "relation": "insufficient",
+        "char_start": 136,
+        "char_end": 355,
+        "citation_tokens": 41,
+        "source_metadata": {
+          "dataset": "qasper",
+          "paper_id": "1810.08699",
+          "source_path": "full_text.paragraphs[0][4]",
+          "source_type": "paragraph",
+          "source_char_start": 0,
+          "source_char_end": 355,
+          "section_index": 0,
+          "paragraph_index": 4
+        }
+      },
+      {
+        "id": "evidence_4",
+        "requirement_id": "req_1_2",
+        "passage_id": "passage_43f998ef6e",
+        "document_id": "doc_77da8b8038",
+        "title": "pioNER: Datasets and Baselines for Armenian Named Entity Recognition",
+        "section": "Abstract",
+        "text": "We present a 163000-token named entity corpus automatically generated and annotated from Wikipedia, and another 53400-token corpus of news sentences with manual annotation of people, organization and location named entities. The corpora were used to train and evaluate several popular named entity recognition models.",
+        "score": 0.11222855004988369,
+        "read_level": "passage",
+        "token_cost": 124,
+        "supports": false,
+        "relation": "insufficient",
+        "char_start": 178,
+        "char_end": 496,
+        "citation_tokens": 58,
+        "source_metadata": {
+          "dataset": "qasper",
+          "paper_id": "1810.08699",
+          "source_path": "abstract",
+          "source_type": "abstract",
+          "source_char_start": 0,
+          "source_char_end": 675
+        }
+      }
+    ],
+    "claims": [
+      {
+        "id": "claim_1",
+        "text": "The supplied evidence does not name a crowdsourcing platform or service for the manual annotations.",
+        "evidence_ids": [
+          "evidence_2",
+          "evidence_4"
+        ],
+        "requirement_id": "req_1_2",
+        "confidence": 0.98
+      }
+    ],
+    "rounds": 2,
+    "tokens_used": 411,
+    "coverage": 0.0,
+    "stop_reason": "max_search_rounds_reached",
+    "provider": "openai",
+    "api_calls": [
+      {
+        "operation": "plan",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 231,
+        "output_tokens": 126,
+        "total_tokens": 357,
+        "cached_tokens": 0
+      },
+      {
+        "operation": "embed_query",
+        "model": "text-embedding-3-small",
+        "items": 1,
+        "embedding_model": "text-embedding-3-small",
+        "input_tokens": 11,
+        "total_tokens": 11
+      },
+      {
+        "operation": "rerank",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 4749,
+        "output_tokens": 763,
+        "total_tokens": 5512,
+        "cached_tokens": 0
+      },
+      {
+        "operation": "assess_evidence",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 415,
+        "output_tokens": 77,
+        "total_tokens": 492,
+        "cached_tokens": 0
+      },
+      {
+        "operation": "embed_query",
+        "model": "text-embedding-3-small",
+        "items": 1,
+        "embedding_model": "text-embedding-3-small",
+        "input_tokens": 26,
+        "total_tokens": 26
+      },
+      {
+        "operation": "rerank",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3540,
+        "output_tokens": 837,
+        "total_tokens": 4377,
+        "cached_tokens": 0
+      },
+      {
+        "operation": "assess_evidence",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 567,
+        "output_tokens": 213,
+        "total_tokens": 780,
+        "cached_tokens": 0
+      },
+      {
+        "operation": "synthesize",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 680,
+        "output_tokens": 127,
+        "total_tokens": 807,
+        "cached_tokens": 0
+      }
+    ],
+    "read_tokens": 411,
+    "citation_tokens": 195,
+    "api_input_tokens": 10219,
+    "api_output_tokens": 2143,
+    "api_total_tokens": 12362,
+    "estimated_api_cost_usd": null
+  }
+}

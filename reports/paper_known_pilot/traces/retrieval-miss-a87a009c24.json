@@ -1,0 +1,2368 @@
+{
+  "question": "What predictive model do they build?",
+  "text": "They build a classifier using linguistic feature sets to predict dogmatism in comments. [2]\n\nThe model\u2019s target is whether a comment/post is dogmatic (dogmatism in comments). [3]",
+  "citations": [
+    {
+      "id": "evidence_1",
+      "requirement_id": "req_1_1",
+      "passage_id": "passage_844eecd4f4",
+      "document_id": "doc_80edd78d30",
+      "title": "Identifying Dogmatism in Social Media: Signals and Models",
+      "section": "Predicting dogmatism",
+      "text": "A predictive model further validates our feature sets, and also allows us to analyze dogmatism in millions of other Reddit comments in a scalable way, with multiple uses in ongoing, downstream analyses.",
+      "score": 0.5256868059227922,
+      "read_level": "passage",
+      "token_cost": 72,
+      "supports": false,
+      "relation": "insufficient",
+      "char_start": 131,
+      "char_end": 334,
+      "citation_tokens": 42,
+      "source_metadata": {
+        "dataset": "qasper",
+        "paper_id": "1609.00425",
+        "source_path": "full_text.paragraphs[3][0]",
+        "source_type": "paragraph",
+        "source_char_start": 0,
+        "source_char_end": 334,
+        "section_index": 3,
+        "paragraph_index": 0
+      }
+    },
+    {
+      "id": "evidence_2",
+      "requirement_id": "req_1_2",
+      "passage_id": "passage_844eecd4f4",
+      "document_id": "doc_80edd78d30",
+      "title": "Identifying Dogmatism in Social Media: Signals and Models",
+      "section": "Predicting dogmatism",
+      "text": "We now show how we can use the linguistic feature sets we have described to build a classifier that predicts dogmatism in comments. A predictive model further validates our feature sets, and also allows us to analyze dogmatism in millions of other Reddit comments in a scalable way, with multiple uses in ongoing, downstream analyses.",
+      "score": 0.5256868059227922,
+      "read_level": "passage",
+      "token_cost": 72,
+      "supports": true,
+      "relation": "supports",
+      "char_start": 0,
+      "char_end": 334,
+      "citation_tokens": 72,
+      "source_metadata": {
+        "dataset": "qasper",
+        "paper_id": "1609.00425",
+        "source_path": "full_text.paragraphs[3][0]",
+        "source_type": "paragraph",
+        "source_char_start": 0,
+        "source_char_end": 334,
+        "section_index": 3,
+        "paragraph_index": 0
+      }
+    },
+    {
+      "id": "evidence_3",
+      "requirement_id": "req_2_1",
+      "passage_id": "passage_8dfb00bd6f",
+      "document_id": "doc_80edd78d30",
+      "title": "Identifying Dogmatism in Social Media: Signals and Models",
+      "section": "Introduction",
+      "text": "First, we validate psychological theories by examining the predictive power of feature sets that guide the model's predictions. For example, do linguistic signals of certainty help to predict a post is dogmatic, as theory would suggest?",
+      "score": 0.3628122847301952,
+      "read_level": "passage",
+      "token_cost": 76,
+      "supports": true,
+      "relation": "supports",
+      "char_start": 83,
+      "char_end": 320,
+      "citation_tokens": 49,
+      "source_metadata": {
+        "dataset": "qasper",
+        "paper_id": "1609.00425",
+        "source_path": "full_text.paragraphs[0][3]",
+        "source_type": "paragraph",
+        "source_char_start": 0,
+        "source_char_end": 373,
+        "section_index": 0,
+        "paragraph_index": 3
+      }
+    },
+    {
+      "id": "evidence_4",
+      "requirement_id": "req_2_2",
+      "passage_id": "passage_844eecd4f4",
+      "document_id": "doc_80edd78d30",
+      "title": "Identifying Dogmatism in Social Media: Signals and Models",
+      "section": "Predicting dogmatism",
+      "text": "A predictive model further validates our feature sets, and also allows us to analyze dogmatism in millions of other Reddit comments in a scalable way, with multiple uses in ongoing, downstream analyses.",
+      "score": 0.5256868059227922,
+      "read_level": "passage",
+      "token_cost": 72,
+      "supports": false,
+      "relation": "insufficient",
+      "char_start": 131,
+      "char_end": 334,
+      "citation_tokens": 42,
+      "source_metadata": {
+        "dataset": "qasper",
+        "paper_id": "1609.00425",
+        "source_path": "full_text.paragraphs[3][0]",
+        "source_type": "paragraph",
+        "source_char_start": 0,
+        "source_char_end": 334,
+        "section_index": 3,
+        "paragraph_index": 0
+      }
+    },
+    {
+      "id": "evidence_5",
+      "requirement_id": "req_1_1",
+      "passage_id": "passage_aa2fcb8d12",
+      "document_id": "doc_80edd78d30",
+      "title": "Identifying Dogmatism in Social Media: Signals and Models",
+      "section": "What user behaviors are predictive of dogmatism? (R3)",
+      "text": "We have shown dogmatism is captured by many linguistic features, but can we discover other high-level user behaviors that are similarly predictive?",
+      "score": 0.23287173202614378,
+      "read_level": "passage",
+      "token_cost": 29,
+      "supports": false,
+      "relation": "insufficient",
+      "char_start": 0,
+      "char_end": 147,
+      "citation_tokens": 29,
+      "source_metadata": {
+        "dataset": "qasper",
+        "paper_id": "1609.00425",
+        "source_path": "full_text.paragraphs[7][0]",
+        "source_type": "paragraph",
+        "source_char_start": 0,
+        "source_char_end": 147,
+        "section_index": 7,
+        "paragraph_index": 0
+      }
+    },
+    {
+      "id": "evidence_6",
+      "requirement_id": "req_2_2",
+      "passage_id": "passage_7d2eded654",
+      "document_id": "doc_80edd78d30",
+      "title": "Identifying Dogmatism in Social Media: Signals and Models",
+      "section": "Conclusion",
+      "text": "We have constructed the first corpus of social media posts annotated with dogmatism scores, allowing us to explore linguistic features of dogmatism and build a predictive model that analyzes new content. We apply this model to Reddit, where we discover behavioral predictors of dogmatism and topical patterns in the comments of dogmatic users.",
+      "score": 0.49284323770491806,
+      "read_level": "passage",
+      "token_cost": 69,
+      "supports": true,
+      "relation": "supports",
+      "char_start": 0,
+      "char_end": 343,
+      "citation_tokens": 69,
+      "source_metadata": {
+        "dataset": "qasper",
+        "paper_id": "1609.00425",
+        "source_path": "full_text.paragraphs[10][0]",
+        "source_type": "paragraph",
+        "source_char_start": 0,
+        "source_char_end": 343,
+        "section_index": 10,
+        "paragraph_index": 0
+      }
+    }
+  ],
+  "coverage": 0.75,
+  "stop_reason": "max_search_rounds_reached",
+  "trace": {
+    "question": "What predictive model do they build?",
+    "tasks": [
+      {
+        "id": "task_1",
+        "question": "Identify the document, study, or authors referred to by \u201cthey\u201d and locate the passage describing the predictive model.",
+        "requirements": [
+          {
+            "id": "req_1_1",
+            "task_id": "task_1",
+            "description": "The source title/authors or other identifying context establishing which work is being discussed.",
+            "keywords": [
+              "study",
+              "authors",
+              "paper",
+              "predictive model"
+            ]
+          },
+          {
+            "id": "req_1_2",
+            "task_id": "task_1",
+            "description": "A source passage that explicitly names or describes the predictive model the authors build, including its model class or algorithm.",
+            "keywords": [
+              "build",
+              "predictive model",
+              "model",
+              "algorithm"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "task_2",
+        "question": "Determine the model\u2019s prediction target and the inputs or features it uses.",
+        "requirements": [
+          {
+            "id": "req_2_1",
+            "task_id": "task_2",
+            "description": "Evidence stating the outcome, event, or quantity the model is intended to predict.",
+            "keywords": [
+              "predict",
+              "outcome",
+              "target",
+              "dependent variable"
+            ]
+          },
+          {
+            "id": "req_2_2",
+            "task_id": "task_2",
+            "description": "Evidence listing the principal predictors, data sources, or feature types used by the model.",
+            "keywords": [
+              "predictors",
+              "features",
+              "variables",
+              "data"
+            ]
+          }
+        ]
+      }
+    ],
+    "searches": [
+      {
+        "round": 1,
+        "query": "What predictive model do they build?",
+        "hit_count": 20
+      },
+      {
+        "round": 2,
+        "query": "study authors paper predictive model predictors features variables data",
+        "hit_count": 20
+      }
+    ],
+    "ranking": [
+      {
+        "passage_id": "passage_0c01335dc7",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 4,
+        "dense_rank": 9,
+        "lexical_score": 6.348386509092846,
+        "dense_score": 0.393036206016464,
+        "rrf_score": 0.015115489130434784,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.1,
+        "final_score": 0.5552904211956522,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_844eecd4f4",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 2,
+        "dense_rank": 1,
+        "lexical_score": 7.059497616480003,
+        "dense_score": 0.46013531411418096,
+        "rrf_score": 0.016248016922263353,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.0,
+        "final_score": 0.5256868059227922,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_8dfb00bd6f",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 5,
+        "dense_rank": 7,
+        "lexical_score": 6.339864914489034,
+        "dense_score": 0.40401354844714876,
+        "rrf_score": 0.015177956371986224,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.0,
+        "final_score": 0.3628122847301952,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_0e6159a232",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 7,
+        "dense_rank": 11,
+        "lexical_score": 4.880164964769427,
+        "dense_score": 0.38617760847186905,
+        "rrf_score": 0.014546983392894683,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.5,
+        "final_score": 0.35009144418751315,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_22a02579e1",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 14,
+        "dense_rank": 10,
+        "lexical_score": 3.457831516330346,
+        "dense_score": 0.3892857870331462,
+        "rrf_score": 0.013861003861003862,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.6000000000000001,
+        "final_score": 0.24985135135135128,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_7d2eded654",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 1,
+        "dense_rank": 14,
+        "lexical_score": 7.724881695395328,
+        "dense_score": 0.3718934393114577,
+        "rrf_score": 0.015097474523704033,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.2,
+        "final_score": 0.19528411608329643,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_ffbd9e787a",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 20,
+        "dense_rank": 5,
+        "lexical_score": 2.58539224995067,
+        "dense_score": 0.4116302340492344,
+        "rrf_score": 0.013798076923076923,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.7000000000000001,
+        "final_score": 0.18232932692307693,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_1bad6a3017",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 34,
+        "dense_rank": 2,
+        "lexical_score": 1.826274959508702,
+        "dense_score": 0.4549147684037502,
+        "rrf_score": 0.013109128345916267,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.0,
+        "final_score": 0.10958819492107069,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_6c1694999d",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 15,
+        "dense_rank": 17,
+        "lexical_score": 3.192980859717015,
+        "dense_score": 0.3548362041364401,
+        "rrf_score": 0.013177489177489178,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.8,
+        "final_score": 0.04961212121212122,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_aa2fcb8d12",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 6,
+        "dense_rank": 8,
+        "lexical_score": 5.396650088765488,
+        "dense_score": 0.40340521043516564,
+        "rrf_score": 0.014950980392156862,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.30000000000000004,
+        "final_score": 0.030232843137254897,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_8d9d3a02d6",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 3,
+        "dense_rank": 13,
+        "lexical_score": 6.475331023585738,
+        "dense_score": 0.37351142919080293,
+        "rrf_score": 0.014894542291802565,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.4,
+        "final_score": -0.10228691019786912,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_6a2db54ac0",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 8,
+        "dense_rank": 32,
+        "lexical_score": 4.616870075552036,
+        "dense_score": 0.3137163487035381,
+        "rrf_score": 0.012979539641943736,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.1,
+        "final_score": -0.21795716112531974,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_084af1e5bb",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 13,
+        "dense_rank": 20,
+        "lexical_score": 3.5315516399094182,
+        "dense_score": 0.34192083614079516,
+        "rrf_score": 0.013159246575342466,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.9,
+        "final_score": -0.27789426369863013,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_1a8392111a",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 9,
+        "dense_rank": 36,
+        "lexical_score": 4.287768553031087,
+        "dense_score": 0.31097957406252613,
+        "rrf_score": 0.012658514492753625,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.2000000000000002,
+        "final_score": -0.35056951992753627,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_51f2a39554",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 31,
+        "dense_rank": 21,
+        "lexical_score": 1.929858179163172,
+        "dense_score": 0.33995780352334176,
+        "rrf_score": 0.0115995115995116,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.5,
+        "final_score": -0.358440170940171,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_19962376c9",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 11,
+        "dense_rank": 39,
+        "lexical_score": 3.7273721763324117,
+        "dense_score": 0.3006432293616943,
+        "rrf_score": 0.012291933418693984,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.3,
+        "final_score": -0.3856978233034571,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_26ccfed59b",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 10,
+        "dense_rank": 61,
+        "lexical_score": 3.7297767581238688,
+        "dense_score": 0.26184905324705976,
+        "rrf_score": 0.011576151121605668,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.7000000000000002,
+        "final_score": -0.39594834710743804,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_4b522e22a0",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 17,
+        "dense_rank": 30,
+        "lexical_score": 3.0328605776391386,
+        "dense_score": 0.3158692229161061,
+        "rrf_score": 0.012142857142857143,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.4000000000000001,
+        "final_score": -0.48574999999999996,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_485d2a35b6",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 37,
+        "dense_rank": 16,
+        "lexical_score": 1.772781977582818,
+        "dense_score": 0.35741241994626244,
+        "rrf_score": 0.011591155724362454,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.6,
+        "final_score": -0.49094309549647314,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_45c2b5052f",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 18,
+        "dense_rank": 41,
+        "lexical_score": 3.0234090921856005,
+        "dense_score": 0.28825672600571733,
+        "rrf_score": 0.011506727595836508,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.8,
+        "final_score": -0.6259726453414572,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_0c01335dc7",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 2,
+        "dense_rank": 11,
+        "lexical_score": 6.077122317494759,
+        "dense_score": 0.3524237824086383,
+        "rrf_score": 0.015208995910949569,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.1,
+        "final_score": 0.6073231485688324,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_7d2eded654",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 1,
+        "dense_rank": 12,
+        "lexical_score": 10.140299086980333,
+        "dense_score": 0.3453182051255541,
+        "rrf_score": 0.015266393442622952,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.0,
+        "final_score": 0.49284323770491806,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_894a4b3fbb",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 19,
+        "dense_rank": 4,
+        "lexical_score": 3.084109957622428,
+        "dense_score": 0.4022680020161756,
+        "rrf_score": 0.013993275316455698,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.8,
+        "final_score": 0.3618976463607595,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_844eecd4f4",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 12,
+        "dense_rank": 1,
+        "lexical_score": 3.4837764563872815,
+        "dense_score": 0.4140254889094269,
+        "rrf_score": 0.015015938069216759,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.4,
+        "final_score": 0.3527555783242259,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_ffbd9e787a",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 7,
+        "dense_rank": 5,
+        "lexical_score": 4.279240819548066,
+        "dense_score": 0.3855974688120162,
+        "rrf_score": 0.015132032146957523,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.2,
+        "final_score": 0.32529621125143515,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_0e6159a232",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 6,
+        "dense_rank": 14,
+        "lexical_score": 4.880164964769427,
+        "dense_score": 0.34014038495472076,
+        "rrf_score": 0.014414414414414415,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.7000000000000001,
+        "final_score": 0.312545045045045,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_6a2db54ac0",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 4,
+        "dense_rank": 10,
+        "lexical_score": 5.289855633646781,
+        "dense_score": 0.35394514451102416,
+        "rrf_score": 0.01502232142857143,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.30000000000000004,
+        "final_score": 0.2577578125,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_8dfb00bd6f",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 8,
+        "dense_rank": 7,
+        "lexical_score": 4.2595576430378586,
+        "dense_score": 0.367449100133705,
+        "rrf_score": 0.014804653204565409,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.5,
+        "final_score": 0.25268162862159793,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_aa2fcb8d12",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 3,
+        "dense_rank": 8,
+        "lexical_score": 5.302349526113437,
+        "dense_score": 0.36222844980964014,
+        "rrf_score": 0.01534780578898226,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.0,
+        "final_score": 0.23287173202614378,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_6c1694999d",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 5,
+        "dense_rank": 13,
+        "lexical_score": 4.88682942931441,
+        "dense_score": 0.34230784200560677,
+        "rrf_score": 0.0146259220231823,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.6000000000000001,
+        "final_score": 0.12011907270811378,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_1bad6a3017",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 26,
+        "dense_rank": 3,
+        "lexical_score": 1.826274959508702,
+        "dense_score": 0.40949777471304255,
+        "rrf_score": 0.013538205980066446,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.0,
+        "final_score": 0.10973837209302323,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_22a02579e1",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 13,
+        "dense_rank": 17,
+        "lexical_score": 3.457831516330346,
+        "dense_score": 0.3234091235015462,
+        "rrf_score": 0.01337840241949831,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.1,
+        "final_score": 0.10718244084682443,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_8d72e3813a",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 22,
+        "dense_rank": 2,
+        "lexical_score": 2.2766135300758967,
+        "dense_score": 0.41208577634872545,
+        "rrf_score": 0.013965381589299764,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.9,
+        "final_score": -0.01761211644374505,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_81d7e3d05b",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 30,
+        "dense_rank": 9,
+        "lexical_score": 1.7523572338324365,
+        "dense_score": 0.3616192370503338,
+        "rrf_score": 0.012632850241545895,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.7000000000000002,
+        "final_score": -0.12257850241545898,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_8bd1bfcd28",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 18,
+        "dense_rank": 22,
+        "lexical_score": 3.139448581803289,
+        "dense_score": 0.3009298409037141,
+        "rrf_score": 0.012539086929330832,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.8,
+        "final_score": -0.1836113195747341,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_7a32b1c794",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 9,
+        "dense_rank": 29,
+        "lexical_score": 4.204669897713833,
+        "dense_score": 0.2889089936510908,
+        "rrf_score": 0.013027194268034524,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.4000000000000001,
+        "final_score": -0.25794048200618797,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_8d9d3a02d6",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 15,
+        "dense_rank": 19,
+        "lexical_score": 3.307870008111696,
+        "dense_score": 0.3102697879621524,
+        "rrf_score": 0.013029535864978903,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.3,
+        "final_score": -0.28793966244725744,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_c51a561e9a",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 11,
+        "dense_rank": 20,
+        "lexical_score": 3.734438205106014,
+        "dense_score": 0.3079029480090376,
+        "rrf_score": 0.013371478873239438,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.2000000000000002,
+        "final_score": -0.31781998239436615,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_abe5d80d96",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 10,
+        "dense_rank": 31,
+        "lexical_score": 3.966725193015419,
+        "dense_score": 0.284045793826792,
+        "rrf_score": 0.012802197802197803,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.5,
+        "final_score": -0.3255192307692308,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_3d0b1f8001",
+        "document_id": "doc_80edd78d30",
+        "bm25_rank": 20,
+        "dense_rank": 16,
+        "lexical_score": 3.052431846341575,
+        "dense_score": 0.32416113261690416,
+        "rrf_score": 0.012796052631578948,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.6,
+        "final_score": -0.3280213815789474,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      }
+    ],
+    "reads": [
+      {
+        "passage_id": "passage_844eecd4f4",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.11264717269774117,
+        "token_cost": 72,
+        "utility": 0.0015645440652464052,
+        "selected": true,
+        "reason": "highest_expected_coverage_gain_per_token"
+      },
+      {
+        "passage_id": "passage_8dfb00bd6f",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.05183032639002789,
+        "token_cost": 76,
+        "utility": 0.0006819779788161564,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_22a02579e1",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.05353957528957527,
+        "token_cost": 115,
+        "utility": 0.00046556152425717627,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_0e6159a232",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.07501959518303852,
+        "token_cost": 172,
+        "utility": 0.0004361604371106891,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_7d2eded654",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.027897730869042348,
+        "token_cost": 69,
+        "utility": 0.0004043149401310485,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_0c01335dc7",
+        "level": "section",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.11304126431482919,
+        "token_cost": 289,
+        "utility": 0.0003911462433039072,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_aa2fcb8d12",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.004318977591036413,
+        "token_cost": 29,
+        "utility": 0.00014893026175987633,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_ffbd9e787a",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.013023523351648351,
+        "token_cost": 91,
+        "utility": 0.00014311564122690496,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_6c1694999d",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.007087445887445888,
+        "token_cost": 93,
+        "utility": 7.620909556393428e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_1bad6a3017",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.007827728208647905,
+        "token_cost": 103,
+        "utility": 7.599736124900879e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_8d9d3a02d6",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 7.142857142857142e-05,
+        "token_cost": 11,
+        "utility": 6.493506493506493e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_485d2a35b6",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00014285714285714284,
+        "token_cost": 37,
+        "utility": 3.86100386100386e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_1a8392111a",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00021428571428571427,
+        "token_cost": 60,
+        "utility": 3.5714285714285714e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_6a2db54ac0",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 7.142857142857142e-05,
+        "token_cost": 69,
+        "utility": 1.0351966873706002e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_084af1e5bb",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00018214285714285712,
+        "token_cost": 180,
+        "utility": 1.0119047619047619e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_45c2b5052f",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00018214285714285712,
+        "token_cost": 180,
+        "utility": 1.0119047619047619e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_26ccfed59b",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 7.142857142857142e-05,
+        "token_cost": 72,
+        "utility": 9.92063492063492e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_4b522e22a0",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00018214285714285712,
+        "token_cost": 223,
+        "utility": 8.167841127482382e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_19962376c9",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00018214285714285712,
+        "token_cost": 252,
+        "utility": 7.227891156462584e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_51f2a39554",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00018214285714285712,
+        "token_cost": 392,
+        "utility": 4.646501457725947e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_844eecd4f4",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.12131233982833665,
+        "token_cost": 72,
+        "utility": 0.001684893608726898,
+        "selected": true,
+        "reason": "highest_expected_coverage_gain_per_token"
+      },
+      {
+        "passage_id": "passage_8dfb00bd6f",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.05581727457387619,
+        "token_cost": 76,
+        "utility": 0.0007344378233404762,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_7d2eded654",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.04506556524999149,
+        "token_cost": 69,
+        "utility": 0.0006531241340578477,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_0c01335dc7",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.08542929556856188,
+        "token_cost": 250,
+        "utility": 0.0003417171822742475,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_22a02579e1",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.03843866943866943,
+        "token_cost": 115,
+        "utility": 0.0003342492994666907,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_0e6159a232",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.05386022218269433,
+        "token_cost": 172,
+        "utility": 0.0003131408266435717,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_ffbd9e787a",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.014025332840236687,
+        "token_cost": 91,
+        "utility": 0.00015412453670589766,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_6c1694999d",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.007632634032634034,
+        "token_cost": 93,
+        "utility": 8.207133368423692e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_1bad6a3017",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.00842986114777467,
+        "token_cost": 103,
+        "utility": 8.184331211431717e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_aa2fcb8d12",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.002325603318250377,
+        "token_cost": 29,
+        "utility": 8.019321787070265e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_8d9d3a02d6",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 7.692307692307693e-05,
+        "token_cost": 11,
+        "utility": 6.993006993006993e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_485d2a35b6",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 7.692307692307693e-05,
+        "token_cost": 37,
+        "utility": 2.079002079002079e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_1a8392111a",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 7.692307692307693e-05,
+        "token_cost": 60,
+        "utility": 1.2820512820512822e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_6a2db54ac0",
+        "level": "passage",
+        "requirement_id": "req_1_2",
+        "expected_gain": 7.692307692307693e-05,
+        "token_cost": 69,
+        "utility": 1.1148272017837236e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_084af1e5bb",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.00013076923076923077,
+        "token_cost": 180,
+        "utility": 7.264957264957265e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_45c2b5052f",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.00013076923076923077,
+        "token_cost": 180,
+        "utility": 7.264957264957265e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_4b522e22a0",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.00013076923076923077,
+        "token_cost": 223,
+        "utility": 5.864091065884788e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_26ccfed59b",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.00013076923076923077,
+        "token_cost": 244,
+        "utility": 5.359394703656999e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_19962376c9",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.00013076923076923077,
+        "token_cost": 252,
+        "utility": 5.18925518925519e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_51f2a39554",
+        "level": "summary",
+        "requirement_id": "req_1_2",
+        "expected_gain": 0.00013076923076923077,
+        "token_cost": 392,
+        "utility": 3.335949764521193e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_8dfb00bd6f",
+        "level": "passage",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.06596586995094458,
+        "token_cost": 76,
+        "utility": 0.0008679719730387446,
+        "selected": true,
+        "reason": "highest_expected_coverage_gain_per_token"
+      },
+      {
+        "passage_id": "passage_844eecd4f4",
+        "level": "passage",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.04778970962934474,
+        "token_cost": 72,
+        "utility": 0.0006637459670742325,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_0c01335dc7",
+        "level": "passage",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.10096189476284585,
+        "token_cost": 250,
+        "utility": 0.00040384757905138343,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_0e6159a232",
+        "level": "passage",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.06365298985227512,
+        "token_cost": 172,
+        "utility": 0.0003700755223969484,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_7d2eded654",
+        "level": "passage",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.017753101462117858,
+        "token_cost": 69,
+        "utility": 0.00025729132553793996,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_22a02579e1",
+        "level": "passage",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.02271375921375921,
+        "token_cost": 115,
+        "utility": 0.00019751094968486268,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_1bad6a3017",
+        "level": "passage",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.01992512634928558,
+        "token_cost": 103,
+        "utility": 0.0001934478286338406,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_ffbd9e787a",
+        "level": "summary",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.028178168706293708,
+        "token_cost": 263,
+        "utility": 0.00010714132587944376,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_6c1694999d",
+        "level": "passage",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.00902038567493113,
+        "token_cost": 93,
+        "utility": 9.699339435409818e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_aa2fcb8d12",
+        "level": "summary",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.004672348484848484,
+        "token_cost": 201,
+        "utility": 2.3245514849992458e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_485d2a35b6",
+        "level": "passage",
+        "requirement_id": "req_2_1",
+        "expected_gain": 9.090909090909092e-05,
+        "token_cost": 37,
+        "utility": 2.457002457002457e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_4b522e22a0",
+        "level": "passage",
+        "requirement_id": "req_2_1",
+        "expected_gain": 9.090909090909092e-05,
+        "token_cost": 51,
+        "utility": 1.7825311942959003e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_1a8392111a",
+        "level": "passage",
+        "requirement_id": "req_2_1",
+        "expected_gain": 9.090909090909092e-05,
+        "token_cost": 60,
+        "utility": 1.5151515151515152e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_084af1e5bb",
+        "level": "summary",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.00015454545454545454,
+        "token_cost": 180,
+        "utility": 8.585858585858586e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_45c2b5052f",
+        "level": "summary",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.00015454545454545454,
+        "token_cost": 180,
+        "utility": 8.585858585858586e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_8d9d3a02d6",
+        "level": "summary",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.00015454545454545454,
+        "token_cost": 183,
+        "utility": 8.445106805762543e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_6a2db54ac0",
+        "level": "summary",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.00015454545454545454,
+        "token_cost": 241,
+        "utility": 6.412674462466994e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_26ccfed59b",
+        "level": "summary",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.00015454545454545454,
+        "token_cost": 244,
+        "utility": 6.333830104321908e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_19962376c9",
+        "level": "summary",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.00015454545454545454,
+        "token_cost": 252,
+        "utility": 6.132756132756133e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_51f2a39554",
+        "level": "summary",
+        "requirement_id": "req_2_1",
+        "expected_gain": 0.00015454545454545454,
+        "token_cost": 392,
+        "utility": 3.9424860853432284e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_844eecd4f4",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.08761446765379868,
+        "token_cost": 72,
+        "utility": 0.0012168676063027595,
+        "selected": true,
+        "reason": "highest_expected_coverage_gain_per_token"
+      },
+      {
+        "passage_id": "passage_8dfb00bd6f",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.0604687141216992,
+        "token_cost": 76,
+        "utility": 0.0007956409752855158,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_7d2eded654",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.04882102902082411,
+        "token_cost": 69,
+        "utility": 0.0007075511452293349,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_0c01335dc7",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.13882260529891305,
+        "token_cost": 250,
+        "utility": 0.0005552904211956522,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_0e6159a232",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.08752286104687829,
+        "token_cost": 172,
+        "utility": 0.000508853843295804,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_22a02579e1",
+        "level": "summary",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.053093412162162144,
+        "token_cost": 287,
+        "utility": 0.0001849944674639796,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_1bad6a3017",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.018264699153511782,
+        "token_cost": 103,
+        "utility": 0.0001773271762476872,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_ffbd9e787a",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.015194110576923077,
+        "token_cost": 91,
+        "utility": 0.0001669682480980558,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_6c1694999d",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.012403030303030305,
+        "token_cost": 93,
+        "utility": 0.000133365917236885,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_aa2fcb8d12",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.0025194035947712413,
+        "token_cost": 29,
+        "utility": 8.687598602659453e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_6a2db54ac0",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.00016666666666666666,
+        "token_cost": 69,
+        "utility": 2.4154589371980677e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_485d2a35b6",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 8.333333333333333e-05,
+        "token_cost": 37,
+        "utility": 2.2522522522522524e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_1a8392111a",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 8.333333333333333e-05,
+        "token_cost": 60,
+        "utility": 1.3888888888888887e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_084af1e5bb",
+        "level": "summary",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.0002125,
+        "token_cost": 180,
+        "utility": 1.1805555555555556e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_45c2b5052f",
+        "level": "summary",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.0002125,
+        "token_cost": 180,
+        "utility": 1.1805555555555556e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_8d9d3a02d6",
+        "level": "summary",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.0002125,
+        "token_cost": 183,
+        "utility": 1.1612021857923498e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_26ccfed59b",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 8.333333333333333e-05,
+        "token_cost": 72,
+        "utility": 1.1574074074074074e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_4b522e22a0",
+        "level": "summary",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.0002125,
+        "token_cost": 223,
+        "utility": 9.52914798206278e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_19962376c9",
+        "level": "summary",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.0002125,
+        "token_cost": 252,
+        "utility": 8.432539682539682e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_51f2a39554",
+        "level": "summary",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.0002125,
+        "token_cost": 392,
+        "utility": 5.420918367346938e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_aa2fcb8d12",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.03326739028944911,
+        "token_cost": 29,
+        "utility": 0.0011471513892913486,
+        "selected": true,
+        "reason": "highest_expected_coverage_gain_per_token"
+      },
+      {
+        "passage_id": "passage_7d2eded654",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.07040617681498829,
+        "token_cost": 69,
+        "utility": 0.001020379374130265,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_8dfb00bd6f",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.03609737551737113,
+        "token_cost": 76,
+        "utility": 0.0004749654673338307,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_0c01335dc7",
+        "level": "section",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.12363364095865514,
+        "token_cost": 289,
+        "utility": 0.00042779806560088287,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_0e6159a232",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.06697393822393821,
+        "token_cost": 172,
+        "utility": 0.00038938336176708264,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_6a2db54ac0",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.01841127232142857,
+        "token_cost": 69,
+        "utility": 0.0002668300336438923,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_ffbd9e787a",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.023235443660816795,
+        "token_cost": 91,
+        "utility": 0.00025533454572326147,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_894a4b3fbb",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.06591707130142405,
+        "token_cost": 273,
+        "utility": 0.00024145447363158992,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_22a02579e1",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.022967665895748092,
+        "token_cost": 115,
+        "utility": 0.00019971883387607037,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_6c1694999d",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.01715986752973054,
+        "token_cost": 93,
+        "utility": 0.00018451470462075848,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_1bad6a3017",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.007838455149501659,
+        "token_cost": 103,
+        "utility": 7.610150630584135e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_8d9d3a02d6",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 7.142857142857142e-05,
+        "token_cost": 11,
+        "utility": 6.493506493506493e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_7a32b1c794",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.0002857142857142857,
+        "token_cost": 115,
+        "utility": 2.4844720496894406e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_c51a561e9a",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00014285714285714284,
+        "token_cost": 63,
+        "utility": 2.2675736961451243e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_3d0b1f8001",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00014285714285714284,
+        "token_cost": 98,
+        "utility": 1.4577259475218657e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_8bd1bfcd28",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00014285714285714284,
+        "token_cost": 153,
+        "utility": 9.337068160597571e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_8d72e3813a",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00018214285714285712,
+        "token_cost": 204,
+        "utility": 8.928571428571427e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_abe5d80d96",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00018214285714285712,
+        "token_cost": 206,
+        "utility": 8.841886269070734e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_81d7e3d05b",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00018214285714285712,
+        "token_cost": 254,
+        "utility": 7.17097862767154e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_7d2eded654",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.12321080942622951,
+        "token_cost": 69,
+        "utility": 0.001785663904727964,
+        "selected": true,
+        "reason": "highest_expected_coverage_gain_per_token"
+      },
+      {
+        "passage_id": "passage_aa2fcb8d12",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.019405977668845314,
+        "token_cost": 29,
+        "utility": 0.0006691716437532867,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_6a2db54ac0",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.04295963541666667,
+        "token_cost": 69,
+        "utility": 0.0006226034118357489,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_0c01335dc7",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.1518307871422081,
+        "token_cost": 250,
+        "utility": 0.0006073231485688324,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_8dfb00bd6f",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.04211360477026632,
+        "token_cost": 76,
+        "utility": 0.0005541263785561358,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_0e6159a232",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.07813626126126125,
+        "token_cost": 172,
+        "utility": 0.0004542805887282631,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_6c1694999d",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.030029768177028446,
+        "token_cost": 93,
+        "utility": 0.00032290073308632736,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_894a4b3fbb",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.030158137196729957,
+        "token_cost": 101,
+        "utility": 0.0002985954177894055,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_ffbd9e787a",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.02710801760428626,
+        "token_cost": 91,
+        "utility": 0.0002978903033438051,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_1bad6a3017",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.018289728682170537,
+        "token_cost": 103,
+        "utility": 0.00017757018138029647,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_22a02579e1",
+        "level": "summary",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.022776268679950192,
+        "token_cost": 287,
+        "utility": 7.935982118449544e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_abe5d80d96",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.00016666666666666666,
+        "token_cost": 34,
+        "utility": 4.901960784313726e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_3d0b1f8001",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.0003333333333333333,
+        "token_cost": 98,
+        "utility": 3.401360544217687e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_8d72e3813a",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 8.333333333333333e-05,
+        "token_cost": 32,
+        "utility": 2.6041666666666666e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_7a32b1c794",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.00016666666666666666,
+        "token_cost": 115,
+        "utility": 1.4492753623188406e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_8d9d3a02d6",
+        "level": "summary",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.0002125,
+        "token_cost": 183,
+        "utility": 1.1612021857923498e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_8bd1bfcd28",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.00016666666666666666,
+        "token_cost": 153,
+        "utility": 1.0893246187363834e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_81d7e3d05b",
+        "level": "passage",
+        "requirement_id": "req_2_2",
+        "expected_gain": 8.333333333333333e-05,
+        "token_cost": 82,
+        "utility": 1.016260162601626e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_c51a561e9a",
+        "level": "summary",
+        "requirement_id": "req_2_2",
+        "expected_gain": 0.0002125,
+        "token_cost": 235,
+        "utility": 9.042553191489361e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "evidence_1",
+        "requirement_id": "req_1_1",
+        "passage_id": "passage_844eecd4f4",
+        "document_id": "doc_80edd78d30",
+        "title": "Identifying Dogmatism in Social Media: Signals and Models",
+        "section": "Predicting dogmatism",
+        "text": "A predictive model further validates our feature sets, and also allows us to analyze dogmatism in millions of other Reddit comments in a scalable way, with multiple uses in ongoing, downstream analyses.",
+        "score": 0.5256868059227922,
+        "read_level": "passage",
+        "token_cost": 72,
+        "supports": false,
+        "relation": "insufficient",
+        "char_start": 131,
+        "char_end": 334,
+        "citation_tokens": 42,
+        "source_metadata": {
+          "dataset": "qasper",
+          "paper_id": "1609.00425",
+          "source_path": "full_text.paragraphs[3][0]",
+          "source_type": "paragraph",
+          "source_char_start": 0,
+          "source_char_end": 334,
+          "section_index": 3,
+          "paragraph_index": 0
+        }
+      },
+      {
+        "id": "evidence_2",
+        "requirement_id": "req_1_2",
+        "passage_id": "passage_844eecd4f4",
+        "document_id": "doc_80edd78d30",
+        "title": "Identifying Dogmatism in Social Media: Signals and Models",
+        "section": "Predicting dogmatism",
+        "text": "We now show how we can use the linguistic feature sets we have described to build a classifier that predicts dogmatism in comments. A predictive model further validates our feature sets, and also allows us to analyze dogmatism in millions of other Reddit comments in a scalable way, with multiple uses in ongoing, downstream analyses.",
+        "score": 0.5256868059227922,
+        "read_level": "passage",
+        "token_cost": 72,
+        "supports": true,
+        "relation": "supports",
+        "char_start": 0,
+        "char_end": 334,
+        "citation_tokens": 72,
+        "source_metadata": {
+          "dataset": "qasper",
+          "paper_id": "1609.00425",
+          "source_path": "full_text.paragraphs[3][0]",
+          "source_type": "paragraph",
+          "source_char_start": 0,
+          "source_char_end": 334,
+          "section_index": 3,
+          "paragraph_index": 0
+        }
+      },
+      {
+        "id": "evidence_3",
+        "requirement_id": "req_2_1",
+        "passage_id": "passage_8dfb00bd6f",
+        "document_id": "doc_80edd78d30",
+        "title": "Identifying Dogmatism in Social Media: Signals and Models",
+        "section": "Introduction",
+        "text": "First, we validate psychological theories by examining the predictive power of feature sets that guide the model's predictions. For example, do linguistic signals of certainty help to predict a post is dogmatic, as theory would suggest?",
+        "score": 0.3628122847301952,
+        "read_level": "passage",
+        "token_cost": 76,
+        "supports": true,
+        "relation": "supports",
+        "char_start": 83,
+        "char_end": 320,
+        "citation_tokens": 49,
+        "source_metadata": {
+          "dataset": "qasper",
+          "paper_id": "1609.00425",
+          "source_path": "full_text.paragraphs[0][3]",
+          "source_type": "paragraph",
+          "source_char_start": 0,
+          "source_char_end": 373,
+          "section_index": 0,
+          "paragraph_index": 3
+        }
+      },
+      {
+        "id": "evidence_4",
+        "requirement_id": "req_2_2",
+        "passage_id": "passage_844eecd4f4",
+        "document_id": "doc_80edd78d30",
+        "title": "Identifying Dogmatism in Social Media: Signals and Models",
+        "section": "Predicting dogmatism",
+        "text": "A predictive model further validates our feature sets, and also allows us to analyze dogmatism in millions of other Reddit comments in a scalable way, with multiple uses in ongoing, downstream analyses.",
+        "score": 0.5256868059227922,
+        "read_level": "passage",
+        "token_cost": 72,
+        "supports": false,
+        "relation": "insufficient",
+        "char_start": 131,
+        "char_end": 334,
+        "citation_tokens": 42,
+        "source_metadata": {
+          "dataset": "qasper",
+          "paper_id": "1609.00425",
+          "source_path": "full_text.paragraphs[3][0]",
+          "source_type": "paragraph",
+          "source_char_start": 0,
+          "source_char_end": 334,
+          "section_index": 3,
+          "paragraph_index": 0
+        }
+      },
+      {
+        "id": "evidence_5",
+        "requirement_id": "req_1_1",
+        "passage_id": "passage_aa2fcb8d12",
+        "document_id": "doc_80edd78d30",
+        "title": "Identifying Dogmatism in Social Media: Signals and Models",
+        "section": "What user behaviors are predictive of dogmatism? (R3)",
+        "text": "We have shown dogmatism is captured by many linguistic features, but can we discover other high-level user behaviors that are similarly predictive?",
+        "score": 0.23287173202614378,
+        "read_level": "passage",
+        "token_cost": 29,
+        "supports": false,
+        "relation": "insufficient",
+        "char_start": 0,
+        "char_end": 147,
+        "citation_tokens": 29,
+        "source_metadata": {
+          "dataset": "qasper",
+          "paper_id": "1609.00425",
+          "source_path": "full_text.paragraphs[7][0]",
+          "source_type": "paragraph",
+          "source_char_start": 0,
+          "source_char_end": 147,
+          "section_index": 7,
+          "paragraph_index": 0
+        }
+      },
+      {
+        "id": "evidence_6",
+        "requirement_id": "req_2_2",
+        "passage_id": "passage_7d2eded654",
+        "document_id": "doc_80edd78d30",
+        "title": "Identifying Dogmatism in Social Media: Signals and Models",
+        "section": "Conclusion",
+        "text": "We have constructed the first corpus of social media posts annotated with dogmatism scores, allowing us to explore linguistic features of dogmatism and build a predictive model that analyzes new content. We apply this model to Reddit, where we discover behavioral predictors of dogmatism and topical patterns in the comments of dogmatic users.",
+        "score": 0.49284323770491806,
+        "read_level": "passage",
+        "token_cost": 69,
+        "supports": true,
+        "relation": "supports",
+        "char_start": 0,
+        "char_end": 343,
+        "citation_tokens": 69,
+        "source_metadata": {
+          "dataset": "qasper",
+          "paper_id": "1609.00425",
+          "source_path": "full_text.paragraphs[10][0]",
+          "source_type": "paragraph",
+          "source_char_start": 0,
+          "source_char_end": 343,
+          "section_index": 10,
+          "paragraph_index": 0
+        }
+      }
+    ],
+    "claims": [
+      {
+        "id": "claim_1",
+        "text": "They build a classifier using linguistic feature sets to predict dogmatism in comments.",
+        "evidence_ids": [
+          "evidence_2"
+        ],
+        "requirement_id": "req_1_2",
+        "confidence": 1.0
+      },
+      {
+        "id": "claim_2",
+        "text": "The model\u2019s target is whether a comment/post is dogmatic (dogmatism in comments).",
+        "evidence_ids": [
+          "evidence_3"
+        ],
+        "requirement_id": "req_2_1",
+        "confidence": 1.0
+      }
+    ],
+    "rounds": 2,
+    "tokens_used": 390,
+    "coverage": 0.75,
+    "stop_reason": "max_search_rounds_reached",
+    "provider": "openai",
+    "api_calls": [
+      {
+        "operation": "plan",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 227,
+        "output_tokens": 268,
+        "total_tokens": 495,
+        "cached_tokens": 0
+      },
+      {
+        "operation": "embed_query",
+        "model": "text-embedding-3-small",
+        "items": 1,
+        "embedding_model": "text-embedding-3-small",
+        "input_tokens": 7,
+        "total_tokens": 7
+      },
+      {
+        "operation": "rerank",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3324,
+        "output_tokens": 1028,
+        "total_tokens": 4352,
+        "cached_tokens": 0
+      },
+      {
+        "operation": "assess_evidence",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 602,
+        "output_tokens": 195,
+        "total_tokens": 797,
+        "cached_tokens": 0
+      },
+      {
+        "operation": "embed_query",
+        "model": "text-embedding-3-small",
+        "items": 1,
+        "embedding_model": "text-embedding-3-small",
+        "input_tokens": 9,
+        "total_tokens": 9
+      },
+      {
+        "operation": "rerank",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3445,
+        "output_tokens": 1061,
+        "total_tokens": 4506,
+        "cached_tokens": 0
+      },
+      {
+        "operation": "assess_evidence",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 745,
+        "output_tokens": 198,
+        "total_tokens": 943,
+        "cached_tokens": 0
+      },
+      {
+        "operation": "synthesize",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 906,
+        "output_tokens": 224,
+        "total_tokens": 1130,
+        "cached_tokens": 0
+      }
+    ],
+    "read_tokens": 390,
+    "citation_tokens": 303,
+    "api_input_tokens": 9265,
+    "api_output_tokens": 2974,
+    "api_total_tokens": 12239,
+    "estimated_api_cost_usd": null
+  }
+}

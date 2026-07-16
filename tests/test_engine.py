@@ -37,6 +37,25 @@ class EngineTests(unittest.TestCase):
         self.assertEqual(stats["documents"], 3)
         self.assertGreaterEqual(stats["passages"], 8)
 
+    def test_offline_boolean_answer_is_direct(self):
+        answer = EvidenceGraphEngine(
+            CORPUS,
+            Settings(provider="offline", answer_policy="benchmark"),
+        ).ask(
+            "Do wetlands eliminate all flood risk?"
+        )
+
+        self.assertRegex(answer.text, r"^(?:Yes|No) \[1\]$")
+
+    def test_grounded_boolean_can_abstain(self):
+        answer = EvidenceGraphEngine(
+            CORPUS,
+            Settings(provider="offline", answer_policy="grounded"),
+        ).ask("Do wetlands use quantum processors?")
+
+        self.assertEqual(answer.text, "Unanswerable")
+        self.assertFalse(answer.citations)
+
 
 if __name__ == "__main__":
     unittest.main()

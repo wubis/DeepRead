@@ -1,0 +1,704 @@
+{
+  "question": "what language pairs are explored?",
+  "text": "The examined Europarl language configurations are French-English-Spanish (Fr-En-Es), German-English-French (De-En-Fr), and Romanian-English-German (Ro-En-De). English is the pivot language; the language to its left is the source and the language to its right is the target. Thus, the stated source-to-target directions are French\u2192English and English\u2192Spanish, German\u2192English and English\u2192French, and Romanian\u2192English and English\u2192German. [1]",
+  "citations": [
+    {
+      "id": "evidence_1",
+      "requirement_id": "req_1_1",
+      "passage_id": "passage_3ca8f221b5",
+      "document_id": "doc_ccbb67fc90",
+      "title": "Cross-lingual Pre-training Based Transfer for Zero-shot Neural Machine Translation",
+      "section": "Experiments ::: Setup ::: Datasets.",
+      "text": "For Europarl corpus, we evaluate on French-English-Spanish (Fr-En-Es), German-English-French (De-En-Fr) and Romanian-English-German (Ro-En-De), where English acts as the pivot language, its left side is the source language, and its right side is the target language.",
+      "score": 0.620251590186279,
+      "read_level": "passage",
+      "token_cost": 182,
+      "supports": true,
+      "relation": "supports",
+      "char_start": 80,
+      "char_end": 347,
+      "citation_tokens": 46,
+      "source_metadata": {
+        "dataset": "qasper",
+        "paper_id": "1912.01214",
+        "source_path": "full_text.paragraphs[7][0]",
+        "source_type": "paragraph",
+        "source_char_start": 0,
+        "source_char_end": 921,
+        "section_index": 7,
+        "paragraph_index": 0
+      }
+    }
+  ],
+  "coverage": 1.0,
+  "stop_reason": "target_coverage_reached",
+  "trace": {
+    "question": "what language pairs are explored?",
+    "tasks": [
+      {
+        "id": "task_1",
+        "question": "Which language pairs are explored in the referenced study, project, or document?",
+        "requirements": [
+          {
+            "id": "req_1_1",
+            "task_id": "task_1",
+            "description": "Find the section(s) that explicitly list or describe the language pairs examined, and extract every pair with its source and target language direction where stated.",
+            "keywords": [
+              "language pairs",
+              "source language",
+              "target language",
+              "examined",
+              "explored",
+              "datasets",
+              "experiments"
+            ]
+          }
+        ]
+      }
+    ],
+    "searches": [
+      {
+        "round": 1,
+        "query": "what language pairs are explored?",
+        "hit_count": 20
+      }
+    ],
+    "ranking": [
+      {
+        "passage_id": "passage_3ca8f221b5",
+        "document_id": "doc_ccbb67fc90",
+        "bm25_rank": 11,
+        "dense_rank": 2,
+        "lexical_score": 2.1276432342144442,
+        "dense_score": 0.4296254582077873,
+        "rrf_score": 0.01500454338936847,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.1,
+        "final_score": 0.620251590186279,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_da1352afc8",
+        "document_id": "doc_ccbb67fc90",
+        "bm25_rank": 10,
+        "dense_rank": 1,
+        "lexical_score": 2.2980389364118023,
+        "dense_score": 0.46368543039680843,
+        "rrf_score": 0.015234192037470727,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.0,
+        "final_score": 0.5578319672131148,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_52519119c4",
+        "document_id": "doc_ccbb67fc90",
+        "bm25_rank": 6,
+        "dense_rank": 9,
+        "lexical_score": 2.871473882037866,
+        "dense_score": 0.3817101401169046,
+        "rrf_score": 0.014855072463768116,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.2,
+        "final_score": 0.16269927536231882,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_ba2d64508c",
+        "document_id": "doc_ccbb67fc90",
+        "bm25_rank": 19,
+        "dense_rank": 15,
+        "lexical_score": 1.8014189291539733,
+        "dense_score": 0.3740907954742944,
+        "rrf_score": 0.012962025316455697,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.7000000000000001,
+        "final_score": 0.052036708860759534,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_1f5a4e79be",
+        "document_id": "doc_ccbb67fc90",
+        "bm25_rank": 4,
+        "dense_rank": 4,
+        "lexical_score": 3.2412902964892325,
+        "dense_score": 0.3907278576271247,
+        "rrf_score": 0.015625,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.0,
+        "final_score": 0.00546875,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_b33c5c2760",
+        "document_id": "doc_ccbb67fc90",
+        "bm25_rank": 13,
+        "dense_rank": 13,
+        "lexical_score": 2.0639179590416736,
+        "dense_score": 0.3750095998521164,
+        "rrf_score": 0.0136986301369863,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.4,
+        "final_score": -0.0702054794520548,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_9aa6553e37",
+        "document_id": "doc_ccbb67fc90",
+        "bm25_rank": 3,
+        "dense_rank": 28,
+        "lexical_score": 3.884487378312179,
+        "dense_score": 0.36184351910664336,
+        "rrf_score": 0.013843795093795094,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.30000000000000004,
+        "final_score": -0.10015467171717174,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_1dba72d3ce",
+        "document_id": "doc_ccbb67fc90",
+        "bm25_rank": 5,
+        "dense_rank": 27,
+        "lexical_score": 3.1495680671776776,
+        "dense_score": 0.36406495012895485,
+        "rrf_score": 0.013633952254641911,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.5,
+        "final_score": -0.17022811671087532,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_6b9a38673f",
+        "document_id": "doc_ccbb67fc90",
+        "bm25_rank": 2,
+        "dense_rank": 43,
+        "lexical_score": 4.875581081875216,
+        "dense_score": 0.3435550404172762,
+        "rrf_score": 0.013239899780770436,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.6000000000000001,
+        "final_score": -0.20536603507673037,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_d055f5415c",
+        "document_id": "doc_ccbb67fc90",
+        "bm25_rank": 21,
+        "dense_rank": 14,
+        "lexical_score": 1.5713133479125998,
+        "dense_score": 0.3743054173733209,
+        "rrf_score": 0.012871204537871207,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.8,
+        "final_score": -0.2754950784117451,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_2904a86138",
+        "document_id": "doc_ccbb67fc90",
+        "bm25_rank": 7,
+        "dense_rank": 38,
+        "lexical_score": 2.620511811061132,
+        "dense_score": 0.35125553269808235,
+        "rrf_score": 0.012800791958574476,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 0.9,
+        "final_score": -0.3105197228144989,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_16998e4a32",
+        "document_id": "doc_ccbb67fc90",
+        "bm25_rank": 1,
+        "dense_rank": 62,
+        "lexical_score": 6.051143287707163,
+        "dense_score": 0.3249145746341826,
+        "rrf_score": 0.012704918032786887,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.0,
+        "final_score": -0.3455532786885246,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_0834dc46b5",
+        "document_id": "doc_ccbb67fc90",
+        "bm25_rank": 8,
+        "dense_rank": 42,
+        "lexical_score": 2.5302746188397296,
+        "dense_score": 0.34572989433006185,
+        "rrf_score": 0.0125,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.1,
+        "final_score": -0.38062500000000005,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_2f5d6f23ed",
+        "document_id": "doc_ccbb67fc90",
+        "bm25_rank": 16,
+        "dense_rank": 26,
+        "lexical_score": 1.952309348416665,
+        "dense_score": 0.36412314543164914,
+        "rrf_score": 0.012469400244798041,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.2000000000000002,
+        "final_score": -0.41563570991432075,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_81716be3dc",
+        "document_id": "doc_ccbb67fc90",
+        "bm25_rank": 14,
+        "dense_rank": 31,
+        "lexical_score": 2.018616975574026,
+        "dense_score": 0.35789373551621984,
+        "rrf_score": 0.012377487377487378,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.3,
+        "final_score": -0.4506678794178794,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_2820c4036e",
+        "document_id": "doc_ccbb67fc90",
+        "bm25_rank": 27,
+        "dense_rank": 17,
+        "lexical_score": 1.4067745029465333,
+        "dense_score": 0.3719957748726598,
+        "rrf_score": 0.012165994924615616,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.4000000000000001,
+        "final_score": -0.48574190177638454,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_861361ff6c",
+        "document_id": "doc_ccbb67fc90",
+        "bm25_rank": 18,
+        "dense_rank": 33,
+        "lexical_score": 1.8327653425177548,
+        "dense_score": 0.355793541721659,
+        "rrf_score": 0.011889991728701407,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.7000000000000002,
+        "final_score": -0.4933385028949545,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_1a634cc189",
+        "document_id": "doc_ccbb67fc90",
+        "bm25_rank": 9,
+        "dense_rank": 51,
+        "lexical_score": 2.325158815034154,
+        "dense_score": 0.3328610079793121,
+        "rrf_score": 0.012025068546807679,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.5,
+        "final_score": -0.5207912260086173,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_fb68f14093",
+        "document_id": "doc_ccbb67fc90",
+        "bm25_rank": 20,
+        "dense_rank": 29,
+        "lexical_score": 1.7605693775939217,
+        "dense_score": 0.36146963783851627,
+        "rrf_score": 0.0119311797752809,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.6,
+        "final_score": -0.5558240870786517,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      },
+      {
+        "passage_id": "passage_2c77882e65",
+        "document_id": "doc_ccbb67fc90",
+        "bm25_rank": 51,
+        "dense_rank": 5,
+        "lexical_score": 0.0,
+        "dense_score": 0.3845371330346977,
+        "rrf_score": 0.011878031878031879,
+        "metadata_score": 0.0,
+        "redundancy_penalty": 1.8,
+        "final_score": -0.6258426888426888,
+        "retrievers": [
+          "bm25",
+          "dense",
+          "model_rerank"
+        ]
+      }
+    ],
+    "reads": [
+      {
+        "passage_id": "passage_3ca8f221b5",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.26115856428895956,
+        "token_cost": 182,
+        "utility": 0.0014349371664228547,
+        "selected": true,
+        "reason": "highest_expected_coverage_gain_per_token"
+      },
+      {
+        "passage_id": "passage_da1352afc8",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.11743830888697153,
+        "token_cost": 115,
+        "utility": 0.0010212026859736654,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_52519119c4",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.03425247902364607,
+        "token_cost": 119,
+        "utility": 0.0002878359581818997,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_ba2d64508c",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.013693870752831456,
+        "token_cost": 219,
+        "utility": 6.252909019557742e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_2c77882e65",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 5.263157894736842e-05,
+        "token_cost": 3,
+        "utility": 1.7543859649122806e-05,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_1f5a4e79be",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.000575657894736842,
+        "token_cost": 58,
+        "utility": 9.925136116152448e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_d055f5415c",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 5.263157894736842e-05,
+        "token_cost": 7,
+        "utility": 7.518796992481203e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_9aa6553e37",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00021052631578947367,
+        "token_cost": 93,
+        "utility": 2.263723825693265e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_2820c4036e",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00010526315789473683,
+        "token_cost": 49,
+        "utility": 2.1482277121374863e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_6b9a38673f",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00021052631578947367,
+        "token_cost": 104,
+        "utility": 2.0242914979757085e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_16998e4a32",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00015789473684210527,
+        "token_cost": 80,
+        "utility": 1.9736842105263157e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_2904a86138",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 5.263157894736842e-05,
+        "token_cost": 28,
+        "utility": 1.8796992481203007e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_0834dc46b5",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00021052631578947367,
+        "token_cost": 119,
+        "utility": 1.769128704113224e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_1dba72d3ce",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00036842105263157896,
+        "token_cost": 215,
+        "utility": 1.7135862913096697e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_1a634cc189",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00010526315789473683,
+        "token_cost": 90,
+        "utility": 1.1695906432748538e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_2f5d6f23ed",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00010526315789473683,
+        "token_cost": 97,
+        "utility": 1.0851871947911014e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_b33c5c2760",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00021052631578947367,
+        "token_cost": 197,
+        "utility": 1.0686615014694094e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_861361ff6c",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00021052631578947367,
+        "token_cost": 201,
+        "utility": 1.0473946059177794e-06,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_fb68f14093",
+        "level": "passage",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.00015789473684210527,
+        "token_cost": 172,
+        "utility": 9.179926560587516e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      },
+      {
+        "passage_id": "passage_81716be3dc",
+        "level": "summary",
+        "requirement_id": "req_1_1",
+        "expected_gain": 0.0003131578947368421,
+        "token_cost": 352,
+        "utility": 8.89653110047847e-07,
+        "selected": false,
+        "reason": "lower_utility_than_selected"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "evidence_1",
+        "requirement_id": "req_1_1",
+        "passage_id": "passage_3ca8f221b5",
+        "document_id": "doc_ccbb67fc90",
+        "title": "Cross-lingual Pre-training Based Transfer for Zero-shot Neural Machine Translation",
+        "section": "Experiments ::: Setup ::: Datasets.",
+        "text": "For Europarl corpus, we evaluate on French-English-Spanish (Fr-En-Es), German-English-French (De-En-Fr) and Romanian-English-German (Ro-En-De), where English acts as the pivot language, its left side is the source language, and its right side is the target language.",
+        "score": 0.620251590186279,
+        "read_level": "passage",
+        "token_cost": 182,
+        "supports": true,
+        "relation": "supports",
+        "char_start": 80,
+        "char_end": 347,
+        "citation_tokens": 46,
+        "source_metadata": {
+          "dataset": "qasper",
+          "paper_id": "1912.01214",
+          "source_path": "full_text.paragraphs[7][0]",
+          "source_type": "paragraph",
+          "source_char_start": 0,
+          "source_char_end": 921,
+          "section_index": 7,
+          "paragraph_index": 0
+        }
+      }
+    ],
+    "claims": [
+      {
+        "id": "claim_1",
+        "text": "The examined Europarl language configurations are French-English-Spanish (Fr-En-Es), German-English-French (De-En-Fr), and Romanian-English-German (Ro-En-De). English is the pivot language; the language to its left is the source and the language to its right is the target. Thus, the stated source-to-target directions are French\u2192English and English\u2192Spanish, German\u2192English and English\u2192French, and Romanian\u2192English and English\u2192German.",
+        "evidence_ids": [
+          "evidence_1"
+        ],
+        "requirement_id": "req_1_1",
+        "confidence": 1.0
+      }
+    ],
+    "rounds": 1,
+    "tokens_used": 182,
+    "coverage": 1.0,
+    "stop_reason": "target_coverage_reached",
+    "provider": "openai",
+    "api_calls": [
+      {
+        "operation": "plan",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 226,
+        "output_tokens": 137,
+        "total_tokens": 363,
+        "cached_tokens": 0
+      },
+      {
+        "operation": "embed_query",
+        "model": "text-embedding-3-small",
+        "items": 1,
+        "embedding_model": "text-embedding-3-small",
+        "input_tokens": 6,
+        "total_tokens": 6
+      },
+      {
+        "operation": "rerank",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 3952,
+        "output_tokens": 751,
+        "total_tokens": 4703,
+        "cached_tokens": 0
+      },
+      {
+        "operation": "assess_evidence",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 317,
+        "output_tokens": 45,
+        "total_tokens": 362,
+        "cached_tokens": 0
+      },
+      {
+        "operation": "synthesize",
+        "model": "gpt-5.6-terra",
+        "input_tokens": 373,
+        "output_tokens": 142,
+        "total_tokens": 515,
+        "cached_tokens": 0
+      }
+    ],
+    "read_tokens": 182,
+    "citation_tokens": 46,
+    "api_input_tokens": 4874,
+    "api_output_tokens": 1075,
+    "api_total_tokens": 5949,
+    "estimated_api_cost_usd": null
+  }
+}

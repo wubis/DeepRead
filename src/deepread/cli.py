@@ -21,8 +21,17 @@ def main() -> None:
     ask.add_argument("--model-rerank", action=argparse.BooleanOptionalAction, default=None)
     ask.add_argument("--reader-mode", choices=["flat", "hierarchical"])
     ask.add_argument("--flat-top-k", type=int)
+    ask.add_argument("--evidence-window-sentences", type=int)
+    ask.add_argument("--evidence-candidates-per-requirement", type=int)
+    ask.add_argument("--evidence-support-threshold", type=float)
     ask.add_argument("--supervisor-mode", choices=["single-pass", "bounded"])
+    ask.add_argument("--answer-policy", choices=["grounded", "benchmark"])
     ask.add_argument("--max-search-rounds", type=int)
+    ask.add_argument("--model-rerank-top-k", type=int)
+    ask.add_argument("--model-rerank-rescue-per-requirement", type=int)
+    ask.add_argument("--model-rerank-max-chars", type=int)
+    ask.add_argument("--target-coverage", type=float)
+    ask.add_argument("--diversity-weight", type=float)
     ask.add_argument("--seed", type=int)
     inspect = subparsers.add_parser("inspect", help="Show corpus statistics")
     inspect.add_argument("--corpus", default="data/sample_corpus")
@@ -37,12 +46,25 @@ def main() -> None:
         "enable_model_rerank": getattr(args, "model_rerank", None),
         "reader_mode": getattr(args, "reader_mode", None),
         "flat_top_k": getattr(args, "flat_top_k", None),
+        "evidence_window_sentences": getattr(args, "evidence_window_sentences", None),
+        "evidence_candidates_per_requirement": getattr(
+            args, "evidence_candidates_per_requirement", None
+        ),
+        "evidence_support_threshold": getattr(args, "evidence_support_threshold", None),
         "supervisor_mode": (
             args.supervisor_mode.replace("-", "_")
             if getattr(args, "supervisor_mode", None)
             else None
         ),
         "max_search_rounds": getattr(args, "max_search_rounds", None),
+        "answer_policy": getattr(args, "answer_policy", None),
+        "model_rerank_top_k": getattr(args, "model_rerank_top_k", None),
+        "model_rerank_rescue_per_requirement": getattr(
+            args, "model_rerank_rescue_per_requirement", None
+        ),
+        "model_rerank_max_chars": getattr(args, "model_rerank_max_chars", None),
+        "target_coverage": getattr(args, "target_coverage", None),
+        "redundancy_weight": getattr(args, "diversity_weight", None),
         "random_seed": getattr(args, "seed", None),
     }
     settings = replace(settings, **{key: value for key, value in overrides.items() if value is not None})

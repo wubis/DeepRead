@@ -4,6 +4,7 @@ from pathlib import Path
 from deepread.config import Settings
 from deepread.corpus import load_corpus
 from deepread.engine import EvidenceGraphEngine
+from deepread.models import Passage, SearchHit
 from deepread.retrieval import HybridRetriever
 from deepread.text import token_count
 
@@ -42,6 +43,52 @@ class RetrievalAblationTests(unittest.TestCase):
         self.assertTrue(all(hit.retrievers == ["dense"] for hit in dense_hits))
         self.assertEqual(len(hybrid_calls), 1)
         self.assertTrue(all(set(hit.retrievers) == {"bm25", "dense"} for hit in hybrid_hits))
+
+    def test_figure_table_candidates_receive_structure_boost(self):
+        passages = [
+            Passage(
+                "paragraph",
+                "doc-1",
+                "Study",
+                "Results",
+                "Language pairs and evaluation scores are reported.",
+                0,
+                {"source_type": "paragraph"},
+            ),
+            Passage(
+                "table",
+                "doc-2",
+                "Study",
+                "Figures and Tables",
+                "Language pairs and evaluation scores are reported.",
+                0,
+                {"source_type": "figure_table"},
+            ),
+        ]
+        retriever = HybridRetriever(passages, Settings(retrieval_mode="bm25"))
+
+        hits = retriever.search("Which language pairs are in the results table?", 2)
+
+        self.assertEqual(hits[0].passage_id, "table")
+        self.assertIn("structure_boost", hits[0].retrievers)
+
+    def test_diversification_penalizes_similar_passages_not_shared_document(self):
+        passages = [
+            Passage("first", "doc", "Study", "A", "alpha beta gamma", 0),
+            Passage("duplicate", "doc", "Study", "A", "alpha beta gamma repeated", 1),
+            Passage("distinct", "doc", "Study", "B", "delta epsilon zeta", 2),
+        ]
+        retriever = HybridRetriever(
+            passages,
+            Settings(retrieval_mode="bm25", redundancy_weight=0.5),
+        )
+        hits = [SearchHit(passage.id, passage.document_id, final_score=0.1) for passage in passages]
+
+        diversified = retriever._diversify(hits, 3)
+
+        self.assertEqual([hit.passage_id for hit in diversified[:2]], ["first", "distinct"])
+        self.assertEqual(diversified[1].redundancy_penalty, 0.0)
+        self.assertGreater(diversified[2].redundancy_penalty, 0.0)
 
 
 class ReaderAndSupervisorAblationTests(unittest.TestCase):
@@ -90,8 +137,8 @@ class ReaderAndSupervisorAblationTests(unittest.TestCase):
 
         self.assertEqual(single.trace.rounds, 1)
         self.assertEqual(single.stop_reason, "single_pass_complete")
-        self.assertEqual(bounded.trace.rounds, 3)
-        self.assertEqual(bounded.stop_reason, "max_search_rounds_reached")
+        self.assertEqual(bounded.trace.rounds, 1)
+        self.assertEqual(bounded.stop_reason, "no_evidence_progress")
 
 
 if __name__ == "__main__":
